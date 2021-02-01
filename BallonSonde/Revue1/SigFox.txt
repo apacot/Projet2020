@@ -9,5 +9,3 @@ Sigfox : commande AT
 Id composant -> AT$I=10 -> retourne l'id
 
 Ecrire un message -> AT$SF=msg (en hexa) -> retourne OK (= confirm. envoi)
-
-
