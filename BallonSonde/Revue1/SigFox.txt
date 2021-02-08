@@ -1,7 +1,3 @@
-Compte BackEnd SigFox : a.pacot72@gmail.com
-MDP : Pyrrhax_72
-
-
 Schéma en photo
 
 Sigfox : commande AT
