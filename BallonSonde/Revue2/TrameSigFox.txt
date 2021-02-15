@@ -1,0 +1,40 @@
+12 octets * 8 = 96 bits
+
+
+Possibilité 1 : 1 seule trame
+ 
+6 bit -> temperature (-20;40) => (60° max , 0 mini) (codage en +20)
+12 bits -> radiation (cpm, 4000max)
+11 bits -> pression (en hPa) (10 bit = 1024 + 1 bit de sécurité)
+26 bits (en multipliant par 1M) -> lattitude
+(19bits) 18 bits + bit de signe (en multipliant par 1M) -> longitude
+15 bit -> altitude (en mètres)
+7 bit -> humidité (en % (ex :26%))
+total 96 bits
+
+-----------------
+
+Possibilité 2 : 2 trames alternée
+(décalage de bit + masques (<< / >>))
+
+trame position
+
+1 bit -> identification (0 ou 1)
+6+20 || 26 bits (en multipliant par 1M) -> lattitude
+(19bits) 18 bits + bit de signe (en multipliant par 1M) -> longitude
+15 bit -> altitude (en mètres)
+
+total 61 bits
+
+------------------
+
+trame donnéesCapteur + rappel altitude
+
+1 bit -> identification 
+6 bit -> temperature (-5;40) => (60° max , 5 mini) (codage en +20)
+12 bits -> radiation (cpm, 4000max)
+11 bits -> pression (en hPa) (10 bit =1024 + 1 bit de sécurité)
+7 bit -> humidité (en % (ex :26%))
+15 bit -> altitude (en mètres)
+
+total 52 bits
