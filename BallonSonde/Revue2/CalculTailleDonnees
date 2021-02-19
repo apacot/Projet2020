@@ -1,0 +1,55 @@
+calcul de taille : envoi de chaine de caractère
+
+latitude: 11 octets
+Partie entière : 2 caractères = 2 octets
+le signe : 1 caractère = 1 octet
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+partie décimale : 6 caractères = 6 octets
+séparateur entre chaque données : 1 caractère = 1 octet (;)
+
+longitude: 10 octets
+Partie entière : 1 caractère = 1 octet
+le signe : 1 caractère = 1 octet
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+partie décimale : partie décimale : 6 caractères = 6 octets
+séparateur entre chaque données : 1 caractère = 1 octet (;)
+
+altitude: 6 octets
+Partie entière : 5 caractère = 5 octets
+pas de partie décimale
+pas de . qui sépare la partie entière/décimale
+séparateur entre chaque données : 1 caractère = 1 octet (;)
+
+date: 11 octets
+année : 4 caractères = 4 octets
+séparateur année-mois : 1 caractère = 1 octet
+mois : 2 caractères = 2 octets
+séparateur mois-jour : 1 caractère = 1 octet
+jour : 2 caractères = 2 octets
+séparateur entre chaque données : 1 caractère = 1 octet (;)
+
+horaire : 8 octets
+heure : 2 caractères = 2 octets
+les : qui sépare heure et minutes : 1 caractère = 1 octet
+minutes : 2 caractères = 2 octets
+les : qui sépare minutes et secondes : 1 caractère = 1 octet
+seconde : 2 caractères = 2 octets
+
+temperature :
+Partie entière : 2 caractères = 2 octets
+pas de partie décimale
+le signe : 1 caractère = 1 octet
+pas de . qui sépare la partie entière/décimale
+séparateur entre chaque données : 1 caractère = 1 octet
+
+pression :
+Partie entière : 4 caractères = 4 octets
+pas de partie décimale
+pas de . qui sépare la partie entière/décimale
+séparateur entre chaque données : 1 caractère = 1 octet
+
+radiation : 
+Partie entière : 4 caractères = 4 octets
+pas de partie décimale
+pas de . qui sépare la partie entière/décimale
+séparateur entre chaque données : 1 caractère = 1 octet
