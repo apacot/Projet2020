@@ -3,7 +3,7 @@
 
 Possibilité 1 : 1 seule trame
 
-26 bits (en multipliant par 1M) -> lattitude
+26 bits (en multipliant par 1M) -> latitude
 (19bits) 18 bits + bit de signe (en multipliant par 1M) -> longitude
 15 bit -> altitude (en mètres)
 6 bit -> temperature (-20;40) => (60° max , 0 mini) (codage en +20)

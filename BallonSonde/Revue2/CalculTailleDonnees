@@ -35,21 +35,38 @@ minutes : 2 caractères = 2 octets
 les : qui sépare minutes et secondes : 1 caractère = 1 octet
 seconde : 2 caractères = 2 octets
 
-temperature :
+temperature : 4 octets
 Partie entière : 2 caractères = 2 octets
 pas de partie décimale
 le signe : 1 caractère = 1 octet
 pas de . qui sépare la partie entière/décimale
 séparateur entre chaque données : 1 caractère = 1 octet
 
-pression :
+pression : 5 octets
 Partie entière : 4 caractères = 4 octets
 pas de partie décimale
 pas de . qui sépare la partie entière/décimale
 séparateur entre chaque données : 1 caractère = 1 octet
 
-radiation : 
+radiation : 5 octets
 Partie entière : 4 caractères = 4 octets
 pas de partie décimale
 pas de . qui sépare la partie entière/décimale
 séparateur entre chaque données : 1 caractère = 1 octet
+
+humidité : 5 octets
+Partie entière : 3 caractères (max) = 3 octets
+pas de partie décimale
+pas de . qui sépare la partie entière/décimale
+le symbole '%' : 1 caractère = 1 octet
+séparateur entre chaque données : 1 caracètre = 1 octet
+
+total : 65 octets pour une trame de données
+
+1 enregistrement / minute
+
+65 * 60 = 3900 octets par heure
+
+15600 octets pour la durée du voyage
+
+= 15,6 ko 
