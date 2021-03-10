@@ -1,8 +1,7 @@
 calcul de taille : envoi de chaine de caractère
 
-latitude: 11 octets
+latitude: 10 octets
 Partie entière : 2 caractères = 2 octets
-le signe : 1 caractère = 1 octet
 le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
 partie décimale : 6 caractères = 6 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
@@ -14,21 +13,21 @@ le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
 partie décimale : partie décimale : 6 caractères = 6 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
-altitude: 6 octets
+altitude: 9 octets
 Partie entière : 5 caractère = 5 octets
-pas de partie décimale
-pas de . qui sépare la partie entière/décimale
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+partie décimale : partie décimale : 2 caractères = 2 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
 date: 11 octets
 année : 4 caractères = 4 octets
-séparateur année-mois : 1 caractère = 1 octet
+séparateur année-mois (-) : 1 caractère = 1 octet
 mois : 2 caractères = 2 octets
-séparateur mois-jour : 1 caractère = 1 octet
+séparateur mois-jour (-) : 1 caractère = 1 octet
 jour : 2 caractères = 2 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
-horaire : 8 octets
+horaire : 9 octets
 heure : 2 caractères = 2 octets
 les : qui sépare heure et minutes : 1 caractère = 1 octet
 minutes : 2 caractères = 2 octets
@@ -36,38 +35,36 @@ les : qui sépare minutes et secondes : 1 caractère = 1 octet
 seconde : 2 caractères = 2 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
-temperature : 4 octets
+temperature : 6 octets
 Partie entière : 2 caractères = 2 octets
-pas de partie décimale
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+Partie décimale : 2 caracètres = 2 octets
 le signe : 1 caractère = 1 octet
-pas de . qui sépare la partie entière/décimale
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
-pression : 5 octets
+pression : 10 octets
+Partie entière : 6 caractères = 6 octets
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+Partie décimale : 2 caracètres = 2 octets
+séparateur entre chaque données : 1 caractère = 1 octet (;)
+
+radiation : 8 octets
 Partie entière : 4 caractères = 4 octets
-pas de partie décimale
-pas de . qui sépare la partie entière/décimale
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+Partie décimale : 2 caracètres = 2 octets
 séparateur entre chaque données : 1 caractère = 1 octet (;)
 
-radiation : 5 octets
-Partie entière : 4 caractères = 4 octets
-pas de partie décimale
-pas de . qui sépare la partie entière/décimale
-séparateur entre chaque données : 1 caractère = 1 octet (;)
-
-humidité : 5 octets
+humidité : 6 octets
 Partie entière : 3 caractères (max) = 3 octets
-pas de partie décimale
-pas de . qui sépare la partie entière/décimale
-le symbole '%' : 1 caractère = 1 octet
-séparateur entre chaque données : 1 caractère = 1 octet (;)
+le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
+Partie décimale : 2 caracètres = 2 octets
 
-total : 66 octets pour une trame de données
+total : 79 octets pour une trame de données
 
 1 enregistrement / minute
 
-66 * 60 = 3960 octets par heure
+66 * 60 = 4740 octets par heure
 
-15840 octets pour la durée du voyage
+18960 octets pour la durée du voyage
 
-= 15,84 ko 
+= 18,96 ko 
