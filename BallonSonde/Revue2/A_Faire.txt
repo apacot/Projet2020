@@ -1,0 +1,6 @@
+- Refaire calcul taille -> données complètes (non tronquées)
+- modelio -> diagrammes (cas d'utilisation, séquences, état-transition, classe)
+- choix des technologies -> explication complète de chaque possibilités, avec détail de chaque choix
+                         -> présentation des outils (soft et/ou hard)
+- refaire représentation trame -> avec vraie valeurs, montrer à quoi cela correspond
+- réaliser son jounal (approximatif)
