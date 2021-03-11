@@ -1,0 +1,161 @@
+class AsyncClient
+!!!152408.cpp!!!	stop() : void
+    close(false);
+!!!152664.cpp!!!	free() : bool
+    if(!_pcb) {
+        return true;
+    }
+    if(_pcb->state == 0 || _pcb->state > 4) {
+        return true;
+    }
+    return false;
+!!!152792.cpp!!!	canSend() : bool
+    return space() > 0;
+!!!153304.cpp!!!	write(in data : char) : size_t
+    if(data == NULL) {
+        return 0;
+    }
+    return write(data, strlen(data));
+!!!153432.cpp!!!	write(in data : char, in size : size_t, in apiflags : uint8_t = ASYNC_WRITE_FLAG_COPY) : size_t
+    size_t will_send = add(data, size, apiflags);
+    if(!will_send || !send()) {
+        return 0;
+    }
+    return will_send;
+!!!153560.cpp!!!	state() : uint8_t
+    if(!_pcb) {
+        return 0;
+    }
+    return _pcb->state;
+!!!153688.cpp!!!	connecting() : bool
+    if (!_pcb) {
+        return false;
+    }
+    return _pcb->state > 0 && _pcb->state < 4;
+!!!153816.cpp!!!	connected() : bool
+    if (!_pcb) {
+        return false;
+    }
+    return _pcb->state == 4;
+!!!153944.cpp!!!	disconnecting() : bool
+    if (!_pcb) {
+        return false;
+    }
+    return _pcb->state > 4 && _pcb->state < 10;
+!!!154072.cpp!!!	disconnected() : bool
+    if (!_pcb) {
+        return true;
+    }
+    return _pcb->state == 0 || _pcb->state == 10;
+!!!154200.cpp!!!	freeable() : bool
+    if (!_pcb) {
+        return true;
+    }
+    return _pcb->state == 0 || _pcb->state > 4;
+!!!154328.cpp!!!	getMss() : uint16_t
+    if(!_pcb) {
+        return 0;
+    }
+    return tcp_mss(_pcb);
+!!!154456.cpp!!!	getRxTimeout() : uint32_t
+    return _rx_since_timeout;
+!!!154584.cpp!!!	setRxTimeout(in timeout : uint32_t) : void
+    _rx_since_timeout = timeout;
+!!!154712.cpp!!!	getAckTimeout() : uint32_t
+    return _ack_timeout;
+!!!154840.cpp!!!	setAckTimeout(in timeout : uint32_t) : void
+    _ack_timeout = timeout;
+!!!154968.cpp!!!	setNoDelay(in nodelay : bool) : void
+    if(!_pcb) {
+        return;
+    }
+    if(nodelay) {
+        tcp_nagle_disable(_pcb);
+    } else {
+        tcp_nagle_enable(_pcb);
+    }
+!!!155096.cpp!!!	getNoDelay() : bool
+    if(!_pcb) {
+        return false;
+    }
+    return tcp_nagle_disabled(_pcb);
+!!!155224.cpp!!!	getRemoteAddress() : uint32_t
+    if(!_pcb) {
+        return 0;
+    }
+    return _pcb->remote_ip.u_addr.ip4.addr;
+!!!155352.cpp!!!	getRemotePort() : uint16_t
+    if(!_pcb) {
+        return 0;
+    }
+    return _pcb->remote_port;
+!!!155480.cpp!!!	getLocalAddress() : uint32_t
+    if(!_pcb) {
+        return 0;
+    }
+    return _pcb->local_ip.u_addr.ip4.addr;
+!!!155608.cpp!!!	getLocalPort() : uint16_t
+    if(!_pcb) {
+        return 0;
+    }
+    return _pcb->local_port;
+!!!155736.cpp!!!	remoteIP() : IPAddress
+    return IPAddress(getRemoteAddress());
+!!!155864.cpp!!!	remotePort() : uint16_t
+    return getRemotePort();
+!!!155992.cpp!!!	localIP() : IPAddress
+    return IPAddress(getLocalAddress());
+!!!156120.cpp!!!	localPort() : uint16_t
+    return getLocalPort();
+!!!157656.cpp!!!	errorToString(in error : int8_t) : char
+    switch(error){
+        case ERR_OK: return "OK";
+        case ERR_MEM: return "Out of memory error";
+        case ERR_BUF: return "Buffer error";
+        case ERR_TIMEOUT: return "Timeout";
+        case ERR_RTE: return "Routing problem";
+        case ERR_INPROGRESS: return "Operation in progress";
+        case ERR_VAL: return "Illegal value";
+        case ERR_WOULDBLOCK: return "Operation would block";
+        case ERR_USE: return "Address in use";
+        case ERR_ALREADY: return "Already connected";
+        case ERR_CONN: return "Not connected";
+        case ERR_IF: return "Low-level netif error";
+        case ERR_ABRT: return "Connection aborted";
+        case ERR_RST: return "Connection reset";
+        case ERR_CLSD: return "Connection closed";
+        case ERR_ARG: return "Illegal argument";
+        case -55: return "DNS failed";
+        default: return "UNKNOWN";
+    }
+!!!157784.cpp!!!	stateToString() : char
+    switch(state()){
+        case 0: return "Closed";
+        case 1: return "Listen";
+        case 2: return "SYN Sent";
+        case 3: return "SYN Received";
+        case 4: return "Established";
+        case 5: return "FIN Wait 1";
+        case 6: return "FIN Wait 2";
+        case 7: return "Close Wait";
+        case 8: return "Closing";
+        case 9: return "Last ACK";
+        case 10: return "Time Wait";
+        default: return "UNKNOWN";
+    }
+!!!157912.cpp!!!	_s_poll(inout arg : void, inout pcb : tcp_pcb) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_poll(pcb);
+!!!158040.cpp!!!	_s_recv(inout arg : void, inout pcb : tcp_pcb, inout pb : pbuf, in err : int8_t) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_recv(pcb, pb, err);
+!!!158168.cpp!!!	_s_fin(inout arg : void, inout pcb : tcp_pcb, in err : int8_t) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_fin(pcb, err);
+!!!158296.cpp!!!	_s_lwip_fin(inout arg : void, inout pcb : tcp_pcb, in err : int8_t) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_lwip_fin(pcb, err);
+!!!158424.cpp!!!	_s_error(inout arg : void, in err : int8_t) : void
+    reinterpret_cast<AsyncClient*>(arg)->_error(err);
+!!!158552.cpp!!!	_s_sent(inout arg : void, inout pcb : tcp_pcb, in len : uint16_t) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_sent(pcb, len);
+!!!158680.cpp!!!	_s_connected(inout arg : void, inout pcb : void, in err : int8_t) : int8_t
+    return reinterpret_cast<AsyncClient*>(arg)->_connected(pcb, err);
+!!!158808.cpp!!!	_s_dns_found(in name : char, inout ipaddr : ip_addr, inout arg : void) : void
+    reinterpret_cast<AsyncClient*>(arg)->_dns_found(ipaddr);

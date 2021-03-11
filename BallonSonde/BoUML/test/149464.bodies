@@ -1,0 +1,15 @@
+class AsyncCallbackResponse
+!!!217432.cpp!!!	AsyncCallbackResponse(in contentType : String, in len : size_t, in callback : AwsResponseFiller, in templateCallback : AwsTemplateProcessor = nullptr)
+  _code = 200;
+  _content = callback;
+  _contentLength = len;
+  if(!len)
+    _sendContentLength = false;
+  _contentType = contentType;
+  _filledLength = 0;
+!!!217688.cpp!!!	_fillBuffer(inout data : uint8_t, in len : size_t) : size_t
+  size_t ret = _content(data, len, _filledLength);
+  if(ret != RESPONSE_TRY_AGAIN){
+      _filledLength += ret;
+  }
+  return ret;

@@ -1,0 +1,68 @@
+format 222
+
+classcanvas 128088 class_ref 128088 // BME280
+  classdiagramsettings member_max_width 0 end
+  xyz 1231.6 2049 2000
+end
+classcanvas 128600 class_ref 131160 // RadiationWatch
+  classdiagramsettings member_max_width 0 end
+  xyz 1624.4 1247.8 2000
+end
+classcanvas 128728 class_ref 129368 // BME280I2C
+  classdiagramsettings member_max_width 0 end
+  xyz 1483.6 2265.4 2006
+end
+classcanvas 129368 class_ref 130776 // TinyGPS
+  classdiagramsettings member_max_width 0 end
+  xyz 40.2 2047.4 2005
+end
+classcanvas 130904 class_ref 150488 // Sigfox
+  classdiagramsettings member_max_width 0 end
+  xyz 2081.8 1247.8 2000
+end
+classcanvas 131160 class_ref 151128 // WiFiClass
+  classdiagramsettings member_max_width 0 end
+  xyz 328.4 1673.8 2000
+end
+classcanvas 131288 class_ref 151640 // WiFiAPClass
+  classdiagramsettings member_max_width 0 end
+  xyz 41.6 1248.2 2006
+end
+classcanvas 131544 class_ref 151256 // WiFiGenericClass
+  classdiagramsettings member_max_width 0 end
+  xyz 855 1433.8 2012
+end
+classcanvas 132056 class_ref 145112 // AsyncWebServer
+  classdiagramsettings member_max_width 0 end
+  xyz 939 40 2000
+end
+classcanvas 132184 class_ref 142808 // AsyncWebSocket
+  classdiagramsettings member_max_width 0 end
+  xyz 40.8 40.6 2000
+end
+relationcanvas 128856 relation_ref 129240 // <generalisation>
+  from ref 128728 z 2007 to ref 128088
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131416 relation_ref 151640 // <generalisation>
+  decenter_end 504
+  from ref 131160 z 2007 to ref 131288
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131672 relation_ref 153048 // <dependency>
+  geometry VH unfixed
+  from ref 131544 z 2013 to point 1198 1389.2
+  line 131928 z 2013 stereotype "<<friend>>" xyz 974 1390.5 2013 to ref 131288
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131800 relation_ref 151256 // <generalisation>
+  decenter_begin 415
+  decenter_end 491
+  from ref 131160 z 2013 to ref 131544
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

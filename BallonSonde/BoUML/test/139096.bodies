@@ -1,0 +1,82 @@
+class AsyncServer
+!!!160728.cpp!!!	~AsyncServer()
+    end();
+!!!160856.cpp!!!	onClient(in cb : AcConnectHandler, inout arg : void) : void
+    _connect_cb = cb;
+    _connect_cb_arg = arg;
+!!!160984.cpp!!!	begin() : void
+    if(_pcb) {
+        return;
+    }
+
+    if(!_start_async_task()){
+        log_e("failed to start task");
+        return;
+    }
+    int8_t err;
+    _pcb = tcp_new_ip_type(IPADDR_TYPE_V4);
+    if (!_pcb){
+        log_e("_pcb == NULL");
+        return;
+    }
+
+    ip_addr_t local_addr;
+    local_addr.type = IPADDR_TYPE_V4;
+    local_addr.u_addr.ip4.addr = (uint32_t) _addr;
+    err = _tcp_bind(_pcb, &local_addr, _port);
+
+    if (err != ERR_OK) {
+        _tcp_close(_pcb, -1);
+        log_e("bind error: %d", err);
+        return;
+    }
+
+    static uint8_t backlog = 5;
+    _pcb = _tcp_listen_with_backlog(_pcb, backlog);
+    if (!_pcb) {
+        log_e("listen_pcb == NULL");
+        return;
+    }
+    tcp_arg(_pcb, (void*) this);
+    tcp_accept(_pcb, &_s_accept);
+!!!161112.cpp!!!	end() : void
+    if(_pcb){
+        tcp_arg(_pcb, NULL);
+        tcp_accept(_pcb, NULL);
+        if(tcp_close(_pcb) != ERR_OK){
+            _tcp_abort(_pcb, -1);
+        }
+        _pcb = NULL;
+    }
+!!!161240.cpp!!!	setNoDelay(in nodelay : bool) : void
+    _noDelay = nodelay;
+!!!161368.cpp!!!	getNoDelay() : bool
+    return _noDelay;
+!!!161496.cpp!!!	status() : uint8_t
+    if (!_pcb) {
+        return 0;
+    }
+    return _pcb->state;
+!!!161624.cpp!!!	_s_accept(inout arg : void, inout pcb : tcp_pcb, in err : int8_t) : int8_t
+    return reinterpret_cast<AsyncServer*>(arg)->_accept(pcb, err);
+!!!161752.cpp!!!	_s_accepted(inout arg : void, inout client : AsyncClient) : int8_t
+    return reinterpret_cast<AsyncServer*>(arg)->_accepted(client);
+!!!161880.cpp!!!	_accept(inout pcb : tcp_pcb, in err : int8_t) : int8_t
+    //ets_printf("+A: 0x%08x\n", pcb);
+    if(_connect_cb){
+        AsyncClient *c = new AsyncClient(pcb);
+        if(c){
+            c->setNoDelay(_noDelay);
+            return _tcp_accept(this, c);
+        }
+    }
+    if(tcp_close(pcb) != ERR_OK){
+        tcp_abort(pcb);
+    }
+    log_e("FAIL");
+    return ERR_OK;
+!!!162008.cpp!!!	_accepted(inout client : AsyncClient) : int8_t
+    if(_connect_cb){
+        _connect_cb(_connect_cb_arg, client);
+    }
+    return ERR_OK;

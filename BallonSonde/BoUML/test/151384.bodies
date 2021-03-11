@@ -1,0 +1,388 @@
+class WiFiSTAClass
+!!!238680.cpp!!!	begin(in ssid : char, in passphrase : char = NULL, in channel : int32_t = 0, in bssid : uint8_t = NULL, in connect : bool = true) : wl_status_t
+
+    if(!WiFi.enableSTA(true)) {
+        log_e("STA enable failed!");
+        return WL_CONNECT_FAILED;
+    }
+
+    if(!ssid || *ssid == 0x00 || strlen(ssid) > 31) {
+        log_e("SSID too long or missing!");
+        return WL_CONNECT_FAILED;
+    }
+
+    if(passphrase && strlen(passphrase) > 64) {
+        log_e("passphrase too long!");
+        return WL_CONNECT_FAILED;
+    }
+
+    wifi_config_t conf;
+    memset(&conf, 0, sizeof(wifi_config_t));
+    strcpy(reinterpret_cast<char*>(conf.sta.ssid), ssid);
+
+    if(passphrase) {
+        if (strlen(passphrase) == 64){ // it's not a passphrase, is the PSK
+            memcpy(reinterpret_cast<char*>(conf.sta.password), passphrase, 64);
+        } else {
+            strcpy(reinterpret_cast<char*>(conf.sta.password), passphrase);
+        }
+    }
+
+    if(bssid) {
+        conf.sta.bssid_set = 1;
+        memcpy((void *) &conf.sta.bssid[0], (void *) bssid, 6);
+    }
+
+    if(channel > 0 && channel <= 13) {
+        conf.sta.channel = channel;
+    }
+
+    wifi_config_t current_conf;
+    esp_wifi_get_config(WIFI_IF_STA, &current_conf);
+    if(!sta_config_equal(current_conf, conf)) {
+        if(esp_wifi_disconnect()){
+            log_e("disconnect failed!");
+            return WL_CONNECT_FAILED;
+        }
+
+        esp_wifi_set_config(WIFI_IF_STA, &conf);
+    } else if(status() == WL_CONNECTED){
+        return WL_CONNECTED;
+    } else {
+        esp_wifi_set_config(WIFI_IF_STA, &conf);
+    }
+
+    if(!_useStaticIp) {
+        if(tcpip_adapter_dhcpc_start(TCPIP_ADAPTER_IF_STA) == ESP_ERR_TCPIP_ADAPTER_DHCPC_START_FAILED){
+            log_e("dhcp client start failed!");
+            return WL_CONNECT_FAILED;
+        }
+    } else {
+        tcpip_adapter_dhcpc_stop(TCPIP_ADAPTER_IF_STA);
+    }
+
+    if(connect && esp_wifi_connect()) {
+        log_e("connect failed!");
+        return WL_CONNECT_FAILED;
+    }
+
+    return status();
+!!!238808.cpp!!!	begin(inout ssid : char, inout passphrase : char = NULL, in channel : int32_t = 0, in bssid : uint8_t = NULL, in connect : bool = true) : wl_status_t
+    return begin((const char*) ssid, (const char*) passphrase, channel, bssid, connect);
+!!!238936.cpp!!!	begin() : wl_status_t
+
+    if(!WiFi.enableSTA(true)) {
+        log_e("STA enable failed!");
+        return WL_CONNECT_FAILED;
+    }
+
+    wifi_config_t current_conf;
+    if(esp_wifi_get_config(WIFI_IF_STA, &current_conf) != ESP_OK || esp_wifi_set_config(WIFI_IF_STA, &current_conf) != ESP_OK) {
+        log_e("config failed");
+        return WL_CONNECT_FAILED;
+    }
+
+    if(!_useStaticIp) {
+        if(tcpip_adapter_dhcpc_start(TCPIP_ADAPTER_IF_STA) == ESP_ERR_TCPIP_ADAPTER_DHCPC_START_FAILED){
+            log_e("dhcp client start failed!");
+            return WL_CONNECT_FAILED;
+        }
+    } else {
+        tcpip_adapter_dhcpc_stop(TCPIP_ADAPTER_IF_STA);
+    }
+
+    if(status() != WL_CONNECTED && esp_wifi_connect()){
+        log_e("connect failed!");
+        return WL_CONNECT_FAILED;
+    }
+
+    return status();
+!!!239064.cpp!!!	config(in local_ip : IPAddress, in gateway : IPAddress, in subnet : IPAddress, in dns1 : IPAddress = (uint32_t)0x00000000, in dns2 : IPAddress = (uint32_t)0x00000000) : bool
+    esp_err_t err = ESP_OK;
+
+    if(!WiFi.enableSTA(true)) {
+        return false;
+    }
+
+    tcpip_adapter_ip_info_t info;
+
+    if(local_ip != (uint32_t)0x00000000){
+        info.ip.addr = static_cast<uint32_t>(local_ip);
+        info.gw.addr = static_cast<uint32_t>(gateway);
+        info.netmask.addr = static_cast<uint32_t>(subnet);
+    } else {
+        info.ip.addr = 0;
+        info.gw.addr = 0;
+        info.netmask.addr = 0;
+    }
+
+    err = tcpip_adapter_dhcpc_stop(TCPIP_ADAPTER_IF_STA);
+    if(err != ESP_OK && err != ESP_ERR_TCPIP_ADAPTER_DHCP_ALREADY_STOPPED){
+        log_e("DHCP could not be stopped! Error: %d", err);
+        return false;
+    }
+
+    err = tcpip_adapter_set_ip_info(TCPIP_ADAPTER_IF_STA, &info);
+    if(err != ERR_OK){
+        log_e("STA IP could not be configured! Error: %d", err);
+        return false;
+    }
+
+    if(info.ip.addr){
+        _useStaticIp = true;
+    } else {
+        err = tcpip_adapter_dhcpc_start(TCPIP_ADAPTER_IF_STA);
+        if(err == ESP_ERR_TCPIP_ADAPTER_DHCPC_START_FAILED){
+            log_e("dhcp client start failed!");
+            return false;
+        }
+        _useStaticIp = false;
+    }
+
+    ip_addr_t d;
+    d.type = IPADDR_TYPE_V4;
+
+    if(dns1 != (uint32_t)0x00000000) {
+        // Set DNS1-Server
+        d.u_addr.ip4.addr = static_cast<uint32_t>(dns1);
+        dns_setserver(0, &d);
+    }
+
+    if(dns2 != (uint32_t)0x00000000) {
+        // Set DNS2-Server
+        d.u_addr.ip4.addr = static_cast<uint32_t>(dns2);
+        dns_setserver(1, &d);
+    }
+
+    return true;
+!!!239192.cpp!!!	reconnect() : bool
+    if(WiFi.getMode() & WIFI_MODE_STA) {
+        if(esp_wifi_disconnect() == ESP_OK) {
+            return esp_wifi_connect() == ESP_OK;
+        }
+    }
+    return false;
+!!!239320.cpp!!!	disconnect(in wifioff : bool = false, in eraseap : bool = false) : bool
+    wifi_config_t conf;
+
+    if(WiFi.getMode() & WIFI_MODE_STA){
+        if(eraseap){
+            memset(&conf, 0, sizeof(wifi_config_t));
+            if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
+                log_e("clear config failed!");
+            }
+        }
+        if(esp_wifi_disconnect()){
+            log_e("disconnect failed!");
+            return false;
+        }
+        if(wifioff) {
+             return WiFi.enableSTA(false);
+        }
+        return true;
+    }
+
+    return false;
+!!!239448.cpp!!!	isConnected() : bool
+    return (status() == WL_CONNECTED);
+!!!239576.cpp!!!	setAutoConnect(in autoConnect : bool) : bool
+    /*bool ret;
+    ret = esp_wifi_set_auto_connect(autoConnect);
+    return ret;*/
+    return false;//now deprecated
+!!!239704.cpp!!!	getAutoConnect() : bool
+    /*bool autoConnect;
+    esp_wifi_get_auto_connect(&autoConnect);
+    return autoConnect;*/
+    return false;//now deprecated
+!!!239832.cpp!!!	setAutoReconnect(in autoReconnect : bool) : bool
+    _autoReconnect = autoReconnect;
+    return true;
+!!!239960.cpp!!!	getAutoReconnect() : bool
+    return _autoReconnect;
+!!!240088.cpp!!!	waitForConnectResult() : uint8_t
+    //1 and 3 have STA enabled
+    if((WiFiGenericClass::getMode() & WIFI_MODE_STA) == 0) {
+        return WL_DISCONNECTED;
+    }
+    int i = 0;
+    while((!status() || status() >= WL_DISCONNECTED) && i++ < 100) {
+        delay(100);
+    }
+    return status();
+!!!240216.cpp!!!	localIP() : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return IPAddress(ip.ip.addr);
+!!!240344.cpp!!!	macAddress(inout mac : uint8_t) : uint8_t
+    if(WiFiGenericClass::getMode() != WIFI_MODE_NULL){
+        esp_wifi_get_mac(WIFI_IF_STA, mac);	
+    }
+    else{
+        esp_read_mac(mac, ESP_MAC_WIFI_STA);
+    }
+    return mac;
+!!!240600.cpp!!!	subnetMask() : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return IPAddress(ip.netmask.addr);
+!!!240728.cpp!!!	gatewayIP() : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return IPAddress(ip.gw.addr);
+!!!240856.cpp!!!	dnsIP(in dns_no : uint8_t = 0) : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    ip_addr_t dns_ip = dns_getserver(dns_no);
+    return IPAddress(dns_ip.u_addr.ip4.addr);
+!!!240984.cpp!!!	broadcastIP() : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return WiFiGenericClass::calculateBroadcast(IPAddress(ip.gw.addr), IPAddress(ip.netmask.addr));
+!!!241112.cpp!!!	networkID() : IPAddress
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return WiFiGenericClass::calculateNetworkID(IPAddress(ip.gw.addr), IPAddress(ip.netmask.addr));
+!!!241240.cpp!!!	subnetCIDR() : uint8_t
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return (uint8_t)0;
+    }
+    tcpip_adapter_ip_info_t ip;
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    return WiFiGenericClass::calculateSubnetCIDR(IPAddress(ip.netmask.addr));
+!!!241368.cpp!!!	enableIpV6() : bool
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return false;
+    }
+    return tcpip_adapter_create_ip6_linklocal(TCPIP_ADAPTER_IF_STA) == 0;
+!!!241496.cpp!!!	localIPv6() : IPv6Address
+    static ip6_addr_t addr;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPv6Address();
+    }
+    if(tcpip_adapter_get_ip6_linklocal(TCPIP_ADAPTER_IF_STA, &addr)){
+        return IPv6Address();
+    }
+    return IPv6Address(addr.addr);
+!!!241624.cpp!!!	getHostname() : char
+    const char * hostname = NULL;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return hostname;
+    }
+    if(tcpip_adapter_get_hostname(TCPIP_ADAPTER_IF_STA, &hostname)){
+        return NULL;
+    }
+    return hostname;
+!!!241752.cpp!!!	setHostname(in hostname : char) : bool
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return false;
+    }
+    return tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_STA, hostname) == 0;
+!!!241880.cpp!!!	status() : wl_status_t
+    if(!_sta_status_group){
+        return _sta_status;
+    }
+    return (wl_status_t)xEventGroupClearBits(_sta_status_group, 0);
+!!!242008.cpp!!!	SSID() : String
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return String();
+    }
+    wifi_ap_record_t info;
+    if(!esp_wifi_sta_get_ap_info(&info)) {
+        return String(reinterpret_cast<char*>(info.ssid));
+    }
+    return String();
+!!!242136.cpp!!!	psk() : String
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return String();
+    }
+    wifi_config_t conf;
+    esp_wifi_get_config(WIFI_IF_STA, &conf);
+    return String(reinterpret_cast<char*>(conf.sta.password));
+!!!242648.cpp!!!	_setStatus(in status : wl_status_t) : void
+    if(!_sta_status_group){
+        _sta_status_group = xEventGroupCreate();
+        if(!_sta_status_group){
+            log_e("STA Status Group Create Failed!");
+            _sta_status = status;
+            return;
+        }
+    }
+    xEventGroupClearBits(_sta_status_group, 0x00FFFFFF);
+    xEventGroupSetBits(_sta_status_group, status);
+!!!242776.cpp!!!	beginSmartConfig() : bool
+    if (_smartConfigStarted) {
+        return false;
+    }
+
+    if (!WiFi.mode(WIFI_STA)) {
+        return false;
+    }
+
+    esp_wifi_disconnect();
+
+    esp_err_t err;
+    err = esp_smartconfig_start(reinterpret_cast<sc_callback_t>(&WiFiSTAClass::_smartConfigCallback), 1);
+    if (err == ESP_OK) {
+        _smartConfigStarted = true;
+        _smartConfigDone = false;
+        return true;
+    }
+    return false;
+!!!242904.cpp!!!	stopSmartConfig() : bool
+    if (!_smartConfigStarted) {
+        return true;
+    }
+
+    if (esp_smartconfig_stop() == ESP_OK) {
+        _smartConfigStarted = false;
+        return true;
+    }
+
+    return false;
+!!!243032.cpp!!!	smartConfigDone() : bool
+    if (!_smartConfigStarted) {
+        return false;
+    }
+
+    return _smartConfigDone;
+!!!243160.cpp!!!	_smartConfigCallback(in st : uint32_t, inout result : void) : void
+    smartconfig_status_t status = (smartconfig_status_t) st;
+    log_d("Status: %s", sc_status_strings[st % 5]);
+    if (status == SC_STATUS_GETTING_SSID_PSWD) {
+#if ARDUHAL_LOG_LEVEL >= ARDUHAL_LOG_LEVEL_DEBUG
+        smartconfig_type_t * type = (smartconfig_type_t *)result;
+        log_d("Type: %s", sc_type_strings[*type % 3]);
+#endif
+    } else if (status == SC_STATUS_LINK) {
+        wifi_sta_config_t *sta_conf = reinterpret_cast<wifi_sta_config_t *>(result);
+        log_d("SSID: %s", (char *)(sta_conf->ssid));
+        sta_conf->bssid_set = 0;
+        esp_wifi_set_config(WIFI_IF_STA, (wifi_config_t *)sta_conf);
+        esp_wifi_connect();
+        _smartConfigDone = true;
+    } else if (status == SC_STATUS_LINK_OVER) {
+        if(result){
+#if ARDUHAL_LOG_LEVEL >= ARDUHAL_LOG_LEVEL_DEBUG
+            ip4_addr_t * ip = (ip4_addr_t *)result;
+            log_d("Sender IP: " IPSTR, IP2STR(ip));
+#endif
+        }
+        WiFi.stopSmartConfig();
+    }

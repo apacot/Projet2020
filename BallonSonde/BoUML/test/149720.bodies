@@ -1,0 +1,17 @@
+class AsyncProgmemResponse
+!!!218200.cpp!!!	AsyncProgmemResponse(in code : int, in contentType : String, in content : uint8_t, in len : size_t, in callback : AwsTemplateProcessor = nullptr)
+  _code = code;
+  _content = content;
+  _contentType = contentType;
+  _contentLength = len;
+  _readLength = 0;
+!!!218456.cpp!!!	_fillBuffer(inout data : uint8_t, in len : size_t) : size_t
+  size_t left = _contentLength - _readLength;
+  if (left > len) {
+    memcpy_P(data, _content + _readLength, len);
+    _readLength += len;
+    return len;
+  }
+  memcpy_P(data, _content + _readLength, left);
+  _readLength += left;
+  return left;

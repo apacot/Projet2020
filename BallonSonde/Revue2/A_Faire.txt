@@ -2,4 +2,5 @@
 - choix des technologies -> explication complète de chaque possibilités, avec détail de chaque choix
                          -> présentation des outils (soft et/ou hard)
 - refaire représentation trame -> avec vraie valeurs, montrer à quoi cela correspond
+- Diapo revue 2
 - réaliser son jounal (approximatif)

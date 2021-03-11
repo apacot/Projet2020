@@ -1,0 +1,19 @@
+class BME280
+!!!128344.cpp!!!	begin() : bool
+   bool success = Initialize();
+   success &= m_initialized;
+
+   return success;
+!!!128856.cpp!!!	read(inout pressure : float, inout temp : float, inout humidity : float, in tempUnit : BME280::TempUnit = TempUnit_Celsius, in presUnit : BME280::PresUnit = PresUnit_hPa) : void
+   int32_t data[8];
+   int32_t t_fine;
+   if(!ReadData(data)){
+      pressure = temp = humidity = NAN;
+      return;
+   }
+   uint32_t rawPressure = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4);
+   uint32_t rawTemp = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4);
+   uint32_t rawHumidity = (data[6] << 8) | data[7];
+   temp = CalculateTemperature(rawTemp, t_fine, tempUnit);
+   pressure = CalculatePressure(rawPressure, t_fine, presUnit);
+   humidity = CalculateHumidity(rawHumidity, t_fine);

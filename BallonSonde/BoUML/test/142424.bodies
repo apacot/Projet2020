@@ -1,0 +1,63 @@
+class AsyncWebSocketBasicMessage
+!!!172504.cpp!!!	AsyncWebSocketBasicMessage(in data : char, in len : size_t, in opcode : uint8_t = WS_TEXT, in mask : bool = false)
+  _opcode = opcode & 0x07;
+  _mask = mask;
+  _data = (uint8_t*)malloc(_len+1);
+  if(_data == NULL){
+    _len = 0;
+    _status = WS_MSG_ERROR;
+  } else {
+    _status = WS_MSG_SENDING;
+    memcpy(_data, data, _len);
+    _data[_len] = 0;
+  }
+!!!172632.cpp!!!	AsyncWebSocketBasicMessage(in opcode : uint8_t = WS_TEXT, in mask : bool = false)
+  _opcode = opcode & 0x07;
+  _mask = mask;
+  
+!!!172760.cpp!!!	~AsyncWebSocketBasicMessage()
+  if(_data != NULL)
+    free(_data);
+!!!173016.cpp!!!	ack(in len : size_t, in time : uint32_t) : void
+   (void)time;
+  _acked += len;
+  if(_sent == _len && _acked == _ack){
+    _status = WS_MSG_SENT;
+  }
+!!!173144.cpp!!!	send(inout client : AsyncClient) : size_t
+  if(_status != WS_MSG_SENDING)
+    return 0;
+  if(_acked < _ack){
+    return 0;
+  }
+  if(_sent == _len){
+    if(_acked == _ack)
+      _status = WS_MSG_SENT;
+    return 0;
+  }
+  if(_sent > _len){
+      _status = WS_MSG_ERROR;
+      return 0;
+  }
+
+  size_t toSend = _len - _sent;
+  size_t window = webSocketSendFrameWindow(client);
+
+  if(window < toSend) {
+      toSend = window;
+  }
+
+  _sent += toSend;
+  _ack += toSend + ((toSend < 126)?2:4) + (_mask * 4);
+
+  bool final = (_sent == _len);
+  uint8_t* dPtr = (uint8_t*)(_data + (_sent - toSend));
+  uint8_t opCode = (toSend && _sent == toSend)?_opcode:(uint8_t)WS_CONTINUATION;
+
+  size_t sent = webSocketSendFrame(client, final, opCode, _mask, dPtr, toSend);
+  _status = WS_MSG_SENDING;
+  if(toSend && sent != toSend){
+      _sent -= (toSend - sent);
+      _ack -= (toSend - sent);
+  }
+  return sent;

@@ -1,0 +1,22 @@
+class AsyncEventSourceMessage
+!!!162136.cpp!!!	AsyncEventSourceMessage(in data : char, in len : size_t)
+  _data = (uint8_t*)malloc(_len+1);
+  if(_data == nullptr){
+    _len = 0;
+  } else {
+    memcpy(_data, data, len);
+    _data[_len] = 0;
+  }
+!!!162264.cpp!!!	~AsyncEventSourceMessage()
+     if(_data != NULL)
+        free(_data);
+!!!162520.cpp!!!	send(inout client : AsyncClient) : size_t
+  const size_t len = _len - _sent;
+  if(client->space() < len){
+    return 0;
+  }
+  size_t sent = client->add((const char *)_data, len);
+  if(client->canSend())
+    client->send();
+  _sent += sent;
+  return sent; 

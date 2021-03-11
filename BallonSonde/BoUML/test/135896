@@ -1,0 +1,36 @@
+format 222
+"WiFi" // WiFi
+  revision 1
+  modified_by 88 "apacot"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/esp32-1.0.4/libraries/WiFi/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/esp32-1.0.4/libraries/WiFi/"
+  package_ref 136024 // src
+end

@@ -1,0 +1,2796 @@
+format 222
+"src" // src
+  revision 1
+  modified_by 88 "ssabri"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/libraries/BME280/src/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/libraries/BME280/src/"
+  classview 128216 "src"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128088 "BME280"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "////////////////////////////////////////////////////////////////
+/ BME280 - Driver class for Bosch Bme280 sensor
+/
+/ Based on the data sheet provided by Bosch for
+/ the Bme280 environmental sensor.
+/"
+      class 128216 "TempUnit"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 128088 "TempUnit_Celsius"
+	  public type class_ref 128216 // TempUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128216 "TempUnit_Fahrenheit"
+	  public type class_ref 128216 // TempUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128344 "PresUnit"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 128344 "PresUnit_Pa"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128472 "PresUnit_hPa"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128600 "PresUnit_inHg"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128728 "PresUnit_atm"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128856 "PresUnit_bar"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 128984 "PresUnit_torr"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129112 "PresUnit_psi"
+	  public type class_ref 128344 // PresUnit
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128472 "OSR"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 129240 "OSR_Off"
+	  public type class_ref 128472 // OSR
+	  init_value "  0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129368 "OSR_X1"
+	  public type class_ref 128472 // OSR
+	  init_value "  1"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129496 "OSR_X2"
+	  public type class_ref 128472 // OSR
+	  init_value "  2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129624 "OSR_X4"
+	  public type class_ref 128472 // OSR
+	  init_value "  3"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129752 "OSR_X8"
+	  public type class_ref 128472 // OSR
+	  init_value "  4"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 129880 "OSR_X16"
+	  public type class_ref 128472 // OSR
+	  init_value "  5
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128600 "Mode"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 130008 "Mode_Sleep"
+	  public type class_ref 128600 // Mode
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130136 "Mode_Forced"
+	  public type class_ref 128600 // Mode
+	  init_value " 1"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130264 "Mode_Normal"
+	  public type class_ref 128600 // Mode
+	  init_value " 3
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128728 "StandbyTime"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 130392 "StandbyTime_500us"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130520 "StandbyTime_62500us"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 1"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130648 "StandbyTime_125ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130776 "StandbyTime_250ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 3"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 130904 "StandbyTime_50ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 4"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131032 "StandbyTime_1000ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 5"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131160 "StandbyTime_10ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 6"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131288 "StandbyTime_20ms"
+	  public type class_ref 128728 // StandbyTime
+	  init_value " 7
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128856 "Filter"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 131416 "Filter_Off"
+	  public type class_ref 128856 // Filter
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131544 "Filter_2"
+	  public type class_ref 128856 // Filter
+	  init_value " 1"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131672 "Filter_4"
+	  public type class_ref 128856 // Filter
+	  init_value " 2"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131800 "Filter_8"
+	  public type class_ref 128856 // Filter
+	  init_value " 3"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 131928 "Filter_16"
+	  public type class_ref 128856 // Filter
+	  init_value " 4
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 128984 "SpiEnable"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 132056 "SpiEnable_False"
+	  public type class_ref 128984 // SpiEnable
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 132184 "SpiEnable_True"
+	  public type class_ref 128984 // SpiEnable
+	  init_value " 1
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 129112 "ChipModel"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 132312 "ChipModel_UNKNOWN"
+	  public type class_ref 129112 // ChipModel
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 132440 "ChipModel_BMP280"
+	  public type class_ref 129112 // ChipModel
+	  init_value " 0x58"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 132568 "ChipModel_BME280"
+	  public type class_ref 129112 // ChipModel
+	  init_value " 0x60
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 129240 "Settings"
+	visibility package stereotype "struct"
+	cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 128088 "Settings"
+	  cpp_inline public explicit_return_type ""
+	  nparams 7
+	    param in name "_tosr" type class_ref 128472 // OSR
+	      defaultvalue "OSR_X1"
+	    param in name "_hosr" type class_ref 128472 // OSR
+	      defaultvalue "OSR_X1"
+	    param in name "_posr" type class_ref 128472 // OSR
+	      defaultvalue "OSR_X1"
+	    param in name "_mode" type class_ref 128600 // Mode
+	      defaultvalue "Mode_Forced"
+	    param in name "_st" type class_ref 128728 // StandbyTime
+	      defaultvalue "StandbyTime_1000ms"
+	    param in name "_filter" type class_ref 128856 // Filter
+	      defaultvalue "Filter_Off"
+	    param in name "_se" type class_ref 128984 // SpiEnable
+	      defaultvalue "SpiEnable_False
+      "
+	  cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}${)}${volatile}${throw}${abstract} : tempOSR(_tosr),
+         humOSR(_hosr),
+         presOSR(_posr),
+         mode(_mode),
+         standbyTime(_st),
+         filter(_filter),
+         spiEnable(_se) {};
+"
+	  
+	  
+	  
+	  
+	end
+
+	classrelation 128088 // tempOSR (<directional composition>)
+	  relation 128088 *-->
+	    a role_name "tempOSR" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128088 // tempOSR (<directional composition>)
+	    b parent class_ref 128472 // OSR
+	end
+
+	classrelation 128216 // humOSR (<directional composition>)
+	  relation 128216 *-->
+	    a role_name "humOSR" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128216 // humOSR (<directional composition>)
+	    b parent class_ref 128472 // OSR
+	end
+
+	classrelation 128344 // presOSR (<directional composition>)
+	  relation 128344 *-->
+	    a role_name "presOSR" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128344 // presOSR (<directional composition>)
+	    b parent class_ref 128472 // OSR
+	end
+
+	classrelation 128472 // mode (<directional composition>)
+	  relation 128472 *-->
+	    a role_name "mode" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128472 // mode (<directional composition>)
+	    b parent class_ref 128600 // Mode
+	end
+
+	classrelation 128600 // standbyTime (<directional composition>)
+	  relation 128600 *-->
+	    a role_name "standbyTime" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128600 // standbyTime (<directional composition>)
+	    b parent class_ref 128728 // StandbyTime
+	end
+
+	classrelation 128728 // filter (<directional composition>)
+	  relation 128728 *-->
+	    a role_name "filter" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128728 // filter (<directional composition>)
+	    b parent class_ref 128856 // Filter
+	end
+
+	classrelation 128856 // spiEnable (<directional composition>)
+	  relation 128856 *-->
+	    a role_name "spiEnable" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 128856 // spiEnable (<directional composition>)
+	    b parent class_ref 128984 // SpiEnable
+	end
+      end
+
+      operation 128216 "BME280"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "settings" type class_ref 129240 // Settings
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)}:m_settings(settings),
+  m_initialized(false)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " INIT FUNCTIONS                                                
+///////////////////////////////////////////////////////////////
+/ Constructor used to create the class.
+/ All parameters have default values."
+      end
+
+      operation 128344 "begin"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////
+/ Method used to initialize the class."
+      end
+
+      operation 128856 "read"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 5
+	  param inout name "pressure" explicit_type "float"
+	  param inout name "temp" explicit_type "float"
+	  param inout name "humidity" explicit_type "float"
+	  param in name "tempUnit" type class_ref 128216 // TempUnit
+	    defaultvalue "TempUnit_Celsius"
+	  param in name "presUnit" type class_ref 128344 // PresUnit
+	    defaultvalue "PresUnit_hPa"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} & ${p1}${v1}, ${t2} & ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////
+/ Read the data from the BME280 in the specified unit."
+      end
+
+      attribute 133080 "PRESS_ADDR"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0xF7"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133208 "TEMP_ADDR"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0xFA"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133336 "HUM_ADDR"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0xFD"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 128984 // m_settings (<directional composition>)
+	relation 128984 *-->
+	  a role_name "m_settings" private
+	    comment " VARIABLES                                                     
+"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128984 // m_settings (<directional composition>)
+	  b parent class_ref 129240 // Settings
+      end
+
+      attribute 134872 "m_dig"
+	private explicit_type "uint8_t"
+	multiplicity "[32]"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${multiplicity}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 129112 // m_chip_model (<directional composition>)
+	relation 129112 *-->
+	  a role_name "m_chip_model" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129112 // m_chip_model (<directional composition>)
+	  b parent class_ref 129112 // ChipModel
+      end
+
+      attribute 135000 "m_initialized"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+    end
+
+    class 129368 "BME280I2C"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "////////////////////////////////////////////////////////////////
+/ BME280I2C - I2C Implementation of BME280."
+      classrelation 129240 // <generalisation>
+	relation 129240 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129240 // <generalisation>
+	  b parent class_ref 128088 // BME280
+      end
+
+      class 129496 "I2CAddr"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 135128 "I2CAddr_0x76"
+	  public type class_ref 129496 // I2CAddr
+	  init_value " 0x76"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 135256 "I2CAddr_0x77"
+	  public type class_ref 129496 // I2CAddr
+	  init_value " 0x77
+   "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 129624 "Settings"
+	visibility package stereotype "struct"
+	cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 129368 // <generalisation>
+	  relation 129368 ---|>
+	    a public
+	      cpp default "${type}"
+	      classrelation_ref 129368 // <generalisation>
+	    b parent class_ref 129240 // Settings
+	end
+
+	operation 130904 "Settings"
+	  cpp_inline public explicit_return_type ""
+	  nparams 8
+	    param in name "_tosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_hosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_posr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_mode" explicit_type "Mode"
+	      defaultvalue "Mode_Forced"
+	    param in name "_st" explicit_type "StandbyTime"
+	      defaultvalue "StandbyTime_1000ms"
+	    param in name "_filter" explicit_type "Filter"
+	      defaultvalue "Filter_16"
+	    param in name "_se" explicit_type "SpiEnable"
+	      defaultvalue "SpiEnable_False"
+	    param in name "_addr" type class_ref 129496 // I2CAddr
+	      defaultvalue "I2CAddr_0x76
+        "
+	  cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}${)}${volatile}${throw}${abstract} : BME280::Settings(_tosr, _hosr, _posr, _mode, _st, _filter, _se),
+           bme280Addr(_addr) {};
+"
+	  
+	  
+	  
+	  
+	end
+
+	classrelation 129496 // bme280Addr (<directional composition>)
+	  relation 129496 *-->
+	    a role_name "bme280Addr" public
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 129496 // bme280Addr (<directional composition>)
+	    b parent class_ref 129496 // I2CAddr
+	end
+      end
+
+      operation 131032 "BME280I2C"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "settings" type class_ref 129624 // Settings
+	    defaultvalue "Settings()"
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)}:BME280(settings),
+  m_settings(settings)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "/////////////////////////////////////////////////////////////
+/ Constructor used to create the class. All parameters have
+/ default values."
+      end
+
+      operation 131160 "setSettings"
+	preserve_cpp_body_indent cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "settings" type class_ref 129624 // Settings
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " ACCESSOR FUNCTIONS                                            
+///////////////////////////////////////////////////////////////"
+      end
+
+      operation 131288 "getSettings"
+	preserve_cpp_body_indent const constvalue public return_type class_ref 129624 // Settings
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////"
+      end
+
+      classrelation 129624 // m_settings (<directional composition>)
+	relation 129624 *-->
+	  a role_name "m_settings" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129624 // m_settings (<directional composition>)
+	  b parent class_ref 129624 // Settings
+      end
+
+      operation 131416 "WriteRegister"
+	preserve_cpp_body_indent cpp_virtual private explicit_return_type "bool"
+	nparams 2
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "////////////////////////////////////////////////////////////////
+/ Write values to BME280 registers."
+      end
+
+      operation 131544 "ReadRegister"
+	cpp_virtual private explicit_return_type "bool"
+	nparams 3
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	  param in name "length" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}[]${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////
+/ Read values from BME280 registers."
+      end
+    end
+
+    class 129752 "BME280I2C_BRZO"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "////////////////////////////////////////////////////////////////
+/ BME280I2C_BRZO - I2C Implementation of BME280."
+      classrelation 129752 // <generalisation>
+	relation 129752 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129752 // <generalisation>
+	  b parent class_ref 129368 // BME280I2C
+      end
+
+      class 129880 "Settings"
+	visibility package stereotype "struct"
+	cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 129880 // <generalisation>
+	  relation 129880 ---|>
+	    a public
+	      cpp default "${type}"
+	      classrelation_ref 129880 // <generalisation>
+	    b parent class_ref 129624 // Settings
+	end
+
+	operation 131672 "Settings"
+	  cpp_inline public explicit_return_type ""
+	  nparams 8
+	    param in name "_tosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_hosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_posr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_mode" explicit_type "Mode"
+	      defaultvalue "Mode_Forced"
+	    param in name "_st" explicit_type "StandbyTime"
+	      defaultvalue "StandbyTime_1000ms"
+	    param in name "_filter" explicit_type "Filter"
+	      defaultvalue "Filter_Off"
+	    param in name "_se" explicit_type "SpiEnable"
+	      defaultvalue "SpiEnable_False"
+	    param in name "_cr" explicit_type "uint16_t"
+	      defaultvalue "400
+     "
+	  cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}${)}${volatile}${throw}${abstract} : BME280I2C::Settings(_tosr, _hosr, _posr, _mode, _st, _filter, _se),
+        i2cClockRate(_cr) {};
+"
+	  
+	  
+	  
+	  
+	end
+
+	attribute 135384 "i2cClockRate"
+	  public explicit_type "uint16_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      operation 131800 "BME280I2C_BRZO"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "settings" type class_ref 129880 // Settings
+	    defaultvalue "Settings()"
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)}:BME280I2C(settings),
+  m_settings(settings)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "/////////////////////////////////////////////////////////////
+/ Constructor used to create the class. All parameters have
+/ default values."
+      end
+
+      operation 131928 "setSettings"
+	preserve_cpp_body_indent cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "settings" type class_ref 129880 // Settings
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " ACCESSOR FUNCTIONS                                            
+///////////////////////////////////////////////////////////////"
+      end
+
+      operation 132056 "getSettings"
+	preserve_cpp_body_indent const constvalue public return_type class_ref 129880 // Settings
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////"
+      end
+
+      classrelation 130008 // m_settings (<directional composition>)
+	relation 130008 *-->
+	  a role_name "m_settings" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 130008 // m_settings (<directional composition>)
+	  b parent class_ref 129880 // Settings
+      end
+
+      operation 132184 "WriteRegister"
+	preserve_cpp_body_indent cpp_virtual private explicit_return_type "bool"
+	nparams 2
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "////////////////////////////////////////////////////////////////
+/ Write values to BME280 registers."
+      end
+
+      operation 132312 "ReadRegister"
+	cpp_virtual private explicit_return_type "bool"
+	nparams 3
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	  param in name "length" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}[]${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////
+/ Read values from BME280 registers."
+      end
+    end
+
+    class 130008 "BME280Spi"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 130136 // <generalisation>
+	relation 130136 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130136 // <generalisation>
+	  b parent class_ref 128088 // BME280
+      end
+
+      class 130136 "Settings"
+	visibility package stereotype "struct"
+	cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 130264 // <generalisation>
+	  relation 130264 ---|>
+	    a public
+	      cpp default "${type}"
+	      classrelation_ref 130264 // <generalisation>
+	    b parent class_ref 129240 // Settings
+	end
+
+	operation 132440 "Settings"
+	  cpp_inline public explicit_return_type ""
+	  nparams 8
+	    param in name "_cspin" explicit_type "uint8_t"
+	    param in name "_tosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_hosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_posr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_mode" explicit_type "Mode"
+	      defaultvalue "Mode_Forced"
+	    param in name "_st" explicit_type "StandbyTime"
+	      defaultvalue "StandbyTime_1000ms"
+	    param in name "_filter" explicit_type "Filter"
+	      defaultvalue "Filter_Off"
+	    param in name "_se" explicit_type "SpiEnable"
+	      defaultvalue "SpiEnable_False
+        "
+	  cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}${)}${volatile}${throw}${abstract} : BME280::Settings(_tosr, _hosr, _posr, _mode, _st, _filter, _se),
+           spiCsPin(_cspin) {};
+"
+	  
+	  
+	  
+	  
+	end
+
+	attribute 135512 "spiCsPin"
+	  public explicit_type "uint8_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      operation 132568 "BME280Spi"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "settings" type class_ref 130136 // Settings
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)}
+:BME280(settings),
+ m_settings(settings)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Constructor used to create the class. All parameters have
+/ default values."
+      end
+
+      operation 132696 "setSettings"
+	preserve_cpp_body_indent cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "settings" type class_ref 130136 // Settings
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " ACCESSOR FUNCTIONS                                            
+///////////////////////////////////////////////////////////////"
+      end
+
+      operation 132824 "getSettings"
+	preserve_cpp_body_indent const constvalue public return_type class_ref 130136 // Settings
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////"
+      end
+
+      operation 132952 "Initialize"
+	preserve_cpp_body_indent cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Method used at start up to initialize the class. Starts the
+/ I2C interface."
+      end
+
+      attribute 135640 "BME280_SPI_WRITE"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0x7F"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135768 "BME280_SPI_READ"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0x80"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 130392 // m_settings (<directional composition>)
+	relation 130392 *-->
+	  a role_name "m_settings" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 130392 // m_settings (<directional composition>)
+	  b parent class_ref 130136 // Settings
+      end
+
+      operation 133080 "ReadRegister"
+	cpp_virtual private explicit_return_type "bool"
+	nparams 3
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "array" explicit_type "uint8_t"
+	  param in name "len" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}[]${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Read the data from the BME280 addr into an array and
+/ return true if successful."
+      end
+
+      operation 133208 "WriteRegister"
+	preserve_cpp_body_indent cpp_virtual private explicit_return_type "bool"
+	nparams 2
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Write values to BME280 registers."
+      end
+    end
+
+    class 130264 "BME280SpiSw"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 130520 // <generalisation>
+	relation 130520 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130520 // <generalisation>
+	  b parent class_ref 128088 // BME280
+      end
+
+      class 130392 "Settings"
+	visibility package stereotype "struct"
+	cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 130648 // <generalisation>
+	  relation 130648 ---|>
+	    a public
+	      cpp default "${type}"
+	      classrelation_ref 130648 // <generalisation>
+	    b parent class_ref 129240 // Settings
+	end
+
+	operation 133336 "Settings"
+	  cpp_inline public explicit_return_type ""
+	  nparams 11
+	    param in name "_cs" explicit_type "uint8_t"
+	    param in name "_mosi" explicit_type "uint8_t"
+	    param in name "_miso" explicit_type "uint8_t"
+	    param in name "_sck" explicit_type "uint8_t"
+	    param in name "_tosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_hosr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_posr" explicit_type "OSR"
+	      defaultvalue "OSR_X1"
+	    param in name "_mode" explicit_type "Mode"
+	      defaultvalue "Mode_Forced"
+	    param in name "_st" explicit_type "StandbyTime"
+	      defaultvalue "StandbyTime_1000ms"
+	    param in name "_filter" explicit_type "Filter"
+	      defaultvalue "Filter_Off"
+	    param in name "_se" explicit_type "SpiEnable"
+	      defaultvalue "SpiEnable_False
+        "
+	  cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}, ${t6} ${p6}${v6}, ${t7} ${p7}${v7}, ${t8} ${p8}${v8}, ${t9} ${p9}${v9}, ${t10} ${p10}${v10}${)}${volatile}${throw}${abstract} : BME280::Settings(_tosr, _hosr, _posr, _mode, _st, _filter, _se),
+           spiCsPin(_cs),
+           spiMosiPin(_mosi),
+           spiMisoPin(_miso),
+           spiSckPin(_sck) {};
+"
+	  
+	  
+	  
+	  
+	end
+
+	attribute 135896 "spiCsPin"
+	  public explicit_type "uint8_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136024 "spiMosiPin"
+	  public explicit_type "uint8_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136152 "spiMisoPin"
+	  public explicit_type "uint8_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136280 "spiSckPin"
+	  public explicit_type "uint8_t"
+	  cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      operation 133464 "BME280SpiSw"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "settings" type class_ref 130392 // Settings
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)}
+:BME280(settings),
+ m_settings(settings)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Constructor for software spi"
+      end
+
+      operation 133592 "setSettings"
+	preserve_cpp_body_indent cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "settings" type class_ref 130392 // Settings
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " ACCESSOR FUNCTIONS                                            
+///////////////////////////////////////////////////////////////"
+      end
+
+      operation 133720 "getSettings"
+	preserve_cpp_body_indent const constvalue public return_type class_ref 130392 // Settings
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "///////////////////////////////////////////////////////////////"
+      end
+
+      operation 133848 "Initialize"
+	preserve_cpp_body_indent cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Method used at start up to initialize the class. Starts the
+/ software SPI interface."
+      end
+
+      attribute 136408 "BME280_SPI_WRITE"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0x7F"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136536 "BME280_SPI_READ"
+	class_attribute const_attribute private explicit_type "uint8_t"
+	init_value "=  0x80"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 130776 // m_settings (<directional composition>)
+	relation 130776 *-->
+	  a role_name "m_settings" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 130776 // m_settings (<directional composition>)
+	  b parent class_ref 130392 // Settings
+      end
+
+      operation 133976 "SpiTransferSw"
+	preserve_cpp_body_indent private explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Does a sw spi transfer."
+      end
+
+      operation 134104 "ReadRegister"
+	cpp_virtual private explicit_return_type "bool"
+	nparams 3
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	  param in name "length" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}[]${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Read the data from the BME280 addr into an array and return
+/ true if successful."
+      end
+
+      operation 134232 "WriteRegister"
+	preserve_cpp_body_indent cpp_virtual private explicit_return_type "bool"
+	nparams 2
+	  param in name "addr" explicit_type "uint8_t"
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "//////////////////////////////////////////////////////////////
+/ Write values to BME280 registers."
+      end
+    end
+
+    class 131288 "user_onRequest"
+      visibility package stereotype "typedef" explicit_base_type "void"
+      cpp_decl "${comment}typedef ${type}(* ${name})(void);
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 131416 "user_onReceive"
+      visibility package stereotype "typedef" explicit_base_type "void"
+      cpp_decl "${comment}typedef ${type}(* ${name})(uint8_t*, int);
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 131544 "TwoWire"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 130904 // <generalisation>
+	relation 130904 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130904 // <generalisation>
+	  b parent class_ref 131672 // typedef1
+      end
+
+      attribute 144984 "num"
+	protected explicit_type "uint8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145112 "sda"
+	protected explicit_type "int8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145240 "scl"
+	protected explicit_type "int8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145368 "i2c"
+	protected explicit_type "i2c_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145496 "rxBuffer"
+	protected explicit_type "uint8_t"
+	multiplicity "[I2C_BUFFER_LENGTH]"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${multiplicity}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145624 "rxIndex"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145752 "rxLength"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145880 "rxQueued"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "@stickBreaker"
+      end
+
+      attribute 146008 "txBuffer"
+	protected explicit_type "uint8_t"
+	multiplicity "[I2C_BUFFER_LENGTH]"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${multiplicity}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146136 "txIndex"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146264 "txLength"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146392 "txAddress"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146520 "txQueued"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "@stickbreaker"
+      end
+
+      attribute 146648 "transmitting"
+	protected explicit_type "uint8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146776 "last_error"
+	protected explicit_type "i2c_err_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " slave Mode, not yet Stickbreaker
+static user_onRequest uReq[2];
+static user_onReceive uRcv[2];
+void onRequestService(void);
+void onReceiveService(uint8_t*, int);
+
+ @stickBreaker from esp32-hal-i2c.h"
+      end
+
+      attribute 146904 "_timeOutMillis"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 139992 "TwoWire"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "bus_num" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}${)}
+    :num(bus_num & 1)
+    ,sda(-1)
+    ,scl(-1)
+    ,i2c(NULL)
+    ,rxIndex(0)
+    ,rxLength(0)
+    ,rxQueued(0)
+    ,txIndex(0)
+    ,txLength(0)
+    ,txAddress(0)
+    ,txQueued(0)
+    ,transmitting(0)
+    ,last_error(I2C_ERROR_OK)
+    ,_timeOutMillis(50)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140120 "~TwoWire"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140248 "begin"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 3
+	  param in name "sdaPin" explicit_type "int"
+	    defaultvalue "-1"
+	  param in name "sclPin" explicit_type "int"
+	    defaultvalue "-1"
+	  param in name "frequency" explicit_type "uint32_t"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140376 "setClock"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "frequency" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " returns true, if successful init of i2c bus
+ calling will attemp to recover hung bus"
+      end
+
+      operation 140504 "getClock"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " change bus clock without initing hardware"
+      end
+
+      operation 140632 "setTimeOut"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "timeOutMillis" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " current bus clock rate in hz"
+      end
+
+      operation 140760 "getTimeOut"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " default timeout of i2c transactions is 50ms"
+      end
+
+      operation 140888 "lastError"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// stickbreaker Nov2017 better error reporting
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141016 "getErrorText"
+	preserve_cpp_body_indent public explicit_return_type "char"
+	nparams 1
+	  param in name "err" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141144 "writeTransmission"
+	preserve_cpp_body_indent public explicit_return_type "i2c_err_t"
+	nparams 4
+	  param in name "address" explicit_type "uint16_t"
+	  param inout name "buff" explicit_type "uint8_t"
+	  param in name "size" explicit_type "uint16_t"
+	  param in name "sendStop" explicit_type "bool"
+	    defaultvalue "true"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// stickBreaker Nov 2017 ISR, and bigblock 64k-1
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@stickBreaker for big blocks and ISR model"
+      end
+
+      operation 141272 "readTransmission"
+	preserve_cpp_body_indent public explicit_return_type "i2c_err_t"
+	nparams 5
+	  param in name "address" explicit_type "uint16_t"
+	  param inout name "buff" explicit_type "uint8_t"
+	  param in name "size" explicit_type "uint16_t"
+	  param in name "sendStop" explicit_type "bool"
+	    defaultvalue "true"
+	  param inout name "readCount" explicit_type "uint32_t"
+	    defaultvalue "NULL"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} * ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141400 "beginTransmission"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "address" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141528 "beginTransmission"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "address" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141656 "beginTransmission"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "address" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141784 "endTransmission"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "sendStop" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//stickbreaker isr
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141912 "endTransmission"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142040 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 3
+	  param in name "address" explicit_type "uint16_t"
+	  param in name "size" explicit_type "uint8_t"
+	  param in name "sendStop" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// @stickBreaker 11/2017 fix for ReSTART timeout, ISR
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142168 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 3
+	  param in name "address" explicit_type "uint16_t"
+	  param in name "quantity" explicit_type "uint8_t"
+	  param in name "sendStop" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142296 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 2
+	  param in name "address" explicit_type "uint16_t"
+	  param in name "quantity" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142424 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 3
+	  param in name "address" explicit_type "uint8_t"
+	  param in name "quantity" explicit_type "uint8_t"
+	  param in name "sendStop" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142552 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 2
+	  param in name "address" explicit_type "uint8_t"
+	  param in name "quantity" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142680 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 3
+	  param in name "address" explicit_type "int"
+	  param in name "quantity" explicit_type "int"
+	  param in name "sendStop" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142808 "requestFrom"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 2
+	  param in name "address" explicit_type "int"
+	  param in name "quantity" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 142936 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 1
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143064 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 2
+	  param in name "data" explicit_type "uint8_t"
+	  param in name "quantity" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143192 "available"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143320 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143448 "peek"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143576 "flush"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 143704 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "s" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return write((uint8_t*) s, strlen(s));
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 143832 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "n" explicit_type "ulong"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return write((uint8_t)n);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 143960 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "n" explicit_type "long"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return write((uint8_t)n);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 144088 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "n" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return write((uint8_t)n);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 144216 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "n" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return write((uint8_t)n);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 144344 "onReceive"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "" explicit_type "void (*)(int)"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}void (*${p0})(int)${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 144472 "onRequest"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "" explicit_type "void (*)(void)"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}void (*${p0})(void)${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 144600 "setDebugFlags"
+	preserve_cpp_body_indent public explicit_return_type "uint32_t"
+	nparams 2
+	  param in name "setBits" explicit_type "uint32_t"
+	  param in name "resetBits" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//stickbreaker Dump i2c Interrupt buffer, i2c isr Debugging
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 144728 "busy"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 131672 "typedef1"
+      visibility package stereotype "typedef" explicit_base_type "Stream"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+
+  deploymentview 128216 "src"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128088 "BME280"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128088 // BME280
+      end
+    end
+
+    artifact 128216 "BME280I2C"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129368 // BME280I2C
+      end
+    end
+
+    artifact 128344 "BME280I2C_BRZO"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129752 // BME280I2C_BRZO
+      end
+    end
+
+    artifact 128472 "BME280Spi"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 130008 // BME280Spi
+      end
+    end
+
+    artifact 128600 "BME280SpiSw"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 130264 // BME280SpiSw
+      end
+    end
+
+    artifact 129112 "Wire"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 131288 // user_onRequest
+	class_ref 131416 // user_onReceive
+	class_ref 131672 // typedef1
+	class_ref 131544 // TwoWire
+      end
+    end
+  end
+
+  package_ref 128216 // EnvironmentCalculations
+end

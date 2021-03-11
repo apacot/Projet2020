@@ -1,0 +1,69 @@
+class AsyncWebSocketMultiMessage
+!!!173272.cpp!!!	AsyncWebSocketMultiMessage(inout buffer : AsyncWebSocketMessageBuffer, in opcode : uint8_t = WS_TEXT, in mask : bool = false)
+
+  _opcode = opcode & 0x07;
+  _mask = mask;
+
+  if (buffer) {
+    _WSbuffer = buffer; 
+    (*_WSbuffer)++; 
+    _data = buffer->get(); 
+    _len = buffer->length(); 
+    _status = WS_MSG_SENDING;
+    //ets_printf("M: %u\n", _len);
+  } else {
+    _status = WS_MSG_ERROR;
+  }
+  
+!!!173400.cpp!!!	~AsyncWebSocketMultiMessage()
+  if (_WSbuffer) {
+    (*_WSbuffer)--; // decreases the counter. 
+  }
+!!!173656.cpp!!!	ack(in len : size_t, in time : uint32_t) : void
+   (void)time;
+  _acked += len;
+  if(_sent >= _len && _acked >= _ack){
+    _status = WS_MSG_SENT;
+  }
+  //ets_printf("A: %u\n", len);
+!!!173784.cpp!!!	send(inout client : AsyncClient) : size_t
+  if(_status != WS_MSG_SENDING)
+    return 0;
+  if(_acked < _ack){
+    return 0;
+  }
+  if(_sent == _len){
+    _status = WS_MSG_SENT;
+    return 0;
+  }
+  if(_sent > _len){
+      _status = WS_MSG_ERROR;
+      //ets_printf("E: %u > %u\n", _sent, _len);
+      return 0;
+  }
+
+  size_t toSend = _len - _sent;
+  size_t window = webSocketSendFrameWindow(client);
+
+  if(window < toSend) {
+      toSend = window;
+  }
+
+  _sent += toSend;
+  _ack += toSend + ((toSend < 126)?2:4) + (_mask * 4);
+
+  //ets_printf("W: %u %u\n", _sent - toSend, toSend);
+
+  bool final = (_sent == _len);
+  uint8_t* dPtr = (uint8_t*)(_data + (_sent - toSend));
+  uint8_t opCode = (toSend && _sent == toSend)?_opcode:(uint8_t)WS_CONTINUATION;
+
+  size_t sent = webSocketSendFrame(client, final, opCode, _mask, dPtr, toSend);
+  _status = WS_MSG_SENDING;
+  if(toSend && sent != toSend){
+      //ets_printf("E: %u != %u\n", toSend, sent);
+      _sent -= (toSend - sent);
+      _ack -= (toSend - sent);
+  }
+  //ets_printf("S: %u %u\n", _sent, sent);
+  return sent;

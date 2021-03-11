@@ -1,0 +1,5347 @@
+format 222
+"src" // WiFi::src
+  revision 1
+  modified_by 88 "apacot"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/esp32-1.0.4/libraries/WiFi/src/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/esp32-1.0.4/libraries/WiFi/src/"
+  classview 135512 "src"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 150616 "eth_phy_type_t"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 184024 "ETH_PHY_LAN8720"
+	public type class_ref 150616 // eth_phy_type_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184152 "ETH_PHY_TLK110"
+	public type class_ref 150616 // eth_phy_type_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184280 "ETH_PHY_MAX"
+	public type class_ref 150616 // eth_phy_type_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 150744 "ETHClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 184408 "initialized"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184536 "started"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184664 "staticIP"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184792 "eth_config"
+	private explicit_type "eth_config_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 221144 "ETHClass"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}:initialized(false),started(false),staticIP(false)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221272 "~ETHClass"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221400 "begin"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 6
+	  param in name "phy_addr" explicit_type "uint8_t"
+	    defaultvalue "ETH_PHY_ADDR"
+	  param in name "power" explicit_type "int"
+	    defaultvalue "ETH_PHY_POWER"
+	  param in name "mdc" explicit_type "int"
+	    defaultvalue "ETH_PHY_MDC"
+	  param in name "mdio" explicit_type "int"
+	    defaultvalue "ETH_PHY_MDIO"
+	  param in name "type" type class_ref 150616 // eth_phy_type_t
+	    defaultvalue "ETH_PHY_TYPE"
+	  param in name "clock_mode" explicit_type "eth_clock_mode_t"
+	    defaultvalue "ETH_CLK_MODE"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}, ${t5} ${p5}${v5}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221528 "config"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 5
+	  param in name "local_ip" explicit_type "IPAddress"
+	  param in name "gateway" explicit_type "IPAddress"
+	  param in name "subnet" explicit_type "IPAddress"
+	  param in name "dns1" explicit_type "IPAddress"
+	    defaultvalue "(uint32_t)0x00000000"
+	  param in name "dns2" explicit_type "IPAddress"
+	    defaultvalue "(uint32_t)0x00000000"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221656 "getHostname"
+	preserve_cpp_body_indent constvalue public explicit_return_type "char"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221784 "setHostname"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "hostname" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 221912 "fullDuplex"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222040 "linkUp"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222168 "linkSpeed"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222296 "enableIpV6"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222424 "localIPv6"
+	preserve_cpp_body_indent public explicit_return_type "IPv6Address"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222552 "localIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222680 "subnetMask"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222808 "gatewayIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 222936 "dnsIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 1
+	  param in name "dns_no" explicit_type "uint8_t"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 223064 "broadcastIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 223192 "networkID"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 223320 "subnetCIDR"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 223448 "macAddress"
+	public explicit_return_type "uint8_t"
+	nparams 1
+	  param inout name "mac" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 223576 "macAddress"
+	public explicit_return_type "String"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      classrelation 151000 // <dependency>
+	relation 151000 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 151000 // <dependency>
+	  b parent class_ref 150872 // WiFiClient
+      end
+
+      classrelation 151128 // <dependency>
+	relation 151128 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 151128 // <dependency>
+	  b parent class_ref 151000 // WiFiServer
+      end
+    end
+
+    class 150872 "WiFiClient"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 152280 // <generalisation>
+	relation 152280 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 152280 // <generalisation>
+	  b parent class_ref 151896 // ESPLwIPClient
+      end
+
+      classrelation 152408 // clientSocketHandle (<directional composition>)
+	relation 152408 *-->
+	  stereotype "std::shared_ptr"
+	  a role_name "clientSocketHandle" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 152408 // clientSocketHandle (<directional composition>)
+	  b parent class_ref 152152 // WiFiClientSocketHandle
+      end
+
+      classrelation 152536 // _rxBuffer (<directional composition>)
+	relation 152536 *-->
+	  stereotype "std::shared_ptr"
+	  a role_name "_rxBuffer" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 152536 // _rxBuffer (<directional composition>)
+	  b parent class_ref 152280 // WiFiClientRxBuffer
+      end
+
+      attribute 184920 "_connected"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 152664 // next (<unidirectional association>)
+	relation 152664 --->
+	  a role_name "next" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 152664 // next (<unidirectional association>)
+	  b parent class_ref 150872 // WiFiClient
+      end
+
+      operation 226008 "WiFiClient"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}:_connected(false),next(NULL)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226136 "WiFiClient"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}${)}:_connected(true),next(NULL)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226264 "~WiFiClient"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226392 "connect"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226520 "connect"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 3
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	  param in name "timeout" explicit_type "int32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226648 "connect"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "host" explicit_type "char"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226776 "connect"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 3
+	  param in name "host" explicit_type "char"
+	  param in name "port" explicit_type "uint16_t"
+	  param in name "timeout" explicit_type "int32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 226904 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 1
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227032 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 2
+	  param in name "buf" explicit_type "uint8_t"
+	  param in name "size" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227160 "write_P"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 2
+	  param in name "buf" explicit_type "PGM_P"
+	  param in name "size" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227288 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 1
+	  param inout name "stream" explicit_type "Stream"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227416 "available"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227544 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227672 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param inout name "buf" explicit_type "uint8_t"
+	  param in name "size" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227800 "peek"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 227928 "flush"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Though flushing means to send all pending data,
+// seems that in Arduino it also means to clear RX
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 228056 "stop"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 228184 "connected"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 228312 "operator bool"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        return connected();
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 228440 "operator ="
+	preserve_cpp_body_indent public return_type class_ref 150872 // WiFiClient
+	nparams 1
+	  param in name "other" type class_ref 150872 // WiFiClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 228568 "operator =="
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param in name "value" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return bool() == value;
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 228696 "operator !="
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param in name "value" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return bool() != value;
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 228824 "operator =="
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "rhs" type class_ref 150872 // WiFiClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 228952 "operator !="
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param in name "rhs" type class_ref 150872 // WiFiClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        return !this->operator==(rhs);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 229080 "fd"
+	preserve_cpp_body_indent const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229208 "setSocketOption"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 3
+	  param in name "option" explicit_type "int"
+	  param inout name "value" explicit_type "char"
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229336 "setOption"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "option" explicit_type "int"
+	  param inout name "value" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229464 "getOption"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "option" explicit_type "int"
+	  param inout name "value" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229592 "setTimeout"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "seconds" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229720 "setNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "nodelay" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229848 "getNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229976 "remoteIP"
+	preserve_cpp_body_indent const public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230104 "remoteIP"
+	preserve_cpp_body_indent const public explicit_return_type "IPAddress"
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230232 "remotePort"
+	preserve_cpp_body_indent const public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230360 "remotePort"
+	preserve_cpp_body_indent const public explicit_return_type "uint16_t"
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230488 "localIP"
+	preserve_cpp_body_indent const public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230616 "localIP"
+	preserve_cpp_body_indent const public explicit_return_type "IPAddress"
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230744 "localPort"
+	preserve_cpp_body_indent const public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 230872 "localPort"
+	preserve_cpp_body_indent const public explicit_return_type "uint16_t"
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      extra_member 129624 "using"
+	
+	cpp "  using Print::write;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+    end
+
+    class 151000 "WiFiServer"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 153304 // <generalisation>
+	relation 153304 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153304 // <generalisation>
+	  b parent class_ref 153304 // typedef2
+      end
+
+      attribute 187736 "sockfd"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187864 "_accepted_sockfd"
+	private explicit_type "int"
+	init_value "=  -1"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187992 "_port"
+	private explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 188120 "_max_clients"
+	private explicit_type "uint8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 188248 "_listening"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 188376 "_noDelay"
+	private explicit_type "bool"
+	init_value "=  false"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 236504 "listenOnLocalhost"
+	cpp_inline public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {};
+"
+	
+	
+	
+	
+      end
+
+      operation 236632 "WiFiServer"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "port" explicit_type "uint16_t"
+	    defaultvalue "80"
+	  param in name "max_clients" explicit_type "uint8_t"
+	    defaultvalue "4"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract} :sockfd(-1),_accepted_sockfd(-1),_port(port),_max_clients(max_clients),_listening(false),_noDelay(false){};
+"
+	
+	
+	
+	
+      end
+
+      operation 236760 "~WiFiServer"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract} { end();};
+"
+	
+	
+	
+	
+      end
+
+      operation 236888 "available"
+	preserve_cpp_body_indent public return_type class_ref 150872 // WiFiClient
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237016 "accept"
+	cpp_inline public return_type class_ref 150872 // WiFiClient
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {return available();};
+"
+	
+	
+	
+	
+      end
+
+      operation 237144 "begin"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "port" explicit_type "uint16_t"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237272 "setNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "nodelay" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237400 "getNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237528 "hasClient"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237656 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 2
+	  param in name "data" explicit_type "uint8_t"
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 237784 "write"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 1
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+      return write(&data, 1);
+    };
+"
+	
+	
+	
+	
+      end
+
+      extra_member 129752 "using"
+	
+	cpp "  using Print::write;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 237912 "end"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 238040 "close"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 238168 "stop"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 238296 "operator bool"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract} {return _listening;};
+"
+	
+	
+	
+	
+      end
+
+      operation 238424 "setTimeout"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 1
+	  param in name "seconds" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 238552 "stopAll"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 151128 "WiFiClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 151256 // <generalisation>
+	relation 151256 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 151256 // <generalisation>
+	  b parent class_ref 151256 // WiFiGenericClass
+      end
+
+      classrelation 151384 // <generalisation>
+	relation 151384 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 151384 // <generalisation>
+	  b parent class_ref 151384 // WiFiSTAClass
+      end
+
+      classrelation 151512 // <generalisation>
+	relation 151512 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 151512 // <generalisation>
+	  b parent class_ref 151512 // WiFiScanClass
+      end
+
+      classrelation 151640 // <generalisation>
+	relation 151640 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 151640 // <generalisation>
+	  b parent class_ref 151640 // WiFiAPClass
+      end
+
+      extra_member 128216 "using"
+	
+	cpp "  using WiFiGenericClass::channel;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128344 "using"
+	
+	cpp "  using WiFiSTAClass::SSID;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128472 "using"
+	
+	cpp "  using WiFiSTAClass::RSSI;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128600 "using"
+	
+	cpp "  using WiFiSTAClass::BSSID;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128728 "using"
+	
+	cpp "  using WiFiSTAClass::BSSIDstr;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128856 "using"
+	
+	cpp "  using WiFiScanClass::SSID;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128984 "using"
+	
+	cpp "  using WiFiScanClass::encryptionType;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 129112 "using"
+	
+	cpp "  using WiFiScanClass::RSSI;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 129240 "using"
+	
+	cpp "  using WiFiScanClass::BSSID;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 129368 "using"
+	
+	cpp "  using WiFiScanClass::BSSIDstr;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 129496 "using"
+	
+	cpp "  using WiFiScanClass::channel;" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 223704 "printDiag"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param inout name "p" explicit_type "Print"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// -----------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------- Debug ------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------
+//
+//Output WiFi settings to an object derived from Print interface (like Serial).
+//@param p Print interface
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 151768 // <dependency>
+	relation 151768 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 151768 // <dependency>
+	  b parent class_ref 150872 // WiFiClient
+      end
+
+      classrelation 151896 // <dependency>
+	relation 151896 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 151896 // <dependency>
+	  b parent class_ref 151000 // WiFiServer
+      end
+
+      classrelation 152024 // <dependency>
+	relation 152024 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 152024 // <dependency>
+	  b parent class_ref 151768 // WiFiUDP
+      end
+    end
+
+    class 151256 "WiFiGenericClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 231000 "WiFiGenericClass"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231128 "onEvent"
+	preserve_cpp_body_indent public return_type class_ref 152792 // wifi_event_id_t
+	nparams 2
+	  param in name "cbEvent" type class_ref 152408 // WiFiEventCb
+	  param in name "event" explicit_type "system_event_id_t"
+	    defaultvalue "SYSTEM_EVENT_MAX"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//set callback function
+//@param cbEvent WiFiEventCb
+//@param event optional filter (WIFI_EVENT_MAX is all events)
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231256 "onEvent"
+	preserve_cpp_body_indent public return_type class_ref 152792 // wifi_event_id_t
+	nparams 2
+	  param in name "cbEvent" type class_ref 152536 // WiFiEventFuncCb
+	  param in name "event" explicit_type "system_event_id_t"
+	    defaultvalue "SYSTEM_EVENT_MAX"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231384 "onEvent"
+	preserve_cpp_body_indent public return_type class_ref 152792 // wifi_event_id_t
+	nparams 2
+	  param in name "cbEvent" type class_ref 152664 // WiFiEventSysCb
+	  param in name "event" explicit_type "system_event_id_t"
+	    defaultvalue "SYSTEM_EVENT_MAX"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231512 "removeEvent"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "cbEvent" type class_ref 152408 // WiFiEventCb
+	  param in name "event" explicit_type "system_event_id_t"
+	    defaultvalue "SYSTEM_EVENT_MAX"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//removes a callback form event handler
+//@param cbEvent WiFiEventCb
+//@param event optional filter (WIFI_EVENT_MAX is all events)
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231640 "removeEvent"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "cbEvent" type class_ref 152664 // WiFiEventSysCb
+	  param in name "event" explicit_type "system_event_id_t"
+	    defaultvalue "SYSTEM_EVENT_MAX"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231768 "removeEvent"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "id" type class_ref 152792 // wifi_event_id_t
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231896 "getStatusBits"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232024 "waitStatusBits"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "bits" explicit_type "int"
+	  param in name "timeout_ms" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232152 "channel"
+	preserve_cpp_body_indent public explicit_return_type "int32_t"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the current channel associated with the network
+//@return channel (1-13)
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232280 "persistent"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "persistent" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//store WiFi config in SDK flash area
+//@param persistent
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232408 "mode"
+	class_operation preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "m" explicit_type "wifi_mode_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//set new mode
+//@param m WiFiMode_t
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232536 "getMode"
+	class_operation preserve_cpp_body_indent public explicit_return_type "wifi_mode_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//get WiFi mode
+//@return WiFiMode
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232664 "enableSTA"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "enable" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//control STA mode
+//@param enable bool
+//@return ok
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232792 "enableAP"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "enable" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//control AP mode
+//@param enable bool
+//@return ok
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 232920 "setSleep"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "enable" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//control modem sleep when only in STA mode
+//@param enable bool
+//@return ok
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233048 "getSleep"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//get modem sleep enabled
+//@return true if modem sleep is enabled
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233176 "setTxPower"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "power" type class_ref 152920 // wifi_power_t
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//control wifi tx power
+//@param power enum maximum wifi tx power
+//@return ok
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233304 "getTxPower"
+	preserve_cpp_body_indent public return_type class_ref 152920 // wifi_power_t
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233432 "_eventCallback"
+	class_operation preserve_cpp_body_indent public explicit_return_type "esp_err_t"
+	nparams 2
+	  param inout name "arg" explicit_type "void"
+	  param inout name "event" explicit_type "system_event_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 186584 "_persistent"
+	class_attribute protected explicit_type "bool"
+	init_value "= true"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186712 "_forceSleepLastMode"
+	class_attribute protected explicit_type "wifi_mode_t"
+	init_value "= WIFI_MODE_NULL"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 233560 "setStatusBits"
+	class_operation preserve_cpp_body_indent protected explicit_return_type "int"
+	nparams 1
+	  param in name "bits" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233688 "clearStatusBits"
+	class_operation preserve_cpp_body_indent protected explicit_return_type "int"
+	nparams 1
+	  param in name "bits" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233816 "hostByName"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "aHostname" explicit_type "char"
+	  param inout name "aResult" explicit_type "IPAddress"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Resolve the given hostname to an IP address.
+//@param aHostname     Name to be resolved
+//@param aResult       IPAddress structure to store the returned IP address
+//@return 1 if aIPAddrString was successfully converted to an IP address,
+//         else error code
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 233944 "calculateNetworkID"
+	class_operation preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 2
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "subnet" explicit_type "IPAddress"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234072 "calculateBroadcast"
+	class_operation preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 2
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "subnet" explicit_type "IPAddress"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234200 "calculateSubnetCIDR"
+	class_operation preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "subnetMask" explicit_type "IPAddress"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 152792 // <dependency>
+	relation 152792 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 152792 // <dependency>
+	  b parent class_ref 151384 // WiFiSTAClass
+      end
+
+      classrelation 152920 // <dependency>
+	relation 152920 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 152920 // <dependency>
+	  b parent class_ref 151512 // WiFiScanClass
+      end
+
+      classrelation 153048 // <dependency>
+	relation 153048 -_->
+	  stereotype "friend"
+	  a public
+	    cpp default "Generated"
+	    classrelation_ref 153048 // <dependency>
+	  b parent class_ref 151640 // WiFiAPClass
+      end
+    end
+
+    class 151384 "WiFiSTAClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 238680 "begin"
+	preserve_cpp_body_indent public return_type class_ref 153432 // wl_status_t
+	nparams 5
+	  param in name "ssid" explicit_type "char"
+	  param in name "passphrase" explicit_type "char"
+	    defaultvalue "NULL"
+	  param in name "channel" explicit_type "int32_t"
+	    defaultvalue "0"
+	  param in name "bssid" explicit_type "uint8_t"
+	    defaultvalue "NULL"
+	  param in name "connect" explicit_type "bool"
+	    defaultvalue "true"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, const ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, const ${t3} * ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Start Wifi connection
+//if passphrase is set the most secure supported mode will be automatically selected
+//@param ssid const char*          Pointer to the SSID string.
+//@param passphrase const char *   Optional. Passphrase. Valid characters in a passphrase must be between ASCII 32-126 (decimal).
+//@param bssid uint8_t[6]          Optional. BSSID / MAC of AP
+//@param channel                   Optional. Channel of AP
+//@param connect                   Optional. call connect
+//@return
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}, const ${t1} * ${p1}, ${t2} ${p2}, const ${t3} * ${p3}, ${t4} ${p4}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " ----------------------------------------------------------------------------------------------
+ ---------------------------------------- STA function ----------------------------------------
+ ----------------------------------------------------------------------------------------------"
+      end
+
+      operation 238808 "begin"
+	preserve_cpp_body_indent public return_type class_ref 153432 // wl_status_t
+	nparams 5
+	  param inout name "ssid" explicit_type "char"
+	  param inout name "passphrase" explicit_type "char"
+	    defaultvalue "NULL"
+	  param in name "channel" explicit_type "int32_t"
+	    defaultvalue "0"
+	  param in name "bssid" explicit_type "uint8_t"
+	    defaultvalue "NULL"
+	  param in name "connect" explicit_type "bool"
+	    defaultvalue "true"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, const ${t3} * ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 238936 "begin"
+	preserve_cpp_body_indent public return_type class_ref 153432 // wl_status_t
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Use to connect to SDK config.
+//@return wl_status_t
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239064 "config"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 5
+	  param in name "local_ip" explicit_type "IPAddress"
+	  param in name "gateway" explicit_type "IPAddress"
+	  param in name "subnet" explicit_type "IPAddress"
+	  param in name "dns1" explicit_type "IPAddress"
+	    defaultvalue "(uint32_t)0x00000000"
+	  param in name "dns2" explicit_type "IPAddress"
+	    defaultvalue "(uint32_t)0x00000000"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Change IP configuration settings disabling the dhcp client
+//@param local_ip   Static ip configuration
+//@param gateway    Static gateway configuration
+//@param subnet     Static Subnet mask
+//@param dns1       Static DNS server 1
+//@param dns2       Static DNS server 2
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239192 "reconnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//will force a disconnect an then start reconnecting to AP
+//@return ok
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239320 "disconnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "wifioff" explicit_type "bool"
+	    defaultvalue "false"
+	  param in name "eraseap" explicit_type "bool"
+	    defaultvalue "false"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Disconnect from the network
+//@param wifioff
+//@return  one value of wl_status_t enum
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239448 "isConnected"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//is STA interface connected?
+//@return true if STA is connected to an AD
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239576 "setAutoConnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "autoConnect" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Setting the ESP32 station to connect to the AP (which is recorded)
+//automatically or not when powered on. Enable auto-connect by default.
+//@param autoConnect bool
+//@return if saved
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239704 "getAutoConnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Checks if ESP32 station mode will connect to AP
+//automatically or not when it is powered on.
+//@return auto connect
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239832 "setAutoReconnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "autoReconnect" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 239960 "getAutoReconnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240088 "waitForConnectResult"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Wait for WiFi connection to reach a result
+//returns the status reached or disconnect if STA is off
+//@return wl_status_t
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240216 "localIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the station interface IP address.
+//@return IPAddress station IP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " STA network info"
+      end
+
+      operation 240344 "macAddress"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param inout name "mac" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the station interface MAC address.
+//@param mac   pointer to uint8_t array with length WL_MAC_ADDR_LENGTH
+//@return      pointer to uint8_t *
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240472 "macAddress"
+	public explicit_return_type "String"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 240600 "subnetMask"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the interface subnet mask address.
+//@return IPAddress subnetMask
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240728 "gatewayIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the gateway ip address.
+//@return IPAddress gatewayIP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240856 "dnsIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 1
+	  param in name "dns_no" explicit_type "uint8_t"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the DNS ip address.
+//@param dns_no
+//@return IPAddress DNS Server IP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 240984 "broadcastIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the broadcast ip address.
+//@return IPAddress broadcastIP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241112 "networkID"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the network id.
+//@return IPAddress networkID
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241240 "subnetCIDR"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the subnet CIDR.
+//@return uint8_t subnetCIDR
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241368 "enableIpV6"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Enable IPv6 on the station interface.
+//@return true on success
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241496 "localIPv6"
+	preserve_cpp_body_indent public explicit_return_type "IPv6Address"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the station interface IPv6 address.
+//@return IPv6Address
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241624 "getHostname"
+	preserve_cpp_body_indent constvalue public explicit_return_type "char"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the station interface Host name.
+//@return char array hostname
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241752 "setHostname"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "hostname" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Set the station interface Host name.
+//@param  hostname  pointer to const string
+//@return true on   success
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 241880 "status"
+	class_operation preserve_cpp_body_indent public return_type class_ref 153432 // wl_status_t
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return Connection status.
+//@return one of the value defined in wl_status_t
+//
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " STA WiFi info"
+      end
+
+      operation 242008 "SSID"
+	preserve_cpp_body_indent const public explicit_return_type "String"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the current SSID associated with the network
+//@return SSID
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 242136 "psk"
+	preserve_cpp_body_indent const public explicit_return_type "String"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the current pre shared key associated with the network
+//@return  psk string
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 242264 "BSSID"
+	public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 242392 "BSSIDstr"
+	public explicit_return_type "String"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 242520 "RSSI"
+	public explicit_return_type "int8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 242648 "_setStatus"
+	class_operation preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "status" type class_ref 153432 // wl_status_t
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 188504 "_useStaticIp"
+	class_attribute protected explicit_type "bool"
+	init_value "= false"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 188632 "_autoReconnect"
+	class_attribute protected explicit_type "bool"
+	init_value "= true"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 242776 "beginSmartConfig"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 242904 "stopSmartConfig"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243032 "smartConfigDone"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 188760 "_smartConfigStarted"
+	class_attribute protected explicit_type "bool"
+	init_value "= false"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 188888 "_smartConfigDone"
+	class_attribute protected explicit_type "bool"
+	init_value "= false"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 243160 "_smartConfigCallback"
+	class_operation preserve_cpp_body_indent protected explicit_return_type "void"
+	nparams 2
+	  param in name "st" explicit_type "uint32_t"
+	  param inout name "result" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 151512 "WiFiScanClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 234840 "scanNetworks"
+	preserve_cpp_body_indent public explicit_return_type "int16_t"
+	nparams 4
+	  param in name "async" explicit_type "bool"
+	    defaultvalue "false"
+	  param in name "show_hidden" explicit_type "bool"
+	    defaultvalue "false"
+	  param in name "passive" explicit_type "bool"
+	    defaultvalue "false"
+	  param in name "max_ms_per_chan" explicit_type "uint32_t"
+	    defaultvalue "300"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Start scan WiFi networks available
+//@param async         run in async mode
+//@param show_hidden   show hidden networks
+//@return Number of discovered networks
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234968 "scanComplete"
+	preserve_cpp_body_indent public explicit_return_type "int16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//called to get the scan state in Async mode
+//@return scan result or status
+//         -1 if scan not fin
+//         -2 if scan not triggered
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235096 "scanDelete"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//delete last scan result from RAM
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235224 "getNetworkInfo"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 6
+	  param in name "i" explicit_type "uint8_t"
+	  param inout name "ssid" explicit_type "String"
+	  param inout name "encType" explicit_type "uint8_t"
+	  param inout name "rssi" explicit_type "int32_t"
+	  param inout name "bssid" explicit_type "uint8_t"
+	  param inout name "channel" explicit_type "int32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} & ${p1}${v1}, ${t2} & ${p2}${v2}, ${t3} & ${p3}${v3}, ${t4} * & ${p4}${v4}, ${t5} & ${p5}${v5}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//loads all infos from a scanned wifi in to the ptr parameters
+//@param networkItem uint8_t
+//@param ssid  const char**
+//@param encryptionType uint8_t *
+//@param RSSI int32_t *
+//@param BSSID uint8_t **
+//@param channel int32_t *
+//@return (true if ok)
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} & ${p1}, ${t2} & ${p2}, ${t3} & ${p3}, ${t4} * & ${p4}, ${t5} & ${p5}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " scan result"
+      end
+
+      operation 235352 "SSID"
+	preserve_cpp_body_indent public explicit_return_type "String"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the SSID discovered during the network scan.
+//@param i     specify from which network item want to get the information
+//@return       ssid string of the specified item on the networks scanned list
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235480 "encryptionType"
+	preserve_cpp_body_indent public explicit_return_type "wifi_auth_mode_t"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the encryption type of the networks discovered during the scanNetworks
+//@param i specify from which network item want to get the information
+//@return  encryption type (enum wl_enc_type) of the specified item on the networks scanned list
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235608 "RSSI"
+	preserve_cpp_body_indent public explicit_return_type "int32_t"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Return the RSSI of the networks discovered during the scanNetworks
+//@param i specify from which network item want to get the information
+//@return  signed value of RSSI of the specified item on the networks scanned list
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235736 "BSSID"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//return MAC / BSSID of scanned wifi
+//@param i specify from which network item want to get the information
+//@return uint8_t * MAC / BSSID of scanned wifi
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235864 "BSSIDstr"
+	preserve_cpp_body_indent public explicit_return_type "String"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//return MAC / BSSID of scanned wifi
+//@param i specify from which network item want to get the information
+//@return String MAC / BSSID of scanned wifi
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 235992 "channel"
+	preserve_cpp_body_indent public explicit_return_type "int32_t"
+	nparams 1
+	  param in name "i" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 236120 "getScanInfoByIndex"
+	class_operation cpp_inline public explicit_return_type "void"
+	nparams 1
+	  param in name "i" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} { return _getScanInfoByIndex(i); };
+"
+	
+	
+	
+	
+      end
+
+      operation 236248 "_scanDone"
+	class_operation preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//private
+//scan callback
+//@param result  void *arg
+//@param status STATUS
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 187096 "_scanAsync"
+	class_attribute protected explicit_type "bool"
+	init_value "= false"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187224 "_scanStarted"
+	class_attribute protected explicit_type "uint32_t"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187352 "_scanTimeout"
+	class_attribute protected explicit_type "uint32_t"
+	init_value "= 10000"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187480 "_scanCount"
+	class_attribute protected explicit_type "uint16_t"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 187608 "_scanResult"
+	class_attribute protected explicit_type "void"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 236376 "_getScanInfoByIndex"
+	class_operation preserve_cpp_body_indent protected explicit_return_type "void"
+	nparams 1
+	  param in name "i" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//
+//@param i specify from which network item want to get the information
+//@return bss_info *
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 151640 "WiFiAPClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 223832 "softAP"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 5
+	  param in name "ssid" explicit_type "char"
+	  param in name "passphrase" explicit_type "char"
+	    defaultvalue "NULL"
+	  param in name "channel" explicit_type "int"
+	    defaultvalue "1"
+	  param in name "ssid_hidden" explicit_type "int"
+	    defaultvalue "0"
+	  param in name "max_connection" explicit_type "int"
+	    defaultvalue "4"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, const ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}, ${t4} ${p4}${v4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// -----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------- AP function -----------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------
+//
+//Set up an access point
+//@param ssid              Pointer to the SSID (max 63 char).
+//@param passphrase        (for WPA2 min 8 char, for open use NULL)
+//@param channel           WiFi channel number, 1 - 13.
+//@param ssid_hidden       Network cloaking (0 = broadcast SSID, 1 = hide SSID)
+//@param max_connection    Max simultaneous connected clients, 1 - 4.
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}, const ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " ----------------------------------------------------------------------------------------------
+ ----------------------------------------- AP function ----------------------------------------
+ ----------------------------------------------------------------------------------------------"
+      end
+
+      operation 223960 "softAPConfig"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 3
+	  param in name "local_ip" explicit_type "IPAddress"
+	  param in name "gateway" explicit_type "IPAddress"
+	  param in name "subnet" explicit_type "IPAddress"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Configure access point
+//@param local_ip      access point IP
+//@param gateway       gateway IP
+//@param subnet        subnet mask
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224088 "softAPdisconnect"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "wifioff" explicit_type "bool"
+	    defaultvalue "false"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Disconnect from the network (close AP)
+//@param wifioff disable mode?
+//@return one value of wl_status_t enum
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224216 "softAPgetStationNum"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the count of the Station / client that are connected to the softAP interface
+//@return Stations count
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224344 "softAPIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP interface IP address.
+//@return IPAddress softAP IP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224472 "softAPBroadcastIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP broadcast IP address.
+//@return IPAddress softAP broadcastIP
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224600 "softAPNetworkID"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP network ID.
+//@return IPAddress softAP networkID
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224728 "softAPSubnetCIDR"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP subnet CIDR.
+//@return uint8_t softAP subnetCIDR
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224856 "softAPenableIpV6"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Enable IPv6 on the softAP interface.
+//@return true on success
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 224984 "softAPIPv6"
+	preserve_cpp_body_indent public explicit_return_type "IPv6Address"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP interface IPv6 address.
+//@return IPv6Address softAP IPv6
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 225112 "softAPgetHostname"
+	preserve_cpp_body_indent constvalue public explicit_return_type "char"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP interface Host name.
+//@return char array hostname
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 225240 "softAPsetHostname"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "hostname" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Set the softAP    interface Host name.
+//@param  hostname  pointer to const string
+//@return true on   success
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 225368 "softAPmacAddress"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param inout name "mac" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP interface MAC address.
+//@param mac   pointer to uint8_t array with length WL_MAC_ADDR_LENGTH
+//@return      pointer to uint8_t*
+//
+
+${inline}${typeprefix}${type} * ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 225496 "softAPmacAddress"
+	preserve_cpp_body_indent public explicit_return_type "String"
+	nparams 1
+	  param in name "" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Get the softAP interface MAC address.
+//@return String mac
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 151768 "WiFiUDP"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 153432 // <generalisation>
+	relation 153432 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153432 // <generalisation>
+	  b parent class_ref 153560 // typedef3
+      end
+
+      attribute 190040 "udp_server"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190168 "multicast_ip"
+	private explicit_type "IPAddress"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190296 "remote_ip"
+	private explicit_type "IPAddress"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190424 "server_port"
+	private explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190552 "remote_port"
+	private explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190680 "tx_buffer"
+	private explicit_type "char"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190808 "tx_buffer_len"
+	private explicit_type "size_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 190936 "rx_buffer"
+	private explicit_type "cbuf"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 243288 "WiFiUDP"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}
+: udp_server(-1)
+, server_port(0)
+, remote_port(0)
+, tx_buffer(0)
+, tx_buffer_len(0)
+, rx_buffer(0)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243416 "~WiFiUDP"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243544 "begin"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 2
+	  param in name "address" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243672 "begin"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "p" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243800 "beginMulticast"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 2
+	  param in name "a" explicit_type "IPAddress"
+	  param in name "p" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 243928 "stop"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244056 "beginMulticastPacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244184 "beginPacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244312 "beginPacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244440 "beginPacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param in name "host" explicit_type "char"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244568 "endPacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244696 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 1
+	  param in name "data" explicit_type "uint8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244824 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 2
+	  param in name "buffer" explicit_type "uint8_t"
+	  param in name "size" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 244952 "parsePacket"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245080 "available"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245208 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245336 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param inout name "buffer" explicit_type "byte"
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245464 "read"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 2
+	  param inout name "buffer" explicit_type "char"
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245592 "peek"
+	preserve_cpp_body_indent public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245720 "flush"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245848 "remoteIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 245976 "remotePort"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 151896 "ESPLwIPClient"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 152152 // <generalisation>
+	relation 152152 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 152152 // <generalisation>
+	  b parent class_ref 152024 // typedef1
+      end
+
+      operation 225624 "connect"
+	abstract cpp_virtual public explicit_return_type "int"
+	nparams 3
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	  param in name "timeout" explicit_type "int32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 225752 "connect"
+	abstract cpp_virtual public explicit_return_type "int"
+	nparams 3
+	  param in name "host" explicit_type "char"
+	  param in name "port" explicit_type "uint16_t"
+	  param in name "timeout" explicit_type "int32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 225880 "setTimeout"
+	abstract cpp_virtual public explicit_return_type "int"
+	nparams 1
+	  param in name "seconds" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 152024 "typedef1"
+      visibility package stereotype "typedef" explicit_base_type "Client"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 152152 "WiFiClientSocketHandle"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 191832 "sockfd"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 247128 "WiFiClientSocketHandle"
+	cpp_inline public explicit_return_type ""
+	nparams 1
+	  param in name "fd" explicit_type "int"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract} :sockfd(fd)
+    {
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 247256 "~WiFiClientSocketHandle"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract} {
+        close(sockfd);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 247384 "fd"
+	cpp_inline public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        return sockfd;
+    };
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 152280 "WiFiClientRxBuffer"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 191064 "_size"
+	private explicit_type "size_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 191192 "_buffer"
+	private explicit_type "uint8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 191320 "_pos"
+	private explicit_type "size_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 191448 "_fill"
+	private explicit_type "size_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 191576 "_fd"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 191704 "_failed"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 246104 "r_available"
+	cpp_inline private explicit_return_type "size_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+            if(_fd < 0){
+                return 0;
+            }
+            int count;
+            int res = lwip_ioctl_r(_fd, FIONREAD, &count);
+            if(res < 0) {
+                _failed = true;
+                return 0;
+            }
+            return count;
+        };
+"
+	
+	
+	
+	
+      end
+
+      operation 246232 "fillBuffer"
+	cpp_inline private explicit_return_type "size_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+            if(!_buffer){
+                _buffer = (uint8_t *)malloc(_size);
+                if(!_buffer) {
+                    log_e(\"Not enough memory to allocate buffer\");
+                    _failed = true;
+                    return 0;
+                }
+            }
+            if(_fill && _pos == _fill){
+                _fill = 0;
+                _pos = 0;
+            }
+            if(!_buffer || _size <= _fill || !r_available()) {
+                return 0;
+            }
+            int res = recv(_fd, _buffer + _fill, _size - _fill, MSG_DONTWAIT);
+            if(res < 0) {
+                if(errno != EWOULDBLOCK) {
+                    _failed = true;
+                }
+                return 0;
+            }
+            _fill += res;
+            return res;
+        };
+"
+	
+	
+	
+	
+      end
+
+      operation 246360 "WiFiClientRxBuffer"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "fd" explicit_type "int"
+	  param in name "size" explicit_type "size_t"
+	    defaultvalue "1436"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract} :_size(size)
+        ,_buffer(NULL)
+        ,_pos(0)
+        ,_fill(0)
+        ,_fd(fd)
+        ,_failed(false)
+    {
+        //_buffer = (uint8_t *)malloc(_size);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 246488 "~WiFiClientRxBuffer"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract} {
+        free(_buffer);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 246616 "failed"
+	cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        return _failed;
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 246744 "read"
+	cpp_inline public explicit_return_type "int"
+	nparams 2
+	  param inout name "dst" explicit_type "uint8_t"
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract} {
+        if(!dst || !len || (_pos == _fill && !fillBuffer())){
+            return -1;
+        }
+        size_t a = _fill - _pos;
+        if(len <= a || ((len - a) <= (_size - _fill) && fillBuffer() >= (len - a))){
+            if(len == 1){
+                *dst = _buffer[_pos];
+            } else {
+                memcpy(dst, _buffer + _pos, len);
+            }
+            _pos += len;
+            return len;
+        }
+        size_t left = len;
+        size_t toRead = a;
+        uint8_t * buf = dst;
+        memcpy(buf, _buffer + _pos, toRead);
+        _pos += toRead;
+        left -= toRead;
+        buf += toRead;
+        while(left){
+            if(!fillBuffer()){
+                return len - left;
+            }
+            a = _fill - _pos;
+            toRead = (a > left)?left:a;
+            memcpy(buf, _buffer + _pos, toRead);
+            _pos += toRead;
+            left -= toRead;
+            buf += toRead;
+        }
+        return len;
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 246872 "peek"
+	cpp_inline public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        if(_pos == _fill && !fillBuffer()){
+            return -1;
+        }
+        return _buffer[_pos];
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 247000 "available"
+	cpp_inline public explicit_return_type "size_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        return _fill - _pos + r_available();
+    };
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 152408 "WiFiEventCb"
+      visibility package stereotype "typedef" explicit_base_type "void"
+      cpp_decl "${comment}typedef ${type}(* ${name})(system_event_id_t event);
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 152536 "WiFiEventFuncCb"
+      visibility package stereotype "typedef" explicit_base_type "std::function<void(system_event_id_t event, system_event_info_t info)>"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 152664 "WiFiEventSysCb"
+      visibility package stereotype "typedef" explicit_base_type "void"
+      cpp_decl "${comment}typedef ${type}(* ${name})(system_event_t *event);
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 152792 "wifi_event_id_t"
+      visibility package stereotype "typedef" explicit_base_type "size_t"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 152920 "wifi_power_t"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 185048 "WIFI_POWER_19_5dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 78"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185176 "WIFI_POWER_19dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 76"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185304 "WIFI_POWER_18_5dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 74"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185432 "WIFI_POWER_17dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 68"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185560 "WIFI_POWER_15dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 60"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185688 "WIFI_POWER_13dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 52"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185816 "WIFI_POWER_11dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 44"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 185944 "WIFI_POWER_8_5dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 34"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186072 "WIFI_POWER_7dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 28"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186200 "WIFI_POWER_5dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 20"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186328 "WIFI_POWER_2dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " 8"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186456 "WIFI_POWER_MINUS_1dBm"
+	public type class_ref 152920 // wifi_power_t
+	init_value " -4// -1dBm
+"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 153048 "WifiAPlist_t"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 186840 "ssid"
+	public explicit_type "char"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 186968 "passphrase"
+	public explicit_type "char"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 153176 "WiFiMulti"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 234328 "WiFiMulti"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234456 "~WiFiMulti"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234584 "addAP"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "ssid" explicit_type "char"
+	  param in name "passphrase" explicit_type "char"
+	    defaultvalue "NULL"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, const ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 234712 "run"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 1
+	  param in name "connectTimeout" explicit_type "uint32_t"
+	    defaultvalue "5000"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 153176 // APlist (<directional composition>)
+	relation 153176 *-->
+	  stereotype "std::vector"
+	  a role_name "APlist" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 153176 // APlist (<directional composition>)
+	  b parent class_ref 153048 // WifiAPlist_t
+      end
+    end
+
+    class 153304 "typedef2"
+      visibility package stereotype "typedef" explicit_base_type "Server"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 153432 "wl_status_t"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 189016 "WL_NO_SHIELD"
+	public type class_ref 153432 // wl_status_t
+	init_value " 255"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189144 "WL_IDLE_STATUS"
+	public type class_ref 153432 // wl_status_t
+	init_value " 0"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189272 "WL_NO_SSID_AVAIL"
+	public type class_ref 153432 // wl_status_t
+	init_value " 1"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189400 "WL_SCAN_COMPLETED"
+	public type class_ref 153432 // wl_status_t
+	init_value " 2"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189528 "WL_CONNECTED"
+	public type class_ref 153432 // wl_status_t
+	init_value " 3"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189656 "WL_CONNECT_FAILED"
+	public type class_ref 153432 // wl_status_t
+	init_value " 4"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189784 "WL_CONNECTION_LOST"
+	public type class_ref 153432 // wl_status_t
+	init_value " 5"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 189912 "WL_DISCONNECTED"
+	public type class_ref 153432 // wl_status_t
+	init_value " 6
+"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 153560 "typedef3"
+      visibility package stereotype "typedef" explicit_base_type "UDP"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 153688 "WiFiEventCbList"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment " -----------------------------------------------------------------------------------------------------------------------
+ ------------------------------------------------- Generic WiFi function -----------------------------------------------
+ -----------------------------------------------------------------------------------------------------------------------"
+      classrelation 153560 // current_id (<directional composition>)
+	relation 153560 *-->
+	  a role_name "current_id" init_value "= 1" class_relation public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 153560 // current_id (<directional composition>)
+	  b parent class_ref 152792 // wifi_event_id_t
+      end
+
+      classrelation 153688 // id (<directional composition>)
+	relation 153688 *-->
+	  a role_name "id" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 153688 // id (<directional composition>)
+	  b parent class_ref 152792 // wifi_event_id_t
+      end
+
+      classrelation 153816 // cb (<directional composition>)
+	relation 153816 *-->
+	  a role_name "cb" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 153816 // cb (<directional composition>)
+	  b parent class_ref 152408 // WiFiEventCb
+      end
+
+      classrelation 153944 // fcb (<directional composition>)
+	relation 153944 *-->
+	  a role_name "fcb" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 153944 // fcb (<directional composition>)
+	  b parent class_ref 152536 // WiFiEventFuncCb
+      end
+
+      classrelation 154072 // scb (<directional composition>)
+	relation 154072 *-->
+	  a role_name "scb" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 154072 // scb (<directional composition>)
+	  b parent class_ref 152664 // WiFiEventSysCb
+      end
+
+      attribute 191960 "event"
+	public explicit_type "system_event_id_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 247512 "WiFiEventCbList"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract} : id(current_id++), cb(NULL), fcb(NULL), scb(NULL), event(SYSTEM_EVENT_WIFI_READY) {};
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 153816 "WiFiEventCbList_t"
+      visibility package stereotype "typedef" base_type class_ref 153688 // WiFiEventCbList
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+
+  deploymentview 135512 "src"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 138072 "ETH"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 150616 // eth_phy_type_t
+	class_ref 150744 // ETHClass
+      end
+    end
+
+    artifact 138200 "WiFi"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 151128 // WiFiClass
+      end
+    end
+
+    artifact 138328 "WiFiAP"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 151640 // WiFiAPClass
+      end
+    end
+
+    artifact 138456 "WiFiClient"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 152024 // typedef1
+	class_ref 151896 // ESPLwIPClient
+	class_ref 150872 // WiFiClient
+      end
+    end
+
+    artifact 138584 "WiFiGeneric"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 152408 // WiFiEventCb
+	class_ref 152536 // WiFiEventFuncCb
+	class_ref 152664 // WiFiEventSysCb
+	class_ref 152792 // wifi_event_id_t
+	class_ref 152920 // wifi_power_t
+	class_ref 151256 // WiFiGenericClass
+      end
+    end
+
+    artifact 138712 "WiFiMulti"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153048 // WifiAPlist_t
+	class_ref 153176 // WiFiMulti
+      end
+    end
+
+    artifact 138840 "WiFiScan"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 151512 // WiFiScanClass
+      end
+    end
+
+    artifact 138968 "WiFiServer"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153304 // typedef2
+	class_ref 151000 // WiFiServer
+      end
+    end
+
+    artifact 139096 "WiFiSTA"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 151384 // WiFiSTAClass
+      end
+    end
+
+    artifact 139224 "WiFiType"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153432 // wl_status_t
+      end
+    end
+
+    artifact 139352 "WiFiUdp"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153560 // typedef3
+	class_ref 151768 // WiFiUDP
+      end
+    end
+
+    artifact 139480 "WiFiClientRxBuffer"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 152280 // WiFiClientRxBuffer
+      end
+    end
+
+    artifact 139608 "WiFiClientSocketHandle"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 152152 // WiFiClientSocketHandle
+      end
+    end
+
+    artifact 139736 "WiFiEventCbList"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153688 // WiFiEventCbList
+      end
+    end
+
+    artifact 139864 "WiFiEventCbList_t"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 153816 // WiFiEventCbList_t
+      end
+    end
+  end
+end

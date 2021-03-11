@@ -1,0 +1,31 @@
+class BME280Spi
+!!!132696.cpp!!!	setSettings(in settings : BME280Spi::Settings) : void
+   m_settings = settings;
+   BME280::setSettings(settings);
+!!!132824.cpp!!!	getSettings() : BME280Spi::Settings
+   return m_settings;
+!!!132952.cpp!!!	Initialize() : bool
+   pinMode(m_settings.spiCsPin, OUTPUT);
+   digitalWrite(m_settings.spiCsPin, HIGH);
+
+   return BME280::Initialize();
+!!!133208.cpp!!!	WriteRegister(in addr : uint8_t, in data : uint8_t) : bool
+   SPI.beginTransaction(SPISettings(500000,MSBFIRST,SPI_MODE0));
+
+   // bme280 uses the msb to select read and write
+   // combine the addr with the read/write bit
+   uint8_t writeAddr = addr & ~0x80;
+
+   // select the device
+   digitalWrite(m_settings.spiCsPin, LOW);
+
+   // transfer the addr and then the data to spi device
+   SPI.transfer(writeAddr);
+   SPI.transfer(data);
+
+   // de-select the device
+   digitalWrite(m_settings.spiCsPin, HIGH);
+
+   SPI.endTransaction();
+
+   return true;

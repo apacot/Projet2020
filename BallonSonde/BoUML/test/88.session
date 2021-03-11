@@ -1,0 +1,12 @@
+window_sizes 1600 835 408 1186 783 0
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128088 // BME280
+    1186 783 50 A0 0 0
+end
+show_stereotypes
+selected class_ref 142808 // AsyncWebSocket
+open
+  classview_ref 135256 // src
+end
+end

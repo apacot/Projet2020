@@ -1,0 +1,213 @@
+class AsyncWebSocket
+!!!179160.cpp!!!	AsyncWebSocket(in url : String)
+  _eventHandler = NULL;
+!!!179800.cpp!!!	availableForWriteAll() : bool
+  for(const auto& c: _clients){
+    if(c->queueIsFull()) return false;
+  }
+  return true;
+!!!179928.cpp!!!	availableForWrite(in id : uint32_t) : bool
+  for(const auto& c: _clients){
+    if(c->queueIsFull() && (c->id() == id )) return false;
+  }
+  return true;
+!!!180056.cpp!!!	count() : size_t
+  return _clients.count_if([](AsyncWebSocketClient * c){
+    return c->status() == WS_CONNECTED;
+  });
+!!!180184.cpp!!!	client(in id : uint32_t) : AsyncWebSocketClient
+  for(const auto &c: _clients){
+    if(c->id() == id && c->status() == WS_CONNECTED){
+      return c;
+    }
+  }
+  return nullptr;
+!!!180440.cpp!!!	close(in id : uint32_t, in code : uint16_t = 0, in message : char = NULL) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c)
+    c->close(code, message);
+!!!180568.cpp!!!	closeAll(in code : uint16_t = 0, in message : char = NULL) : void
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c->close(code, message);
+  }
+!!!180696.cpp!!!	cleanupClients(in maxClients : uint16_t = DEFAULT_MAX_WS_CLIENTS) : void
+  if (count() > maxClients){
+    _clients.front()->close();
+  }
+!!!180824.cpp!!!	ping(in id : uint32_t, inout data : uint8_t = NULL, in len : size_t = 0) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c)
+    c->ping(data, len);
+!!!180952.cpp!!!	pingAll(inout data : uint8_t = NULL, in len : size_t = 0) : void
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c->ping(data, len);
+  }
+!!!181080.cpp!!!	text(in id : uint32_t, in message : char, in len : size_t) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c)
+    c->text(message, len);
+!!!181208.cpp!!!	text(in id : uint32_t, in message : char) : void
+  text(id, message, strlen(message));
+!!!181336.cpp!!!	text(in id : uint32_t, inout message : uint8_t, in len : size_t) : void
+  text(id, (const char *)message, len);
+!!!181464.cpp!!!	text(in id : uint32_t, inout message : char) : void
+  text(id, message, strlen(message));
+!!!181592.cpp!!!	text(in id : uint32_t, in message : String) : void
+  text(id, message.c_str(), message.length());
+!!!181720.cpp!!!	text(in id : uint32_t, in message : __FlashStringHelper) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c != NULL)
+    c->text(message);
+!!!181848.cpp!!!	textAll(in message : char, in len : size_t) : void
+  AsyncWebSocketMessageBuffer * WSBuffer = makeBuffer((uint8_t *)message, len); 
+    textAll(WSBuffer); 
+!!!181976.cpp!!!	textAll(in message : char) : void
+  textAll(message, strlen(message));
+!!!182104.cpp!!!	textAll(inout message : uint8_t, in len : size_t) : void
+  textAll((const char *)message, len);
+!!!182232.cpp!!!	textAll(inout message : char) : void
+  textAll(message, strlen(message));
+!!!182360.cpp!!!	textAll(in message : String) : void
+  textAll(message.c_str(), message.length());
+!!!182488.cpp!!!	textAll(in message : __FlashStringHelper) : void
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c->text(message);
+  }
+!!!182616.cpp!!!	textAll(inout buffer : AsyncWebSocketMessageBuffer) : void
+  if (!buffer) return;
+  buffer->lock(); 
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED){
+        c->text(buffer);
+    }
+  }
+  buffer->unlock();
+  _cleanBuffers(); 
+!!!182744.cpp!!!	binary(in id : uint32_t, in message : char, in len : size_t) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c)
+    c->binary(message, len);
+!!!182872.cpp!!!	binary(in id : uint32_t, in message : char) : void
+  binary(id, message, strlen(message));
+!!!183000.cpp!!!	binary(in id : uint32_t, inout message : uint8_t, in len : size_t) : void
+  binary(id, (const char *)message, len);
+!!!183128.cpp!!!	binary(in id : uint32_t, inout message : char) : void
+  binary(id, message, strlen(message));
+!!!183256.cpp!!!	binary(in id : uint32_t, in message : String) : void
+  binary(id, message.c_str(), message.length());
+!!!183384.cpp!!!	binary(in id : uint32_t, in message : __FlashStringHelper, in len : size_t) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c != NULL)
+    c-> binary(message, len);
+!!!183512.cpp!!!	binaryAll(in message : char, in len : size_t) : void
+  AsyncWebSocketMessageBuffer * buffer = makeBuffer((uint8_t *)message, len); 
+  binaryAll(buffer); 
+!!!183640.cpp!!!	binaryAll(in message : char) : void
+  binaryAll(message, strlen(message));
+!!!183768.cpp!!!	binaryAll(inout message : uint8_t, in len : size_t) : void
+  binaryAll((const char *)message, len);
+!!!183896.cpp!!!	binaryAll(inout message : char) : void
+  binaryAll(message, strlen(message));
+!!!184024.cpp!!!	binaryAll(in message : String) : void
+  binaryAll(message.c_str(), message.length());
+!!!184152.cpp!!!	binaryAll(in message : __FlashStringHelper, in len : size_t) : void
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c-> binary(message, len);
+  }
+!!!184280.cpp!!!	binaryAll(inout buffer : AsyncWebSocketMessageBuffer) : void
+  if (!buffer) return;
+  buffer->lock(); 
+    for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c->binary(buffer);
+  }
+  buffer->unlock(); 
+  _cleanBuffers(); 
+!!!184408.cpp!!!	message(in id : uint32_t, inout message : AsyncWebSocketMessage) : void
+  AsyncWebSocketClient * c = client(id);
+  if(c)
+    c->message(message);
+!!!184536.cpp!!!	messageAll(inout message : AsyncWebSocketMultiMessage) : void
+  for(const auto& c: _clients){
+    if(c->status() == WS_CONNECTED)
+      c->message(message);
+  }
+  _cleanBuffers(); 
+!!!185432.cpp!!!	_addClient(inout client : AsyncWebSocketClient) : void
+  _clients.add(client);
+!!!185560.cpp!!!	_handleDisconnect(inout client : AsyncWebSocketClient) : void
+  
+  _clients.remove_first([=](AsyncWebSocketClient * c){
+    return c->id() == client->id();
+  });
+!!!185688.cpp!!!	_handleEvent(inout client : AsyncWebSocketClient, in type : AwsEventType, inout arg : void, inout data : uint8_t, in len : size_t) : void
+  if(_eventHandler != NULL){
+    _eventHandler(this, client, type, arg, data, len);
+  }
+!!!185816.cpp!!!	canHandle(inout request : AsyncWebServerRequest) : bool
+  if(!_enabled)
+    return false;
+  
+  if(request->method() != HTTP_GET || !request->url().equals(_url) || !request->isExpectedRequestedConnType(RCT_WS))
+    return false;
+
+  request->addInterestingHeader(WS_STR_CONNECTION);
+  request->addInterestingHeader(WS_STR_UPGRADE);
+  request->addInterestingHeader(WS_STR_ORIGIN);
+  request->addInterestingHeader(WS_STR_VERSION);
+  request->addInterestingHeader(WS_STR_KEY);
+  request->addInterestingHeader(WS_STR_PROTOCOL);
+  return true;
+!!!185944.cpp!!!	handleRequest(inout request : AsyncWebServerRequest) : void
+  if(!request->hasHeader(WS_STR_VERSION) || !request->hasHeader(WS_STR_KEY)){
+    request->send(400);
+    return;
+  }
+  if((_username != "" && _password != "") && !request->authenticate(_username.c_str(), _password.c_str())){
+    return request->requestAuthentication();
+  }
+  AsyncWebHeader* version = request->getHeader(WS_STR_VERSION);
+  if(version->value().toInt() != 13){
+    AsyncWebServerResponse *response = request->beginResponse(400);
+    response->addHeader(WS_STR_VERSION,"13");
+    request->send(response);
+    return;
+  }
+  AsyncWebHeader* key = request->getHeader(WS_STR_KEY);
+  AsyncWebServerResponse *response = new AsyncWebSocketResponse(key->value(), this);
+  if(request->hasHeader(WS_STR_PROTOCOL)){
+    AsyncWebHeader* protocol = request->getHeader(WS_STR_PROTOCOL);
+    //ToDo: check protocol
+    response->addHeader(WS_STR_PROTOCOL, protocol->value());
+  }
+  request->send(response);
+!!!186072.cpp!!!	makeBuffer(in size : size_t = 0) : AsyncWebSocketMessageBuffer
+  AsyncWebSocketMessageBuffer * buffer = new AsyncWebSocketMessageBuffer(size); 
+  if (buffer) {
+    AsyncWebLockGuard l(_lock);
+    _buffers.add(buffer);
+  }
+  return buffer; 
+!!!186200.cpp!!!	makeBuffer(inout data : uint8_t, in size : size_t) : AsyncWebSocketMessageBuffer
+  AsyncWebSocketMessageBuffer * buffer = new AsyncWebSocketMessageBuffer(data, size); 
+  
+  if (buffer) {
+    AsyncWebLockGuard l(_lock);
+    _buffers.add(buffer);
+  }
+
+  return buffer; 
+!!!186328.cpp!!!	_cleanBuffers() : void
+  AsyncWebLockGuard l(_lock);
+
+  for(AsyncWebSocketMessageBuffer * c: _buffers){
+    if(c && c->canDelete()){
+        _buffers.remove(c);
+    }
+  }
+!!!186456.cpp!!!	getClients() : AsyncWebSocket::AsyncWebSocketClientLinkedList
+  return _clients;

@@ -1,0 +1,13 @@
+class AsyncStreamResponse
+!!!217048.cpp!!!	AsyncStreamResponse(inout stream : Stream, in contentType : String, in len : size_t, in callback : AwsTemplateProcessor = nullptr)
+  _code = 200;
+  _content = &stream;
+  _contentLength = len;
+  _contentType = contentType;
+!!!217304.cpp!!!	_fillBuffer(inout data : uint8_t, in len : size_t) : size_t
+  size_t available = _content->available();
+  size_t outLen = (available > len)?len:available;
+  size_t i;
+  for(i=0;i<outLen;i++)
+    data[i] = _content->read();
+  return outLen;

@@ -1,0 +1,13 @@
+class BME280I2C_BRZO
+!!!131928.cpp!!!	setSettings(in settings : BME280I2C_BRZO::Settings) : void
+   m_settings = settings;
+   BME280::setSettings(settings);
+!!!132056.cpp!!!	getSettings() : BME280I2C_BRZO::Settings
+   return m_settings;
+!!!132184.cpp!!!	WriteRegister(in addr : uint8_t, in data : uint8_t) : bool
+    uint8_t bf[2];
+    bf[0] = addr;
+    bf[1] = data;
+    brzo_i2c_start_transaction(m_settings.bme280Addr, m_settings.i2cClockRate);
+    brzo_i2c_write(bf, 2, false);
+    return (brzo_i2c_end_transaction()==0);

@@ -1,0 +1,109 @@
+class AsyncWebServer
+!!!203864.cpp!!!	AsyncWebServer(in port : uint16_t)
+  _catchAllHandler = new AsyncCallbackWebHandler();
+  if(_catchAllHandler == NULL)
+    return;
+  _server.onClient([](void *s, AsyncClient* c){
+    if(c == NULL)
+      return;
+    c->setRxTimeout(3);
+    AsyncWebServerRequest *r = new AsyncWebServerRequest((AsyncWebServer*)s, c);
+    if(r == NULL){
+      c->close(true);
+      c->free();
+      delete c;
+    }
+  }, this);
+!!!203992.cpp!!!	~AsyncWebServer()
+  reset();  
+  end();
+  if(_catchAllHandler) delete _catchAllHandler;
+!!!204120.cpp!!!	begin() : void
+  _server.setNoDelay(true);
+  _server.begin();
+!!!204248.cpp!!!	end() : void
+  _server.end();
+!!!204376.cpp!!!	onSslFileRequest(in cb : AcSSlFileHandler, inout arg : void) : void
+  _server.onSslFileRequest(cb, arg);
+!!!204504.cpp!!!	beginSecure(in cert : char, in key : char, in password : char) : void
+  _server.beginSecure(cert, key, password);
+!!!204632.cpp!!!	addRewrite(inout rewrite : AsyncWebRewrite) : AsyncWebRewrite
+  _rewrites.add(rewrite);
+  return *rewrite;
+!!!204760.cpp!!!	removeRewrite(inout rewrite : AsyncWebRewrite) : bool
+  return _rewrites.remove(rewrite);
+!!!204888.cpp!!!	rewrite(in from : char, in to : char) : AsyncWebRewrite
+  return addRewrite(new AsyncWebRewrite(from, to));
+!!!205016.cpp!!!	addHandler(inout handler : AsyncWebHandler) : AsyncWebHandler
+  _handlers.add(handler);
+  return *handler;
+!!!205144.cpp!!!	removeHandler(inout handler : AsyncWebHandler) : bool
+  return _handlers.remove(handler);
+!!!205272.cpp!!!	on(in uri : char, in onRequest : ArRequestHandlerFunction) : AsyncCallbackWebHandler
+  AsyncCallbackWebHandler* handler = new AsyncCallbackWebHandler();
+  handler->setUri(uri);
+  handler->onRequest(onRequest);
+  addHandler(handler);
+  return *handler;
+!!!205400.cpp!!!	on(in uri : char, in method : WebRequestMethodComposite, in onRequest : ArRequestHandlerFunction) : AsyncCallbackWebHandler
+  AsyncCallbackWebHandler* handler = new AsyncCallbackWebHandler();
+  handler->setUri(uri);
+  handler->setMethod(method);
+  handler->onRequest(onRequest);
+  addHandler(handler);
+  return *handler;
+!!!205528.cpp!!!	on(in uri : char, in method : WebRequestMethodComposite, in onRequest : ArRequestHandlerFunction, in onUpload : ArUploadHandlerFunction) : AsyncCallbackWebHandler
+  AsyncCallbackWebHandler* handler = new AsyncCallbackWebHandler();
+  handler->setUri(uri);
+  handler->setMethod(method);
+  handler->onRequest(onRequest);
+  handler->onUpload(onUpload);
+  addHandler(handler);
+  return *handler;
+!!!205656.cpp!!!	on(in uri : char, in method : WebRequestMethodComposite, in onRequest : ArRequestHandlerFunction, in onUpload : ArUploadHandlerFunction, in onBody : ArBodyHandlerFunction) : AsyncCallbackWebHandler
+  AsyncCallbackWebHandler* handler = new AsyncCallbackWebHandler();
+  handler->setUri(uri);
+  handler->setMethod(method);
+  handler->onRequest(onRequest);
+  handler->onUpload(onUpload);
+  handler->onBody(onBody);
+  addHandler(handler);
+  return *handler;
+!!!205784.cpp!!!	serveStatic(in uri : char, inout fs : fs::FS, in path : char, in cache_control : char = NULL) : AsyncStaticWebHandler
+  AsyncStaticWebHandler* handler = new AsyncStaticWebHandler(uri, fs, path, cache_control);
+  addHandler(handler);
+  return *handler;
+!!!205912.cpp!!!	onNotFound(in fn : ArRequestHandlerFunction) : void
+  _catchAllHandler->onRequest(fn);
+!!!206040.cpp!!!	onFileUpload(in fn : ArUploadHandlerFunction) : void
+  _catchAllHandler->onUpload(fn);
+!!!206168.cpp!!!	onRequestBody(in fn : ArBodyHandlerFunction) : void
+  _catchAllHandler->onBody(fn);
+!!!206296.cpp!!!	reset() : void
+  _rewrites.free();
+  _handlers.free();
+  
+  if (_catchAllHandler != NULL){
+    _catchAllHandler->onRequest(NULL);
+    _catchAllHandler->onUpload(NULL);
+    _catchAllHandler->onBody(NULL);
+  }
+!!!206424.cpp!!!	_handleDisconnect(inout request : AsyncWebServerRequest) : void
+  delete request;
+!!!206552.cpp!!!	_attachHandler(inout request : AsyncWebServerRequest) : void
+  for(const auto& h: _handlers){
+    if (h->filter(request) && h->canHandle(request)){
+      request->setHandler(h);
+      return;
+    }
+  }
+  
+  request->addInterestingHeader("ANY");
+  request->setHandler(_catchAllHandler);
+!!!206680.cpp!!!	_rewriteRequest(inout request : AsyncWebServerRequest) : void
+  for(const auto& r: _rewrites){
+    if (r->match(request)){
+      request->_url = r->toUrl();
+      request->_addGetParams(r->params());
+    }
+  }

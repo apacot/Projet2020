@@ -1,0 +1,65 @@
+class Sigfox
+!!!220120.cpp!!!	Sigfox(in rxPin : uint8_t, in txPin : uint8_t, in debugEn : bool)
+	serialSig = new HardwareSerial(2);
+  rx = rxPin;
+  tx = txPin;
+  debug = debugEn;
+!!!220760.cpp!!!	obtenirTemp(in  : void) : uint16_t
+	serialSig->print("AT$T?\r");
+	uint16_t tempVal = obtenirData().toInt();
+
+	if(debug){
+		Serial.print("Module temperature : ");
+		Serial.println(tempVal);
+	}
+
+	return tempVal;
+!!!220888.cpp!!!	envoyer(in data : void, in size : uint8_t) : bool
+   
+  String status = "";
+  char output;
+
+  uint8_t* bytes = (uint8_t*)data;
+
+  serialSig->print("AT$SF=");
+  if(debug) { Serial.print("Byte : "); }
+  for(uint8_t i= 0; i<size; ++i){
+    serialSig->print(bytes[i] < 16 ? "0" : "");
+    serialSig->print(bytes[i], HEX);
+    
+    if(debug){
+      Serial.print(bytes[i] < 16 ? "0" : "");     
+      Serial.print(bytes[i], HEX);
+    }
+  }
+  if(debug) { Serial.println(" "); }
+  serialSig->print("\r");
+
+  String res = obtenirData();
+
+  if(res.indexOf("OK") >= 0) {
+    Serial.println("Message envoyé avec succès");
+    return true;
+  }
+  
+  if(debug){
+    Serial.print("Status : ");
+    Serial.println(res);
+  }
+  return false;
+!!!221016.cpp!!!	obtenirData(in  : void) : String
+  String data = "";
+  char output;
+
+  while (!serialSig->available()){
+    delay(100);
+  }
+
+  while(serialSig->available()){
+    output = serialSig->read();
+    if ((output != 0x0A) && (output != 0x0D)){       //0x0A Line feed | 0x0D Carriage return
+      data += output;
+      }
+    delay(10);
+  } 
+  return data;  

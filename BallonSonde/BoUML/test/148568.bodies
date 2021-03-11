@@ -1,0 +1,68 @@
+class AsyncBasicResponse
+!!!214872.cpp!!!	AsyncBasicResponse(in code : int, in contentType : String = String(), in content : String = String())
+  _code = code;
+  _content = content;
+  _contentType = contentType;
+  if(_content.length()){
+    _contentLength = _content.length();
+    if(!_contentType.length())
+      _contentType = "text/plain";
+  }
+  addHeader("Connection","close");
+!!!215000.cpp!!!	_respond(inout request : AsyncWebServerRequest) : void
+  _state = RESPONSE_HEADERS;
+  String out = _assembleHead(request->version());
+  size_t outLen = out.length();
+  size_t space = request->client()->space();
+  if(!_contentLength && space >= outLen){
+    _writtenLength += request->client()->write(out.c_str(), outLen);
+    _state = RESPONSE_WAIT_ACK;
+  } else if(_contentLength && space >= outLen + _contentLength){
+    out += _content;
+    outLen += _contentLength;
+    _writtenLength += request->client()->write(out.c_str(), outLen);
+    _state = RESPONSE_WAIT_ACK;
+  } else if(space && space < outLen){
+    String partial = out.substring(0, space);
+    _content = out.substring(space) + _content;
+    _contentLength += outLen - space;
+    _writtenLength += request->client()->write(partial.c_str(), partial.length());
+    _state = RESPONSE_CONTENT;
+  } else if(space > outLen && space < (outLen + _contentLength)){
+    size_t shift = space - outLen;
+    outLen += shift;
+    _sentLength += shift;
+    out += _content.substring(0, shift);
+    _content = _content.substring(shift);
+    _writtenLength += request->client()->write(out.c_str(), outLen);
+    _state = RESPONSE_CONTENT;
+  } else {
+    _content = out + _content;
+    _contentLength += outLen;
+    _state = RESPONSE_CONTENT;
+  }
+!!!215128.cpp!!!	_ack(inout request : AsyncWebServerRequest, in len : size_t, in time : uint32_t) : size_t
+  (void)time;
+  _ackedLength += len;
+  if(_state == RESPONSE_CONTENT){
+    size_t available = _contentLength - _sentLength;
+    size_t space = request->client()->space();
+    //we can fit in this packet
+    if(space > available){
+      _writtenLength += request->client()->write(_content.c_str(), available);
+      _content = String();
+      _state = RESPONSE_WAIT_ACK;
+      return available;
+    }
+    //send some data, the rest on ack
+    String out = _content.substring(0, space);
+    _content = _content.substring(space);
+    _sentLength += space;
+    _writtenLength += request->client()->write(out.c_str(), space);
+    return space;
+  } else if(_state == RESPONSE_WAIT_ACK){
+    if(_ackedLength >= _writtenLength){
+      _state = RESPONSE_END;
+    }
+  }
+  return 0;

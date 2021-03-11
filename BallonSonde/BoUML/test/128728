@@ -1,0 +1,354 @@
+format 222
+"src" // PocketGeiger::src
+  revision 1
+  modified_by 88 "ssabri"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/libraries/PocketGeiger/src/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/libraries/PocketGeiger/src/"
+  classview 128600 "src"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 131160 "RadiationWatch"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 138200 "RadiationWatch"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 2
+	  param in name "signPin" explicit_type "byte"
+	    defaultvalue "2"
+	  param in name "noisePin" explicit_type "byte"
+	    defaultvalue "3"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}:
+    _signPin(signPin), _noisePin(noisePin)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " signPin: Number of the pin to which is connected the signal wire.
+noisePin: Number of the pin ot which is connected the noise wire. "
+      end
+
+      operation 138328 "setup"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 138456 "loop"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 138968 "cpm"
+	preserve_cpp_body_indent public explicit_return_type "double"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Return the number of radiation count by minute."
+      end
+
+      operation 139096 "uSvh"
+	preserve_cpp_body_indent public explicit_return_type "double"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Return the radiation dose, exprimed in Sievert (uSv/h)."
+      end
+
+      operation 139224 "uSvhError"
+	preserve_cpp_body_indent public explicit_return_type "double"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Return the error of the measurement (uSv/h).
+The range of precision of the measurement is:
+[ uSvh-uSvhError, uSvh+uSvhError ]. "
+      end
+
+      attribute 143320 "kAlpha"
+	class_attribute public explicit_type "double"
+	init_value "=  53.032"
+	cpp_constexpr cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 139352 "registerRadiationCallback"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "callback" explicit_type "void (*)(void)"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}void (*${p0})(void)${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Register a function that will be called when a radiation pulse
+is detected. "
+      end
+
+      operation 139480 "registerNoiseCallback"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "callback" explicit_type "void (*)(void)"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}void (*${p0})(void)${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Register a function that will be called when a noise pulse
+is detected. "
+      end
+
+      attribute 143448 "_countHistory"
+	protected explicit_type "uint"
+	multiplicity "[HISTORY_LENGTH]"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${multiplicity}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " History of count rates.
+"
+      end
+
+      attribute 143832 "_count"
+	protected explicit_type "ulong"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Current count (sum of count in _countHistory).
+"
+      end
+
+      attribute 144216 "_signPin"
+	protected explicit_type "byte"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Pin settings.
+"
+      end
+
+      attribute 144344 "_noisePin"
+	protected explicit_type "byte"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 144472 "_radiationCallback"
+	protected explicit_type "// User callbacks. void (*)(void)"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}    // User callbacks.
+    void (*${name})(void)${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " User callbacks.
+"
+      end
+
+      attribute 144600 "_noiseCallback"
+	protected explicit_type "void (*)(void)"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}    void (*${name})(void)${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 144728 "_radiationCount"
+	class_attribute volatile protected explicit_type "int"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " radiation count used in interrupt routine
+"
+      end
+
+      attribute 144856 "_noiseCount"
+	class_attribute volatile protected explicit_type "int"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " noise count used in interrupt routine
+"
+      end
+
+    end
+  end
+
+  deploymentview 128600 "src"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128984 "RadiationWatch"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 131160 // RadiationWatch
+      end
+    end
+  end
+end

@@ -1,0 +1,69 @@
+class AsyncEventSourceClient
+!!!162904.cpp!!!	_queueMessage(inout dataMessage : AsyncEventSourceMessage) : void
+  if(dataMessage == NULL)
+    return;
+  if(!connected()){
+    delete dataMessage;
+    return;
+  }
+  if(_messageQueue.length() >= SSE_MAX_QUEUED_MESSAGES){
+      ets_printf("ERROR: Too many messages queued\n");
+      delete dataMessage;
+  } else {
+      _messageQueue.add(dataMessage);
+  }
+  if(_client->canSend())
+    _runQueue();
+!!!163032.cpp!!!	_runQueue() : void
+  while(!_messageQueue.isEmpty() && _messageQueue.front()->finished()){
+    _messageQueue.remove(_messageQueue.front());
+  }
+
+  for(auto i = _messageQueue.begin(); i != _messageQueue.end(); ++i)
+  {
+    if(!(*i)->sent())
+      (*i)->send(_client);
+  }
+!!!163160.cpp!!!	AsyncEventSourceClient(inout request : AsyncWebServerRequest, inout server : AsyncEventSource)
+  _client = request->client();
+  _server = server;
+  _lastId = 0;
+  if(request->hasHeader("Last-Event-ID"))
+    _lastId = atoi(request->getHeader("Last-Event-ID")->value().c_str());
+    
+  _client->setRxTimeout(0);
+  _client->onError(NULL, NULL);
+  _client->onAck([](void *r, AsyncClient* c, size_t len, uint32_t time){ (void)c; ((AsyncEventSourceClient*)(r))->_onAck(len, time); }, this);
+  _client->onPoll([](void *r, AsyncClient* c){ (void)c; ((AsyncEventSourceClient*)(r))->_onPoll(); }, this);
+  _client->onData(NULL, NULL);
+  _client->onTimeout([this](void *r, AsyncClient* c __attribute__((unused)), uint32_t time){ ((AsyncEventSourceClient*)(r))->_onTimeout(time); }, this);
+  _client->onDisconnect([this](void *r, AsyncClient* c){ ((AsyncEventSourceClient*)(r))->_onDisconnect(); delete c; }, this);
+
+  _server->_addClient(this);
+  delete request;
+!!!163288.cpp!!!	~AsyncEventSourceClient()
+   _messageQueue.free();
+  close();
+!!!163544.cpp!!!	close() : void
+  if(_client != NULL)
+    _client->close();
+!!!163672.cpp!!!	write(in message : char, in len : size_t) : void
+  _queueMessage(new AsyncEventSourceMessage(message, len));
+!!!163800.cpp!!!	send(in message : char, in event : char = NULL, in id : uint32_t = 0, in reconnect : uint32_t = 0) : void
+  String ev = generateEventMessage(message, event, id, reconnect);
+  _queueMessage(new AsyncEventSourceMessage(ev.c_str(), ev.length()));
+!!!164312.cpp!!!	_onAck(in len : size_t, in time : uint32_t) : void
+  while(len && !_messageQueue.isEmpty()){
+    len = _messageQueue.front()->ack(len, time);
+    if(_messageQueue.front()->finished())
+      _messageQueue.remove(_messageQueue.front());
+  }
+
+  _runQueue();
+!!!164440.cpp!!!	_onPoll() : void
+  if(!_messageQueue.isEmpty()){
+    _runQueue();
+  }
+!!!164696.cpp!!!	_onDisconnect() : void
+  _client = NULL;
+  _server->_handleDisconnect(this);

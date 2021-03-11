@@ -1,0 +1,130 @@
+class WiFiScanClass
+!!!234840.cpp!!!	scanNetworks(in async : bool = false, in show_hidden : bool = false, in passive : bool = false, in max_ms_per_chan : uint32_t = 300) : int16_t
+    if(WiFiGenericClass::getStatusBits() & WIFI_SCANNING_BIT) {
+        return WIFI_SCAN_RUNNING;
+    }
+
+    WiFiScanClass::_scanTimeout = max_ms_per_chan * 20;
+    WiFiScanClass::_scanAsync = async;
+
+    WiFi.enableSTA(true);
+
+    scanDelete();
+
+    wifi_scan_config_t config;
+    config.ssid = 0;
+    config.bssid = 0;
+    config.channel = 0;
+    config.show_hidden = show_hidden;
+    if(passive){
+        config.scan_type = WIFI_SCAN_TYPE_PASSIVE;
+        config.scan_time.passive = max_ms_per_chan;
+    } else {
+        config.scan_type = WIFI_SCAN_TYPE_ACTIVE;
+        config.scan_time.active.min = 100;
+        config.scan_time.active.max = max_ms_per_chan;
+    }
+    if(esp_wifi_scan_start(&config, false) == ESP_OK) {
+        _scanStarted = millis();
+        if (!_scanStarted) { //Prevent 0 from millis overflow
+	    ++_scanStarted;
+	}
+
+        WiFiGenericClass::clearStatusBits(WIFI_SCAN_DONE_BIT);
+        WiFiGenericClass::setStatusBits(WIFI_SCANNING_BIT);
+
+        if(WiFiScanClass::_scanAsync) {
+            return WIFI_SCAN_RUNNING;
+        }
+        if(WiFiGenericClass::waitStatusBits(WIFI_SCAN_DONE_BIT, 10000)){
+            return (int16_t) WiFiScanClass::_scanCount;
+        }
+    }
+    return WIFI_SCAN_FAILED;
+!!!234968.cpp!!!	scanComplete() : int16_t
+    if (WiFiScanClass::_scanStarted && (millis()-WiFiScanClass::_scanStarted) > WiFiScanClass::_scanTimeout) { //Check is scan was started and if the delay expired, return WIFI_SCAN_FAILED in this case 
+    	WiFiGenericClass::clearStatusBits(WIFI_SCANNING_BIT);
+	return WIFI_SCAN_FAILED;
+    }
+
+    if(WiFiGenericClass::getStatusBits() & WIFI_SCAN_DONE_BIT) {
+        return WiFiScanClass::_scanCount;
+    }
+
+    if(WiFiGenericClass::getStatusBits() & WIFI_SCANNING_BIT) {
+        return WIFI_SCAN_RUNNING;
+    }
+
+    return WIFI_SCAN_FAILED;
+!!!235096.cpp!!!	scanDelete() : void
+    WiFiGenericClass::clearStatusBits(WIFI_SCAN_DONE_BIT);
+    if(WiFiScanClass::_scanResult) {
+        delete[] reinterpret_cast<wifi_ap_record_t*>(WiFiScanClass::_scanResult);
+        WiFiScanClass::_scanResult = 0;
+        WiFiScanClass::_scanCount = 0;
+    }
+!!!235224.cpp!!!	getNetworkInfo(in i : uint8_t, inout ssid : String, inout encType : uint8_t, inout rssi : int32_t, inout bssid : uint8_t, inout channel : int32_t) : bool
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return false;
+    }
+    ssid = (const char*) it->ssid;
+    encType = it->authmode;
+    rssi = it->rssi;
+    bssid = it->bssid;
+    channel = it->primary;
+    return true;
+!!!235352.cpp!!!	SSID(in i : uint8_t) : String
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return String();
+    }
+    return String(reinterpret_cast<const char*>(it->ssid));
+!!!235480.cpp!!!	encryptionType(in i : uint8_t) : wifi_auth_mode_t
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return WIFI_AUTH_OPEN;
+    }
+    return it->authmode;
+!!!235608.cpp!!!	RSSI(in i : uint8_t) : int32_t
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return 0;
+    }
+    return it->rssi;
+!!!235736.cpp!!!	BSSID(in i : uint8_t) : uint8_t
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return 0;
+    }
+    return it->bssid;
+!!!235864.cpp!!!	BSSIDstr(in i : uint8_t) : String
+    char mac[18] = { 0 };
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return String();
+    }
+    sprintf(mac, "%02X:%02X:%02X:%02X:%02X:%02X", it->bssid[0], it->bssid[1], it->bssid[2], it->bssid[3], it->bssid[4], it->bssid[5]);
+    return String(mac);
+!!!235992.cpp!!!	channel(in i : uint8_t) : int32_t
+    wifi_ap_record_t* it = reinterpret_cast<wifi_ap_record_t*>(_getScanInfoByIndex(i));
+    if(!it) {
+        return 0;
+    }
+    return it->primary;
+!!!236248.cpp!!!	_scanDone() : void
+    esp_wifi_scan_get_ap_num(&(WiFiScanClass::_scanCount));
+    if(WiFiScanClass::_scanCount) {
+        WiFiScanClass::_scanResult = new wifi_ap_record_t[WiFiScanClass::_scanCount];
+        if(!WiFiScanClass::_scanResult || esp_wifi_scan_get_ap_records(&(WiFiScanClass::_scanCount), (wifi_ap_record_t*)_scanResult) != ESP_OK) {
+            WiFiScanClass::_scanCount = 0;
+        }
+    }
+    WiFiScanClass::_scanStarted=0; //Reset after a scan is completed for normal behavior
+    WiFiGenericClass::setStatusBits(WIFI_SCAN_DONE_BIT);
+    WiFiGenericClass::clearStatusBits(WIFI_SCANNING_BIT);
+!!!236376.cpp!!!	_getScanInfoByIndex(in i : int) : void
+    if(!WiFiScanClass::_scanResult || (size_t) i >= WiFiScanClass::_scanCount) {
+        return 0;
+    }
+    return reinterpret_cast<wifi_ap_record_t*>(WiFiScanClass::_scanResult) + i;

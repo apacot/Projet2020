@@ -1,0 +1,2160 @@
+format 222
+"src" // AsyncTCP::src
+  revision 1
+  modified_by 88 "apacot"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/libraries/AsyncTCP/src/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/libraries/AsyncTCP/src/"
+  classview 135128 "src"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 138200 "AsyncClient"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 151256 "AsyncClient"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 151384 "~AsyncClient"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 151512 "operator ="
+	public return_type class_ref 138200 // AsyncClient
+	nparams 1
+	  param in name "other" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 151640 "operator +="
+	public return_type class_ref 138200 // AsyncClient
+	nparams 1
+	  param in name "other" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 151768 "operator =="
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "other" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 151896 "operator !="
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param in name "other" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+      return !(*this == other);
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 152024 "connect"
+	public explicit_return_type "bool"
+	nparams 2
+	  param in name "ip" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 152152 "connect"
+	public explicit_return_type "bool"
+	nparams 2
+	  param in name "host" explicit_type "char"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 152280 "close"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "now" explicit_type "bool"
+	    defaultvalue "false"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 152408 "stop"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Public Helper Methods
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 152536 "abort"
+	public explicit_return_type "int8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 152664 "free"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 152792 "canSend"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 152920 "space"
+	public explicit_return_type "size_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "ack is not pending"
+      end
+
+      operation 153048 "add"
+	public explicit_return_type "size_t"
+	nparams 3
+	  param in name "data" explicit_type "char"
+	  param in name "size" explicit_type "size_t"
+	  param in name "apiflags" explicit_type "uint8_t"
+	    defaultvalue "ASYNC_WRITE_FLAG_COPY"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "space available in the TCP window"
+      end
+
+      operation 153176 "send"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "add for sending"
+      end
+
+      operation 153304 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 1
+	  param in name "data" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "send all data added with the method above
+write equals add()+send()"
+      end
+
+      operation 153432 "write"
+	preserve_cpp_body_indent public explicit_return_type "size_t"
+	nparams 3
+	  param in name "data" explicit_type "char"
+	  param in name "size" explicit_type "size_t"
+	  param in name "apiflags" explicit_type "uint8_t"
+	    defaultvalue "ASYNC_WRITE_FLAG_COPY"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 153560 "state"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "only when canSend() == true"
+      end
+
+      operation 153688 "connecting"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 153816 "connected"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 153944 "disconnecting"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154072 "disconnected"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154200 "freeable"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154328 "getMss"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "disconnected or disconnecting"
+      end
+
+      operation 154456 "getRxTimeout"
+	preserve_cpp_body_indent public explicit_return_type "uint32_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154584 "setRxTimeout"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "timeout" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154712 "getAckTimeout"
+	preserve_cpp_body_indent public explicit_return_type "uint32_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "no RX data timeout for the connection in seconds"
+      end
+
+      operation 154840 "setAckTimeout"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "timeout" explicit_type "uint32_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 154968 "setNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "nodelay" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "no ACK timeout for the last sent packet in milliseconds"
+      end
+
+      operation 155096 "getNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155224 "getRemoteAddress"
+	preserve_cpp_body_indent public explicit_return_type "uint32_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155352 "getRemotePort"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155480 "getLocalAddress"
+	preserve_cpp_body_indent public explicit_return_type "uint32_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155608 "getLocalPort"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155736 "remoteIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "compatibility"
+      end
+
+      operation 155864 "remotePort"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 155992 "localIP"
+	preserve_cpp_body_indent public explicit_return_type "IPAddress"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 156120 "localPort"
+	preserve_cpp_body_indent public explicit_return_type "uint16_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 156248 "onConnect"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138328 // AcConnectHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 156376 "onDisconnect"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138328 // AcConnectHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "on successful connect"
+      end
+
+      operation 156504 "onAck"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138456 // AcAckHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "disconnected"
+      end
+
+      operation 156632 "onError"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138584 // AcErrorHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "ack received"
+      end
+
+      operation 156760 "onData"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138712 // AcDataHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "unsuccessful connect or error"
+      end
+
+      operation 156888 "onPacket"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138840 // AcPacketHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "data received (called if onPacket is not used)"
+      end
+
+      operation 157016 "onTimeout"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138968 // AcTimeoutHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "data received"
+      end
+
+      operation 157144 "onPoll"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138328 // AcConnectHandler
+	  param inout name "arg" explicit_type "void"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "ack timeout"
+      end
+
+      operation 157272 "ackPacket"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "pb" explicit_type "pbuf"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "every 125ms when connected"
+      end
+
+      operation 157400 "ack"
+	public explicit_return_type "size_t"
+	nparams 1
+	  param in name "len" explicit_type "size_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment "ack pbuf from onPacket"
+      end
+
+      operation 157528 "ackLater"
+	cpp_inline public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} { _ack_pcb = false; };
+"
+	
+	
+	
+	
+	comment "ack data that you have not acked using the method below"
+      end
+
+      operation 157656 "errorToString"
+	preserve_cpp_body_indent constvalue public explicit_return_type "char"
+	nparams 1
+	  param in name "error" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "will not ack the current packet. Call from onData"
+      end
+
+      operation 157784 "stateToString"
+	preserve_cpp_body_indent constvalue public explicit_return_type "char"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 157912 "_s_poll"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "Do not use any of the functions below!"
+      end
+
+      operation 158040 "_s_recv"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 4
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param inout name "pb" explicit_type "pbuf"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} * ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158168 "_s_fin"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158296 "_s_lwip_fin"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158424 "_s_error"
+	class_operation preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param inout name "arg" explicit_type "void"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158552 "_s_sent"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "len" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158680 "_s_connected"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "void"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158808 "_s_dns_found"
+	class_operation preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 3
+	  param in name "name" explicit_type "char"
+	  param inout name "ipaddr" explicit_type "ip_addr"
+	  param inout name "arg" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} * ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//Static Callbacks (LwIP C2C++ interconnect)
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} * ${p0}, ${t1} * ${p1}, ${t2} * ${p2}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 158936 "_recv"
+	public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param inout name "pb" explicit_type "pbuf"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159064 "pcb"
+	cpp_inline public explicit_return_type "tcp_pcb"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract} { return _pcb; };
+"
+	
+	
+	
+	
+      end
+
+      attribute 153432 "_pcb"
+	protected explicit_type "tcp_pcb"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 153560 "_closed_slot"
+	protected explicit_type "int8_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138200 // _connect_cb (<directional composition>)
+	relation 138200 *-->
+	  a role_name "_connect_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138200 // _connect_cb (<directional composition>)
+	  b parent class_ref 138328 // AcConnectHandler
+      end
+
+      attribute 153688 "_connect_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138328 // _discard_cb (<directional composition>)
+	relation 138328 *-->
+	  a role_name "_discard_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138328 // _discard_cb (<directional composition>)
+	  b parent class_ref 138328 // AcConnectHandler
+      end
+
+      attribute 153816 "_discard_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138456 // _sent_cb (<directional composition>)
+	relation 138456 *-->
+	  a role_name "_sent_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138456 // _sent_cb (<directional composition>)
+	  b parent class_ref 138456 // AcAckHandler
+      end
+
+      attribute 153944 "_sent_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138584 // _error_cb (<directional composition>)
+	relation 138584 *-->
+	  a role_name "_error_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138584 // _error_cb (<directional composition>)
+	  b parent class_ref 138584 // AcErrorHandler
+      end
+
+      attribute 154072 "_error_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138712 // _recv_cb (<directional composition>)
+	relation 138712 *-->
+	  a role_name "_recv_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138712 // _recv_cb (<directional composition>)
+	  b parent class_ref 138712 // AcDataHandler
+      end
+
+      attribute 154200 "_recv_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138840 // _pb_cb (<directional composition>)
+	relation 138840 *-->
+	  a role_name "_pb_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138840 // _pb_cb (<directional composition>)
+	  b parent class_ref 138840 // AcPacketHandler
+      end
+
+      attribute 154328 "_pb_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138968 // _timeout_cb (<directional composition>)
+	relation 138968 *-->
+	  a role_name "_timeout_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 138968 // _timeout_cb (<directional composition>)
+	  b parent class_ref 138968 // AcTimeoutHandler
+      end
+
+      attribute 154456 "_timeout_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 139096 // _poll_cb (<directional composition>)
+	relation 139096 *-->
+	  a role_name "_poll_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 139096 // _poll_cb (<directional composition>)
+	  b parent class_ref 138328 // AcConnectHandler
+      end
+
+      attribute 154584 "_poll_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154712 "_pcb_busy"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154840 "_pcb_sent_at"
+	protected explicit_type "uint32_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154968 "_ack_pcb"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155096 "_rx_ack_len"
+	protected explicit_type "uint32_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155224 "_rx_last_packet"
+	protected explicit_type "uint32_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155352 "_rx_since_timeout"
+	protected explicit_type "uint32_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155480 "_ack_timeout"
+	protected explicit_type "uint32_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155608 "_connect_port"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 159192 "_close"
+	protected explicit_return_type "int8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159320 "_free_closed_slot"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159448 "_allocate_closed_slot"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159576 "_connected"
+	protected explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "pcb" explicit_type "void"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159704 "_error"
+	protected explicit_return_type "void"
+	nparams 1
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159832 "_poll"
+	protected explicit_return_type "int8_t"
+	nparams 1
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 159960 "_sent"
+	protected explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "len" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 160088 "_fin"
+	protected explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 160216 "_lwip_fin"
+	protected explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 160344 "_dns_found"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "ipaddr" explicit_type "ip_addr"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      classrelation 139224 // prev (<unidirectional association>)
+	relation 139224 --->
+	  a role_name "prev" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 139224 // prev (<unidirectional association>)
+	  b parent class_ref 138200 // AsyncClient
+      end
+
+      classrelation 139352 // next (<unidirectional association>)
+	relation 139352 --->
+	  a role_name "next" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 139352 // next (<unidirectional association>)
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138328 "AcConnectHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137432 // <dependency>
+	relation 137432 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 137432 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138456 "AcAckHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*,size_t len,uint32_t time)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137560 // <dependency>
+	relation 137560 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 137560 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138584 "AcErrorHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*,int8_t error)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137688 // <dependency>
+	relation 137688 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 137688 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138712 "AcDataHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*,void*data,size_t len)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137816 // <dependency>
+	relation 137816 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 137816 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138840 "AcPacketHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*,struct pbuf*pb)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137944 // <dependency>
+	relation 137944 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 137944 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 138968 "AcTimeoutHandler"
+      visibility package stereotype "typedef" base_type class_ref 138200 // AsyncClient
+      cpp_decl "${comment}typedef std::function<void(void*,${type}*,uint32_t time)> ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 138072 // <dependency>
+	relation 138072 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 138072 // <dependency>
+	  b parent class_ref 138200 // AsyncClient
+      end
+    end
+
+    class 139096 "AsyncServer"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 160472 "AsyncServer"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 2
+	  param in name "addr" explicit_type "IPAddress"
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "//Async TCP Server
+//
+
+${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}
+: _port(port)
+, _addr(addr)
+, _noDelay(false)
+, _pcb(0)
+, _connect_cb(0)
+, _connect_cb_arg(0)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 160600 "AsyncServer"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "port" explicit_type "uint16_t"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}${)}
+: _port(port)
+, _addr((uint32_t) IPADDR_ANY)
+, _noDelay(false)
+, _pcb(0)
+, _connect_cb(0)
+, _connect_cb_arg(0)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 160728 "~AsyncServer"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 160856 "onClient"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "cb" type class_ref 138328 // AcConnectHandler
+	  param inout name "arg" explicit_type "void"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 160984 "begin"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 161112 "end"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 161240 "setNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "nodelay" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 161368 "getNoDelay"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 161496 "status"
+	preserve_cpp_body_indent public explicit_return_type "uint8_t"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 161624 "_s_accept"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 3
+	  param inout name "arg" explicit_type "void"
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment "Do not use any of the functions below!"
+      end
+
+      operation 161752 "_s_accepted"
+	class_operation preserve_cpp_body_indent public explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "arg" explicit_type "void"
+	  param inout name "client" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 155736 "_port"
+	protected explicit_type "uint16_t"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155864 "_addr"
+	protected explicit_type "IPAddress"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155992 "_noDelay"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 156120 "_pcb"
+	protected explicit_type "tcp_pcb"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 139480 // _connect_cb (<directional composition>)
+	relation 139480 *-->
+	  a role_name "_connect_cb" protected
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 139480 // _connect_cb (<directional composition>)
+	  b parent class_ref 138328 // AcConnectHandler
+      end
+
+      attribute 156248 "_connect_cb_arg"
+	protected explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 161880 "_accept"
+	preserve_cpp_body_indent protected explicit_return_type "int8_t"
+	nparams 2
+	  param inout name "pcb" explicit_type "tcp_pcb"
+	  param in name "err" explicit_type "int8_t"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//runs on LwIP thread
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 162008 "_accepted"
+	preserve_cpp_body_indent protected explicit_return_type "int8_t"
+	nparams 1
+	  param inout name "client" type class_ref 138200 // AsyncClient
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 139224 "lwip_event_t"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "TCP/IP Event Task
+"
+      attribute 156376 "LWIP_TCP_SENT"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 156504 "LWIP_TCP_RECV"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 156632 "LWIP_TCP_FIN"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 156760 "LWIP_TCP_ERROR"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 156888 "LWIP_TCP_POLL"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157016 "LWIP_TCP_CLEAR"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157144 "LWIP_TCP_ACCEPT"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157272 "LWIP_TCP_CONNECTED"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157400 "LWIP_TCP_DNS"
+	public type class_ref 139224 // lwip_event_t
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 139352 "lwip_event_packet_t"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 139608 // event (<directional composition>)
+	relation 139608 *-->
+	  a role_name "event" public
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 139608 // event (<directional composition>)
+	  b parent class_ref 139224 // lwip_event_t
+      end
+
+      attribute 157528 "arg"
+	public explicit_type "void"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157656 "connected"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        void * pcb;
+                        int8_t err;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157784 "error"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        int8_t err;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 157912 "sent"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        tcp_pcb * pcb;
+                        uint16_t len;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 158040 "recv"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        tcp_pcb * pcb;
+                        pbuf * pb;
+                        int8_t err;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 158168 "fin"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        tcp_pcb * pcb;
+                        int8_t err;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 158296 "poll"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        tcp_pcb * pcb;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 158424 "accept"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        AsyncClient * client;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 158552 "dns"
+	public explicit_type "<complex type>"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}struct  {
+                        const char * name;
+                        ip_addr_t addr;
+                } ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+  end
+
+  deploymentview 135128 "src"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 135640 "AsyncTCP"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 138328 // AcConnectHandler
+	class_ref 138456 // AcAckHandler
+	class_ref 138584 // AcErrorHandler
+	class_ref 138712 // AcDataHandler
+	class_ref 138840 // AcPacketHandler
+	class_ref 138968 // AcTimeoutHandler
+	class_ref 138200 // AsyncClient
+	class_ref 139096 // AsyncServer
+      end
+    end
+
+    artifact 135768 "lwip_event_t"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 139224 // lwip_event_t
+      end
+    end
+
+    artifact 135896 "lwip_event_packet_t"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 139352 // lwip_event_packet_t
+      end
+    end
+  end
+end

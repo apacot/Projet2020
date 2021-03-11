@@ -1,0 +1,36 @@
+format 222
+"PocketGeiger" // PocketGeiger
+  revision 1
+  modified_by 88 "ssabri"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/libraries/PocketGeiger/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/libraries/PocketGeiger/"
+  package_ref 128728 // src
+end

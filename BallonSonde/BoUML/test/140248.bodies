@@ -1,0 +1,12 @@
+class AsyncEventSourceResponse
+!!!166360.cpp!!!	AsyncEventSourceResponse(inout server : AsyncEventSource)
+  _server = server;
+  _code = 200;
+  _contentType = "text/event-stream";
+  _sendContentLength = false;
+  addHeader("Cache-Control", "no-cache");
+  addHeader("Connection","keep-alive");
+!!!166488.cpp!!!	_respond(inout request : AsyncWebServerRequest) : void
+  String out = _assembleHead(request->version());
+  request->client()->write(out.c_str(), _headLength);
+  _state = RESPONSE_WAIT_ACK;

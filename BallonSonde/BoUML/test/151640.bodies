@@ -1,0 +1,173 @@
+class WiFiAPClass
+!!!223832.cpp!!!	softAP(in ssid : char, in passphrase : char = NULL, in channel : int = 1, in ssid_hidden : int = 0, in max_connection : int = 4) : bool
+
+    if(!WiFi.enableAP(true)) {
+        // enable AP failed
+        log_e("enable AP first!");
+        return false;
+    }
+
+    if(!ssid || *ssid == 0) {
+        // fail SSID missing
+        log_e("SSID missing!");
+        return false;
+    }
+
+    if(passphrase && (strlen(passphrase) > 0 && strlen(passphrase) < 8)) {
+        // fail passphrase too short
+        log_e("passphrase too short!");
+        return false;
+    }
+
+    esp_wifi_start();
+
+    wifi_config_t conf;
+    strlcpy(reinterpret_cast<char*>(conf.ap.ssid), ssid, sizeof(conf.ap.ssid));
+    conf.ap.channel = channel;
+    conf.ap.ssid_len = strlen(reinterpret_cast<char *>(conf.ap.ssid));
+    conf.ap.ssid_hidden = ssid_hidden;
+    conf.ap.max_connection = max_connection;
+    conf.ap.beacon_interval = 100;
+
+    if(!passphrase || strlen(passphrase) == 0) {
+        conf.ap.authmode = WIFI_AUTH_OPEN;
+        *conf.ap.password = 0;
+    } else {
+        conf.ap.authmode = WIFI_AUTH_WPA2_PSK;
+        strlcpy(reinterpret_cast<char*>(conf.ap.password), passphrase, sizeof(conf.ap.password));
+    }
+
+    wifi_config_t conf_current;
+    esp_wifi_get_config(WIFI_IF_AP, &conf_current);
+    if(!softap_config_equal(conf, conf_current) && esp_wifi_set_config(WIFI_IF_AP, &conf) != ESP_OK) {
+        return false;
+    }
+
+    return true;
+!!!223960.cpp!!!	softAPConfig(in local_ip : IPAddress, in gateway : IPAddress, in subnet : IPAddress) : bool
+
+    if(!WiFi.enableAP(true)) {
+        // enable AP failed
+        return false;
+    }
+
+    esp_wifi_start();
+
+    tcpip_adapter_ip_info_t info;
+    info.ip.addr = static_cast<uint32_t>(local_ip);
+    info.gw.addr = static_cast<uint32_t>(gateway);
+    info.netmask.addr = static_cast<uint32_t>(subnet);
+    tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP);
+    if(tcpip_adapter_set_ip_info(TCPIP_ADAPTER_IF_AP, &info) == ESP_OK) {
+        dhcps_lease_t lease;
+        lease.enable = true;
+        lease.start_ip.addr = static_cast<uint32_t>(local_ip) + (1 << 24);
+        lease.end_ip.addr = static_cast<uint32_t>(local_ip) + (11 << 24);
+
+        tcpip_adapter_dhcps_option(
+            (tcpip_adapter_option_mode_t)TCPIP_ADAPTER_OP_SET,
+            (tcpip_adapter_option_id_t)REQUESTED_IP_ADDRESS,
+            (void*)&lease, sizeof(dhcps_lease_t)
+        );
+
+        return tcpip_adapter_dhcps_start(TCPIP_ADAPTER_IF_AP) == ESP_OK;
+    }
+    return false;
+!!!224088.cpp!!!	softAPdisconnect(in wifioff : bool = false) : bool
+    bool ret;
+    wifi_config_t conf;
+
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return ESP_ERR_INVALID_STATE;
+    }
+
+    *conf.ap.ssid     = 0;
+    *conf.ap.password = 0;
+    conf.ap.authmode  = WIFI_AUTH_OPEN; // auth must be open if pass=0   
+    ret = esp_wifi_set_config(WIFI_IF_AP, &conf) == ESP_OK;
+
+    if(wifioff) {
+        ret = WiFi.enableAP(false) == ESP_OK;
+    }
+
+    return ret;
+!!!224216.cpp!!!	softAPgetStationNum() : uint8_t
+    wifi_sta_list_t clients;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return 0;
+    }
+    if(esp_wifi_ap_get_sta_list(&clients) == ESP_OK) {
+        return clients.num;
+    }
+    return 0;
+!!!224344.cpp!!!	softAPIP() : IPAddress
+    tcpip_adapter_ip_info_t ip;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_AP, &ip);
+    return IPAddress(ip.ip.addr);
+!!!224472.cpp!!!	softAPBroadcastIP() : IPAddress
+    tcpip_adapter_ip_info_t ip;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_AP, &ip);
+    return WiFiGenericClass::calculateBroadcast(IPAddress(ip.gw.addr), IPAddress(ip.netmask.addr));
+!!!224600.cpp!!!	softAPNetworkID() : IPAddress
+    tcpip_adapter_ip_info_t ip;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPAddress();
+    }
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_AP, &ip);
+    return WiFiGenericClass::calculateNetworkID(IPAddress(ip.gw.addr), IPAddress(ip.netmask.addr));
+!!!224728.cpp!!!	softAPSubnetCIDR() : uint8_t
+    tcpip_adapter_ip_info_t ip;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return (uint8_t)0;
+    }
+    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_AP, &ip);
+    return WiFiGenericClass::calculateSubnetCIDR(IPAddress(ip.netmask.addr));
+!!!224856.cpp!!!	softAPenableIpV6() : bool
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return false;
+    }
+    return tcpip_adapter_create_ip6_linklocal(TCPIP_ADAPTER_IF_AP) == ESP_OK;
+!!!224984.cpp!!!	softAPIPv6() : IPv6Address
+    static ip6_addr_t addr;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return IPv6Address();
+    }
+    if(tcpip_adapter_get_ip6_linklocal(TCPIP_ADAPTER_IF_AP, &addr)) {
+        return IPv6Address();
+    }
+    return IPv6Address(addr.addr);
+!!!225112.cpp!!!	softAPgetHostname() : char
+    const char * hostname = NULL;
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return hostname;
+    }
+    if(tcpip_adapter_get_hostname(TCPIP_ADAPTER_IF_AP, &hostname)) {
+        return hostname;
+    }
+    return hostname;
+!!!225240.cpp!!!	softAPsetHostname(in hostname : char) : bool
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return false;
+    }
+    return tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_AP, hostname) == ESP_OK;
+!!!225368.cpp!!!	softAPmacAddress(inout mac : uint8_t) : uint8_t
+    if(WiFiGenericClass::getMode() != WIFI_MODE_NULL){
+        esp_wifi_get_mac(WIFI_IF_AP, mac);
+    }
+    return mac;
+!!!225496.cpp!!!	softAPmacAddress(in  : void) : String
+    uint8_t mac[6];
+    char macStr[18] = { 0 };
+    if(WiFiGenericClass::getMode() == WIFI_MODE_NULL){
+        return String();
+    }
+    esp_wifi_get_mac(WIFI_IF_AP, mac);
+
+    sprintf(macStr, "%02X:%02X:%02X:%02X:%02X:%02X", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+    return String(macStr);

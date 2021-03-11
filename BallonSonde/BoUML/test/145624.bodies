@@ -1,0 +1,23 @@
+class AsyncResponseStream
+!!!218584.cpp!!!	AsyncResponseStream(in contentType : String, in bufferSize : size_t)
+  _code = 200;
+  _contentLength = 0;
+  _contentType = contentType;
+  _content = new cbuf(bufferSize);
+!!!218712.cpp!!!	~AsyncResponseStream()
+  delete _content;
+!!!218968.cpp!!!	_fillBuffer(inout buf : uint8_t, in maxLen : size_t) : size_t
+  return _content->read((char*)buf, maxLen);
+!!!219096.cpp!!!	write(in data : uint8_t, in len : size_t) : size_t
+  if(_started())
+    return 0;
+
+  if(len > _content->room()){
+    size_t needed = len - _content->room();
+    _content->resizeAdd(needed);
+  }
+  size_t written = _content->write((const char*)data, len);
+  _contentLength += written;
+  return written;
+!!!219224.cpp!!!	write(in data : uint8_t) : size_t
+  return write(&data, 1);

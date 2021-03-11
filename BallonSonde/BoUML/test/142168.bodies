@@ -1,0 +1,68 @@
+class AsyncWebSocketMessageBuffer
+!!!169816.cpp!!!	AsyncWebSocketMessageBuffer()
+
+!!!169944.cpp!!!	AsyncWebSocketMessageBuffer(in size : size_t)
+  _data = new uint8_t[_len + 1]; 
+
+  if (_data) {
+    _data[_len] = 0; 
+  }
+  
+!!!170072.cpp!!!	AsyncWebSocketMessageBuffer(inout data : uint8_t, in size : size_t)
+
+  if (!data) {
+    return; 
+  }
+
+  _data = new uint8_t[_len + 1];
+
+  if (_data) {
+    memcpy(_data, data, _len);
+    _data[_len] = 0; 
+  }
+!!!170200.cpp!!!	AsyncWebSocketMessageBuffer(in copy : AsyncWebSocketMessageBuffer)
+  _len = copy._len;
+  _lock = copy._lock;
+  _count = 0;
+
+  if (_len) {
+    _data = new uint8_t[_len + 1]; 
+    _data[_len] = 0; 
+  } 
+
+  if (_data) {
+    memcpy(_data, copy._data, _len);
+    _data[_len] = 0; 
+  }
+
+!!!170328.cpp!!!	AsyncWebSocketMessageBuffer(inout copy : AsyncWebSocketMessageBuffer)
+  _len = copy._len;
+  _lock = copy._lock;
+  _count = 0;
+
+  if (copy._data) {
+    _data = copy._data; 
+    copy._data = nullptr; 
+  } 
+
+!!!170456.cpp!!!	~AsyncWebSocketMessageBuffer()
+    if (_data) {
+      delete[] _data; 
+    }
+!!!170840.cpp!!!	reserve(in size : size_t) : bool
+  _len = size; 
+
+  if (_data) {
+    delete[] _data;
+    _data = nullptr; 
+  }
+
+  _data = new uint8_t[_len + 1];
+
+  if (_data) {
+    _data[_len] = 0;
+    return true; 
+  } else {
+    return false; 
+  }
+

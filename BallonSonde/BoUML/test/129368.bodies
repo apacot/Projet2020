@@ -1,0 +1,13 @@
+class BME280I2C
+!!!131160.cpp!!!	setSettings(in settings : BME280I2C::Settings) : void
+   m_settings = settings;
+   BME280::setSettings(settings);
+!!!131288.cpp!!!	getSettings() : BME280I2C::Settings
+   return m_settings;
+!!!131416.cpp!!!	WriteRegister(in addr : uint8_t, in data : uint8_t) : bool
+  Wire.beginTransmission(m_settings.bme280Addr);
+  Wire.write(addr);
+  Wire.write(data);
+  Wire.endTransmission();
+
+  return true; // TODO: Check return values from wire calls.

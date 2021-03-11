@@ -1,0 +1,15 @@
+class AsyncChunkedResponse
+!!!217816.cpp!!!	AsyncChunkedResponse(in contentType : String, in callback : AwsResponseFiller, in processorCallback : AwsTemplateProcessor = nullptr)
+  _code = 200;
+  _content = callback;
+  _contentLength = 0;
+  _contentType = contentType;
+  _sendContentLength = false;
+  _chunked = true;
+  _filledLength = 0;
+!!!218072.cpp!!!	_fillBuffer(inout data : uint8_t, in len : size_t) : size_t
+  size_t ret = _content(data, len, _filledLength);
+  if(ret != RESPONSE_TRY_AGAIN){
+      _filledLength += ret;
+  }
+  return ret;

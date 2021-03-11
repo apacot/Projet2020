@@ -1,0 +1,67 @@
+class AsyncEventSource
+!!!164952.cpp!!!	~AsyncEventSource()
+  close();
+!!!165208.cpp!!!	close() : void
+  for(const auto &c: _clients){
+    if(c->connected())
+      c->close();
+  }
+!!!165336.cpp!!!	onConnect(in cb : ArEventHandlerFunction) : void
+  _connectcb = cb;
+!!!165464.cpp!!!	send(in message : char, in event : char = NULL, in id : uint32_t = 0, in reconnect : uint32_t = 0) : void
+
+
+  String ev = generateEventMessage(message, event, id, reconnect);
+  for(const auto &c: _clients){
+    if(c->connected()) {
+      c->write(ev.c_str(), ev.length());
+    }
+  }
+!!!165592.cpp!!!	count() : size_t
+  return _clients.count_if([](AsyncEventSourceClient *c){
+    return c->connected();
+  });
+!!!165720.cpp!!!	avgPacketsWaiting() : size_t
+  if(_clients.isEmpty())
+    return 0;
+  
+  size_t    aql=0;
+  uint32_t  nConnectedClients=0;
+  
+  for(const auto &c: _clients){
+    if(c->connected()) {
+      aql+=c->packetsWaiting();
+      ++nConnectedClients;
+    }
+  }
+//  return aql / nConnectedClients;
+  return ((aql) + (nConnectedClients/2))/(nConnectedClients); // round up
+!!!165848.cpp!!!	_addClient(inout client : AsyncEventSourceClient) : void
+  /*char * temp = (char *)malloc(2054);
+  if(temp != NULL){
+    memset(temp+1,' ',2048);
+    temp[0] = ':';
+    temp[2049] = '\r';
+    temp[2050] = '\n';
+    temp[2051] = '\r';
+    temp[2052] = '\n';
+    temp[2053] = 0;
+    client->write((const char *)temp, 2053);
+    free(temp);
+  }*/
+  
+  _clients.add(client);
+  if(_connectcb)
+    _connectcb(client);
+!!!165976.cpp!!!	_handleDisconnect(inout client : AsyncEventSourceClient) : void
+  _clients.remove(client);
+!!!166104.cpp!!!	canHandle(inout request : AsyncWebServerRequest) : bool
+  if(request->method() != HTTP_GET || !request->url().equals(_url)) {
+    return false;
+  }
+  request->addInterestingHeader("Last-Event-ID");
+  return true;
+!!!166232.cpp!!!	handleRequest(inout request : AsyncWebServerRequest) : void
+  if((_username != "" && _password != "") && !request->authenticate(_username.c_str(), _password.c_str()))
+    return request->requestAuthentication();
+  request->send(new AsyncEventSourceResponse(this));

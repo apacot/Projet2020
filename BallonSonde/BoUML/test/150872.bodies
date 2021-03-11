@@ -1,0 +1,313 @@
+class WiFiClient
+!!!226136.cpp!!!	WiFiClient(in fd : int)
+    clientSocketHandle.reset(new WiFiClientSocketHandle(fd));
+    _rxBuffer.reset(new WiFiClientRxBuffer(fd));
+!!!226264.cpp!!!	~WiFiClient()
+    stop();
+!!!226392.cpp!!!	connect(in ip : IPAddress, in port : uint16_t) : int
+    return connect(ip,port,-1);
+!!!226520.cpp!!!	connect(in ip : IPAddress, in port : uint16_t, in timeout : int32_t) : int
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0) {
+        log_e("socket: %d", errno);
+        return 0;
+    }
+    fcntl( sockfd, F_SETFL, fcntl( sockfd, F_GETFL, 0 ) | O_NONBLOCK );
+
+    uint32_t ip_addr = ip;
+    struct sockaddr_in serveraddr;
+    bzero((char *) &serveraddr, sizeof(serveraddr));
+    serveraddr.sin_family = AF_INET;
+    bcopy((const void *)(&ip_addr), (void *)&serveraddr.sin_addr.s_addr, 4);
+    serveraddr.sin_port = htons(port);
+    fd_set fdset;
+    struct timeval tv;
+    FD_ZERO(&fdset);
+    FD_SET(sockfd, &fdset);
+    tv.tv_sec = 0;
+    tv.tv_usec = timeout * 1000;
+
+    int res = lwip_connect_r(sockfd, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
+    if (res < 0 && errno != EINPROGRESS) {
+        log_e("connect on fd %d, errno: %d, \"%s\"", sockfd, errno, strerror(errno));
+        close(sockfd);
+        return 0;
+    }
+
+    res = select(sockfd + 1, nullptr, &fdset, nullptr, timeout<0 ? nullptr : &tv);
+    if (res < 0) {
+        log_e("select on fd %d, errno: %d, \"%s\"", sockfd, errno, strerror(errno));
+        close(sockfd);
+        return 0;
+    } else if (res == 0) {
+        log_i("select returned due to timeout %d ms for fd %d", timeout, sockfd);
+        close(sockfd);
+        return 0;
+    } else {
+        int sockerr;
+        socklen_t len = (socklen_t)sizeof(int);
+        res = getsockopt(sockfd, SOL_SOCKET, SO_ERROR, &sockerr, &len);
+
+        if (res < 0) {
+            log_e("getsockopt on fd %d, errno: %d, \"%s\"", sockfd, errno, strerror(errno));
+            close(sockfd);
+            return 0;
+        }
+
+        if (sockerr != 0) {
+            log_e("socket error on fd %d, errno: %d, \"%s\"", sockfd, sockerr, strerror(sockerr));
+            close(sockfd);
+            return 0;
+        }
+    }
+
+    fcntl( sockfd, F_SETFL, fcntl( sockfd, F_GETFL, 0 ) & (~O_NONBLOCK) );
+    clientSocketHandle.reset(new WiFiClientSocketHandle(sockfd));
+    _rxBuffer.reset(new WiFiClientRxBuffer(sockfd));
+    _connected = true;
+    return 1;
+!!!226648.cpp!!!	connect(in host : char, in port : uint16_t) : int
+    return connect(host,port,-1);
+!!!226776.cpp!!!	connect(in host : char, in port : uint16_t, in timeout : int32_t) : int
+    IPAddress srv((uint32_t)0);
+    if(!WiFiGenericClass::hostByName(host, srv)){
+        return 0;
+    }
+    return connect(srv, port, timeout);
+!!!226904.cpp!!!	write(in data : uint8_t) : size_t
+    return write(&data, 1);
+!!!227032.cpp!!!	write(in buf : uint8_t, in size : size_t) : size_t
+    int res =0;
+    int retry = WIFI_CLIENT_MAX_WRITE_RETRY;
+    int socketFileDescriptor = fd();
+    size_t totalBytesSent = 0;
+    size_t bytesRemaining = size;
+
+    if(!_connected || (socketFileDescriptor < 0)) {
+        return 0;
+    }
+
+    while(retry) {
+        //use select to make sure the socket is ready for writing
+        fd_set set;
+        struct timeval tv;
+        FD_ZERO(&set);        // empties the set
+        FD_SET(socketFileDescriptor, &set); // adds FD to the set
+        tv.tv_sec = 0;
+        tv.tv_usec = WIFI_CLIENT_SELECT_TIMEOUT_US;
+        retry--;
+
+        if(select(socketFileDescriptor + 1, NULL, &set, NULL, &tv) < 0) {
+            return 0;
+        }
+
+        if(FD_ISSET(socketFileDescriptor, &set)) {
+            res = send(socketFileDescriptor, (void*) buf, bytesRemaining, MSG_DONTWAIT);
+            if(res > 0) {
+                totalBytesSent += res;
+                if (totalBytesSent >= size) {
+                    //completed successfully
+                    retry = 0;
+                } else {
+                    buf += res;
+                    bytesRemaining -= res;
+                    retry = WIFI_CLIENT_MAX_WRITE_RETRY;
+                }
+            }
+            else if(res < 0) {
+                log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+                if(errno != EAGAIN) {
+                    //if resource was busy, can try again, otherwise give up
+                    stop();
+                    res = 0;
+                    retry = 0;
+                }
+            }
+            else {
+                // Try again
+            }
+        }
+    }
+    return totalBytesSent;
+!!!227160.cpp!!!	write_P(in buf : PGM_P, in size : size_t) : size_t
+    return write(buf, size);
+!!!227288.cpp!!!	write(inout stream : Stream) : size_t
+    uint8_t * buf = (uint8_t *)malloc(1360);
+    if(!buf){
+        return 0;
+    }
+    size_t toRead = 0, toWrite = 0, written = 0;
+    size_t available = stream.available();
+    while(available){
+        toRead = (available > 1360)?1360:available;
+        toWrite = stream.readBytes(buf, toRead);
+        written += write(buf, toWrite);
+        available = stream.available();
+    }
+    free(buf);
+    return written;
+!!!227416.cpp!!!	available() : int
+    if(!_rxBuffer)
+    {
+        return 0;
+    }
+    int res = _rxBuffer->available();
+    if(_rxBuffer->failed()) {
+        log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+        stop();
+    }
+    return res;
+!!!227544.cpp!!!	read() : int
+    uint8_t data = 0;
+    int res = read(&data, 1);
+    if(res < 0) {
+        return res;
+    }
+    return data;
+!!!227672.cpp!!!	read(inout buf : uint8_t, in size : size_t) : int
+    int res = -1;
+    res = _rxBuffer->read(buf, size);
+    if(_rxBuffer->failed()) {
+        log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+        stop();
+    }
+    return res;
+!!!227800.cpp!!!	peek() : int
+    int res = _rxBuffer->peek();
+    if(_rxBuffer->failed()) {
+        log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+        stop();
+    }
+    return res;
+!!!227928.cpp!!!	flush() : void
+    int res;
+    size_t a = available(), toRead = 0;
+    if(!a){
+        return;//nothing to flush
+    }
+    uint8_t * buf = (uint8_t *)malloc(WIFI_CLIENT_FLUSH_BUFFER_SIZE);
+    if(!buf){
+        return;//memory error
+    }
+    while(a){
+        toRead = (a>WIFI_CLIENT_FLUSH_BUFFER_SIZE)?WIFI_CLIENT_FLUSH_BUFFER_SIZE:a;
+        res = recv(fd(), buf, toRead, MSG_DONTWAIT);
+        if(res < 0) {
+            log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+            stop();
+            break;
+        }
+        a -= res;
+    }
+    free(buf);
+!!!228056.cpp!!!	stop() : void
+    clientSocketHandle = NULL;
+    _rxBuffer = NULL;
+    _connected = false;
+!!!228184.cpp!!!	connected() : uint8_t
+    if (_connected) {
+        uint8_t dummy;
+        int res = recv(fd(), &dummy, 0, MSG_DONTWAIT);
+        // avoid unused var warning by gcc
+        (void)res;
+        switch (errno) {
+            case EWOULDBLOCK:
+            case ENOENT: //caused by vfs
+                _connected = true;
+                break;
+            case ENOTCONN:
+            case EPIPE:
+            case ECONNRESET:
+            case ECONNREFUSED:
+            case ECONNABORTED:
+                _connected = false;
+                log_d("Disconnected: RES: %d, ERR: %d", res, errno);
+                break;
+            default:
+                log_i("Unexpected: RES: %d, ERR: %d", res, errno);
+                _connected = true;
+                break;
+        }
+    }
+    return _connected;
+!!!228440.cpp!!!	operator =(in other : WiFiClient) : WiFiClient
+    stop();
+    clientSocketHandle = other.clientSocketHandle;
+    _rxBuffer = other._rxBuffer;
+    _connected = other._connected;
+    return *this;
+!!!228824.cpp!!!	operator ==(in rhs : WiFiClient) : bool
+    return clientSocketHandle == rhs.clientSocketHandle && remotePort() == rhs.remotePort() && remoteIP() == rhs.remoteIP();
+!!!229080.cpp!!!	fd() : int
+    if (clientSocketHandle == NULL) {
+        return -1;
+    } else {
+        return clientSocketHandle->fd();
+    }
+!!!229208.cpp!!!	setSocketOption(in option : int, inout value : char, in len : size_t) : int
+    int res = setsockopt(fd(), SOL_SOCKET, option, value, len);
+    if(res < 0) {
+        log_e("%X : %d", option, errno);
+    }
+    return res;
+!!!229336.cpp!!!	setOption(in option : int, inout value : int) : int
+    int res = setsockopt(fd(), IPPROTO_TCP, option, (char *) value, sizeof(int));
+    if(res < 0) {
+        log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+    }
+    return res;
+!!!229464.cpp!!!	getOption(in option : int, inout value : int) : int
+    size_t size = sizeof(int);
+    int res = getsockopt(fd(), IPPROTO_TCP, option, (char *)value, &size);
+    if(res < 0) {
+        log_e("fail on fd %d, errno: %d, \"%s\"", fd(), errno, strerror(errno));
+    }
+    return res;
+!!!229592.cpp!!!	setTimeout(in seconds : uint32_t) : int
+    Client::setTimeout(seconds * 1000);
+    struct timeval tv;
+    tv.tv_sec = seconds;
+    tv.tv_usec = 0;
+    if(setSocketOption(SO_RCVTIMEO, (char *)&tv, sizeof(struct timeval)) < 0) {
+        return -1;
+    }
+    return setSocketOption(SO_SNDTIMEO, (char *)&tv, sizeof(struct timeval));
+!!!229720.cpp!!!	setNoDelay(in nodelay : bool) : int
+    int flag = nodelay;
+    return setOption(TCP_NODELAY, &flag);
+!!!229848.cpp!!!	getNoDelay() : bool
+    int flag = 0;
+    getOption(TCP_NODELAY, &flag);
+    return flag;
+!!!229976.cpp!!!	remoteIP() : IPAddress
+    return remoteIP(fd());
+!!!230104.cpp!!!	remoteIP(in fd : int) : IPAddress
+    struct sockaddr_storage addr;
+    socklen_t len = sizeof addr;
+    getpeername(fd, (struct sockaddr*)&addr, &len);
+    struct sockaddr_in *s = (struct sockaddr_in *)&addr;
+    return IPAddress((uint32_t)(s->sin_addr.s_addr));
+!!!230232.cpp!!!	remotePort() : uint16_t
+    return remotePort(fd());
+!!!230360.cpp!!!	remotePort(in fd : int) : uint16_t
+    struct sockaddr_storage addr;
+    socklen_t len = sizeof addr;
+    getpeername(fd, (struct sockaddr*)&addr, &len);
+    struct sockaddr_in *s = (struct sockaddr_in *)&addr;
+    return ntohs(s->sin_port);
+!!!230488.cpp!!!	localIP() : IPAddress
+    return localIP(fd());
+!!!230616.cpp!!!	localIP(in fd : int) : IPAddress
+    struct sockaddr_storage addr;
+    socklen_t len = sizeof addr;
+    getsockname(fd, (struct sockaddr*)&addr, &len);
+    struct sockaddr_in *s = (struct sockaddr_in *)&addr;
+    return IPAddress((uint32_t)(s->sin_addr.s_addr));
+!!!230744.cpp!!!	localPort() : uint16_t
+    return localPort(fd());
+!!!230872.cpp!!!	localPort(in fd : int) : uint16_t
+    struct sockaddr_storage addr;
+    socklen_t len = sizeof addr;
+    getsockname(fd, (struct sockaddr*)&addr, &len);
+    struct sockaddr_in *s = (struct sockaddr_in *)&addr;
+    return ntohs(s->sin_port);

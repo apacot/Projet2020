@@ -1,0 +1,549 @@
+format 222
+"src" // TinyGPS::src
+  revision 1
+  modified_by 88 "ssabri"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "/opt/Esp8266-Arduino-Makefile/libraries/TinyGPS/src/"
+  cpp_src_dir "/opt/Esp8266-Arduino-Makefile/libraries/TinyGPS/src/"
+  classview 128472 "src"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 130776 "TinyGPS"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment " #define _GPS_NO_STATS"
+      class 130904 "anonymous1"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum  {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 137176 "GPS_INVALID_AGE"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0xFFFFFFFF"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137304 "GPS_INVALID_ANGLE"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 999999999"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137432 "GPS_INVALID_ALTITUDE"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 999999999"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137560 "GPS_INVALID_DATE"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137688 "GPS_INVALID_TIME"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0xFFFFFFFF"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137816 "GPS_INVALID_SPEED"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 999999999"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137944 "GPS_INVALID_FIX_TIME"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0xFFFFFFFF"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138072 "GPS_INVALID_SATELLITES"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0xFF"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138200 "GPS_INVALID_HDOP"
+	  public type class_ref 130904 // anonymous1
+	  init_value " 0xFFFFFFFF
+  "
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      attribute 138328 "GPS_INVALID_F_ANGLE"
+	class_attribute const_attribute public explicit_type "float"
+	init_value "= 1000.0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 138456 "GPS_INVALID_F_ALTITUDE"
+	class_attribute const_attribute public explicit_type "float"
+	init_value "= 1000000.0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 138584 "GPS_INVALID_F_SPEED"
+	class_attribute const_attribute public explicit_type "float"
+	init_value "= -1.0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 134360 "TinyGPS"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}
+  :  _time(GPS_INVALID_TIME)
+  ,  _date(GPS_INVALID_DATE)
+  ,  _latitude(GPS_INVALID_ANGLE)
+  ,  _longitude(GPS_INVALID_ANGLE)
+  ,  _altitude(GPS_INVALID_ALTITUDE)
+  ,  _speed(GPS_INVALID_SPEED)
+  ,  _course(GPS_INVALID_ANGLE)
+  ,  _hdop(GPS_INVALID_HDOP)
+  ,  _numsats(GPS_INVALID_SATELLITES)
+  ,  _last_time_fix(GPS_INVALID_FIX_TIME)
+  ,  _last_position_fix(GPS_INVALID_FIX_TIME)
+  ,  _parity(0)
+  ,  _is_checksum_term(false)
+  ,  _sentence_type(_GPS_SENTENCE_OTHER)
+  ,  _term_number(0)
+  ,  _term_offset(0)
+  ,  _gps_data_good(false)
+#ifndef _GPS_NO_STATS
+  ,  _encoded_characters(0)
+  ,  _good_sentences(0)
+  ,  _failed_checksum(0)
+#endif
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135640 "f_get_position"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 3
+	  param inout name "latitude" explicit_type "float"
+	  param inout name "longitude" explicit_type "float"
+	  param inout name "fix_age" explicit_type "ulong"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} * ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135768 "crack_datetime"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 8
+	  param inout name "year" explicit_type "int"
+	  param inout name "month" explicit_type "byte"
+	  param inout name "day" explicit_type "byte"
+	  param inout name "hour" explicit_type "byte"
+	  param inout name "minute" explicit_type "byte"
+	  param inout name "second" explicit_type "byte"
+	  param inout name "hundredths" explicit_type "byte"
+	    defaultvalue "0"
+	  param inout name "age" explicit_type "ulong"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} * ${p2}${v2}, ${t3} * ${p3}${v3}, ${t4} * ${p4}${v4}, ${t5} * ${p5}${v5}, ${t6} * ${p6}${v6}, ${t7} * ${p7}${v7}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135896 "f_altitude"
+	preserve_cpp_body_indent public explicit_return_type "float"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136664 "library_version"
+	class_operation cpp_inline public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} { return _GPS_VERSION; };
+"
+	
+	
+	
+	
+      end
+
+      operation 137176 "stats"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 3
+	  param inout name "chars" explicit_type "ulong"
+	  param inout name "sentences" explicit_type "ushort"
+	  param inout name "failed_cs" explicit_type "ushort"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} * ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} * ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      class 131032 "anonymous2"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum  {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 138712 "_GPS_SENTENCE_GPGGA"
+	  public type class_ref 131032 // anonymous2
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138840 "_GPS_SENTENCE_GPRMC"
+	  public type class_ref 131032 // anonymous2
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138968 "_GPS_SENTENCE_OTHER"
+	  public type class_ref 131032 // anonymous2
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      attribute 139096 "_time"
+	private explicit_type "ulong"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " properties
+"
+      end
+
+      attribute 139224 "_new_time"
+	private explicit_type "ulong"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139352 "_date"
+	private explicit_type "ulong"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139480 "_new_date"
+	private explicit_type "ulong"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139608 "_latitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139736 "_new_latitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139864 "_longitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 139992 "_new_longitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 140120 "_altitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 140248 "_new_altitude"
+	private explicit_type "long"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+    end
+  end
+
+  deploymentview 128472 "src"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128856 "TinyGPS"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 130776 // TinyGPS
+      end
+    end
+  end
+end
