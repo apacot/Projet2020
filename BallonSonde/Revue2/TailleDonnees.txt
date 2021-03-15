@@ -1,9 +1,9 @@
 température : float -> xx,xx °C
 humidité : float -> xxx,xx %
 pression : float -> xxxxxx,xx Pa
-radiation x float -> xxxx,xx cpm
+radiation float -> xxxx,xx cpm
 latitude : float -> xx,xxxxxx
 longitude : float -> x,xxxxxx
 altitude : float -> xxxxx,xx m
-heure : xx:xx:xx
-date : xx/xx/xxxx
+heure : hh:mm:ss
+date : AAAA-MM-JJ

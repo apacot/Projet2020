@@ -63,7 +63,7 @@ total : 79 octets pour une trame de données
 
 1 enregistrement / minute
 
-66 * 60 = 4740 octets par heure
+79 * 60 = 4740 octets par heure
 
 18960 octets pour la durée du voyage
 
