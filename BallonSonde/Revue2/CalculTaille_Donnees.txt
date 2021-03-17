@@ -59,12 +59,12 @@ Partie entière : 3 caractères (max) = 3 octets
 le . qui sépare la partie entière/décimale : 1 caractère = 1 octet
 Partie décimale : 2 caracètres = 2 octets
 
-total : 79 octets pour une trame de données
+total : 79 octets pour une trame de données + 1 retour à la ligne = 80
 
 1 enregistrement / minute
 
-79 * 60 = 4740 octets par heure
+80 * 60 = 4800 octets par heure
 
 18960 octets pour la durée du voyage
 
-= 18,96 ko 
+= 19,2 ko 
