@@ -1,0 +1,10 @@
+Test Unitaire :
+
+- Cas d’utilisation Emission trame Sigfox
+
+	→ Cas « OK »
+	→ Cas « rien »
+
+- Structure avec les données → cloud sigfox
+
+- prévoir valeurs extreme
