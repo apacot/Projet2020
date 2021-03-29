@@ -3,13 +3,14 @@
 
 Possibilité 1 : 1 seule trame
 
+1 bit à 0 (pour compléter la trame)
 26 bits (en multipliant par 1M) -> latitude
 23 bits + bit de signe (en multipliant par 1M) -> longitude
 15 bit -> altitude (en mètres)
-6 bit -> temperature (-20;40) => (60° max , 0 mini) (codage en +20)
+6 bits + bit de signe -> temperature 
 11 bits -> pression (en hPa) (10 bit = 1024 + 1 bit de sécurité)
 12 bits -> radiation (cpm, 4000max)
-total 94 bits
+total 96 bits
 
 -----------------
 
@@ -20,10 +21,10 @@ trame position
 
 1 bit -> identification (0 ou 1)
 6+20 || 26 bits (en multipliant par 1M) -> lattitude
-(19bits) 18 bits + bit de signe (en multipliant par 1M) -> longitude
+(24 bits) 23 bits + bit de signe (en multipliant par 1M) -> longitude
 15 bit -> altitude (en mètres)
 
-total 61 bits
+total 66 bits
 
 ------------------
 
