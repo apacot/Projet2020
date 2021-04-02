@@ -1,7 +1,8 @@
+- CodageTrame (problème sur la longitude)
+- Carte SD
+- Fichier CSV ! 
+- Fiche de test unitaire
+- WebSocket
 - modelio -> diagrammes (cas d'utilisation, séquences, état-transition, classe) /!\
 - choix des technologies -> explication complète de chaque possibilités, avec détail de chaque choix
                          -> présentation des outils (soft et/ou hard)
-- Fiche de test unitaire
-- WebSocket
-- Carte SD
--
