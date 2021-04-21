@@ -8,3 +8,17 @@ Test Unitaire :
 - Structure avec les données → cloud sigfox
 
 - prévoir valeurs extreme
+
+-prévoir tous les cas (sigfox suspendu, conditions initials OK)
+
+2 fiches à faire
+- Aspect matériel + cloud Sigfox
+- Bridge Sigfox + Mon programme (avec encodage) 
+
+Montrer quelles sont les données envoyées
+Et est-ce qu'on reçoit ça 
+
+tester les valeurs extrèmes possible
+
+En cas de température 
+
