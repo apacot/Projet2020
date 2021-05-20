@@ -1,0 +1,13 @@
+window_sizes 1600 835 375 1219 679 104
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128088 // ClasseSD
+    1219 679 100 A4 0 0
+end
+show_stereotypes
+selected 
+package_ref 129 // BallonSD
+open
+  classview_ref 128088 // SD
+end
+end
